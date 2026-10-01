@@ -1,0 +1,13 @@
+/* Admin blog editor styles. */
+* { box-sizing: border-box; }
+body { margin:0; font-family:Arial,sans-serif; background:#f4f1ee; color:#1d1d1d; }
+.container { max-width: 1000px; margin: 32px auto; padding: 0 18px; }
+.panel { background: rgba(255,255,255,0.82); border:1px solid #dad4cd; border-radius:10px; padding:22px; }
+h1 { margin-top:0; }
+label { display:block; margin-bottom:8px; font-weight:700; }
+input, select, textarea { width:100%; padding:12px 14px; border:1px solid #d7d1c8; border-radius:8px; margin-bottom:16px; }
+textarea { min-height: 180px; }
+.featured-preview { display:block; width:min(100%, 320px); max-height:200px; margin:0 0 12px; border-radius:6px; object-fit:cover; }
+.btn { background:#2d4d6a; color:white; border:none; border-radius:8px; padding:12px 18px; font-weight:700; cursor:pointer; }
+.btn-secondary { background:white; color:#2d4d6a; border:1px solid #2d4d6a; margin-left:12px; }
+.meta-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }

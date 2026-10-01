@@ -1,0 +1,65 @@
+<?php
+
+use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\AdminPackageController;
+use App\Http\Controllers\BlogController;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', function () {
+    return view('home');
+});
+
+Route::get('/hajj', function () {
+    return view('hajj');
+});
+
+Route::get('/ziyarat', function () {
+    return view('ziyarat');
+});
+
+Route::get('/about', function () {
+    return view('about');
+});
+
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+Route::get('/umrah-package-from-mumbai', function () {
+    return view('umrah');
+});
+
+Route::get('/ramzan-umrah-package-from-mumbai', function () {
+    return view('ramzan');
+});
+
+Route::get('/blog', [BlogController::class, 'publicIndex']);
+
+Route::get('/blog/{slug}', [BlogController::class, 'showPublic'])->name('blog.show');
+
+Route::get('/admin', function () {
+    return redirect()->route(auth()->check() ? 'admin.dashboard' : 'admin.login');
+});
+
+Route::middleware('guest')->group(function () {
+    Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
+    Route::post('/admin/login', [AdminAuthController::class, 'login']);
+});
+
+Route::middleware('auth')->prefix('admin')->group(function () {
+    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/enquiries', [AdminDashboardController::class, 'enquiries'])->name('admin.enquiries');
+    Route::get('/packages', [AdminPackageController::class, 'index'])->name('admin.packages.index');
+    Route::post('/packages', [AdminPackageController::class, 'store'])->name('admin.packages.store');
+    Route::get('/packages/{package}/edit', [AdminPackageController::class, 'edit'])->name('admin.packages.edit');
+    Route::put('/packages/{package}', [AdminPackageController::class, 'update'])->name('admin.packages.update');
+    Route::delete('/packages/{package}', [AdminPackageController::class, 'destroy'])->name('admin.packages.destroy');
+    Route::get('/blogs', [BlogController::class, 'index'])->name('admin.blogs.index');
+    Route::post('/blogs', [BlogController::class, 'store'])->name('admin.blogs.store');
+    Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit'])->name('admin.blogs.edit');
+    Route::put('/blogs/{blog}', [BlogController::class, 'update'])->name('admin.blogs.update');
+    Route::delete('/blogs/{blog}', [BlogController::class, 'destroy'])->name('admin.blogs.destroy');
+    Route::post('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+});
+

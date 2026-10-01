@@ -1,0 +1,30 @@
+/* Dynamic blog detail page styles. */
+body { background: #f5f1ea; color: #222; }
+.blog-page { max-width: 1200px; margin: 0 auto; padding: 30px 20px 80px; }
+.blog-hero { margin-bottom: 32px; }
+.blog-thumb { width: 100%; border-radius: 18px; overflow: hidden; box-shadow: 0 18px 40px rgba(17, 16, 14, 0.12); }
+.blog-thumb img { display: block; width: 100%; height: auto; }
+.blog-content { display: grid; grid-template-columns: minmax(0, 1.6fr) 320px; gap: 32px; }
+.article { min-width: 0; padding: 28px 30px; border-radius: 18px; background: rgba(255,255,255,0.38); box-shadow: 0 10px 24px rgba(20,20,20,0.05); }
+.article .eyebrow { display: inline-block; margin: 0 0 12px; color: #9b7a41; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+.article h1 { margin: 0 0 12px; color: #1d1d1d; font-family: Georgia, serif; font-size: 36px; line-height: 1.15; }
+.article .meta { margin-bottom: 16px; color: #6a5c45; font-size: 0.95rem; }
+.blog-copy { color: #2b2b2b; font-size: 1.08rem; line-height: 1.9; overflow-wrap: anywhere; }
+.blog-copy h2 { margin: 1.8em 0 0.7em; color: #1b130d; font-size: 25px; }
+.blog-copy h3 { margin: 1.4em 0 0.6em; color: #201a15; font-size: 1.35rem; }
+.blog-copy ul, .blog-copy ol { padding-left: 1.2rem; }
+.article-social { display: flex; justify-content: flex-end; gap: 12px; margin-top: 28px; padding-top: 20px; border-top: 1px solid rgba(66,49,22,0.12); }
+.article-social a { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: #252525; transition: transform 0.2s ease, background-color 0.2s ease; }
+.article-social a:hover { transform: translateY(-2px); }
+.article-social a:first-child { background: #1877f2; }
+.article-social a:nth-child(2) { background: linear-gradient(135deg, #833ab4, #e1306c, #f77737); }
+.article-social a:last-child { background: #000; }
+.article-social svg { width: 22px; height: 22px; }
+.sidebar { position: sticky; top: 20px; height: fit-content; padding: 20px 18px; border-radius: 18px; background: rgba(255,255,255,0.42); }
+.sidebar h3 { margin: 0 0 16px; color: #1d140d; font-size: 1.2rem; }
+.sidebar .card { margin-bottom: 18px; padding: 12px 0; border-bottom: 1px solid rgba(66,49,22,0.12); }
+.sidebar .card:last-child { border-bottom: none; }
+.sidebar .card a { color: #2a1d12; font-weight: 600; text-decoration: none; }
+.sidebar .meta { margin: 6px 0 0; }
+@media (max-width: 900px) { .blog-content { grid-template-columns: 1fr; } .sidebar { position: static; } }
+@media (max-width: 640px) { .blog-page { padding: 20px 18px 48px; } .article { padding: 22px 20px; } .article h1 { font-size: 32px; } }

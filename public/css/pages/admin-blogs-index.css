@@ -1,0 +1,22 @@
+/* Admin blog list and create form styles. */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; background: #f4f1ee; color: #1d1d1d; }
+.topbar { background: #2b3747; color: #fff; padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; }
+.brand { font-weight: 700; font-size: 1.2rem; }
+.logout { color: white; text-decoration: none; }
+.container { max-width: 1200px; margin: 28px auto; padding: 0 18px; }
+.header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+h1 { margin: 0; font-size: 2rem; }
+.new-btn { background: #2d4d6a; color: white; border: none; border-radius: 8px; padding: 11px 18px; font-size: 1rem; font-weight: 700; cursor: pointer; }
+.table-wrap { background: rgba(255,255,255,0.8); border: 1px solid #dad4cd; border-radius: 10px; overflow: hidden; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 18px 16px; text-align: left; border-bottom: 1px solid #e5dfd6; vertical-align: top; }
+th { font-size: 0.82rem; letter-spacing: 0.02em; text-transform: uppercase; color: #5e5e5e; background: #f8f5f3; }
+.status { display: inline-block; padding: 6px 12px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; background: #dfeee3; color: #1a6a45; }
+.seo-badge { background: #f3e9d7; color: #6b4d17; display: inline-block; padding: 5px 10px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; }
+a { color: #1f3d5f; text-decoration: none; }
+.actions a { margin-right: 10px; font-weight: 700; }
+.danger { color: #bf3d3d; }
+.success { background: #e5f7eb; color: #1c6d48; padding: 12px 14px; border-radius: 8px; margin-bottom: 16px; }
+.muted { color: #666; }
+.slug { color: #5c6472; }

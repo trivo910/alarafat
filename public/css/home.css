@@ -1,0 +1,549 @@
+:root {
+    --ink: #111214;
+    --black: #080808;
+    --gold: #d3ad63;
+    --gold-dark: #bd9140;
+    --paper: #fff;
+    --muted: #68717a;
+    --line: #e7e9eb;
+    --content-width: 1140px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; color: var(--ink); background: var(--paper); font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.65; }
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+img { display: block; max-width: 100%; }
+.content-width { width: min(var(--content-width), calc(100% - 56px)); margin-inline: auto; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+.contact-strip { 
+    height: 25px; 
+    color: #24211a; 
+    background: var(--gold); 
+    font-size: 16px;
+    font-weight: 600;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.contact-inner { 
+    max-width: 1500px; 
+    height: 100%; 
+    padding: 0 28px; 
+    margin: 0 auto; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+}
+.contact-links, .social-links { display: flex; align-items: center; gap: 18px;}
+.contact-links a { white-space: nowrap; }
+.contact-links span { margin-right: 6px; }
+.social-links { gap: 14px; font-weight: 700;  }
+.social-links a { min-width: 16px; text-align: center; }
+.site-header { 
+    position: relative; 
+    z-index: 5; 
+    /* height: 56px;  */
+    padding: 0 max(28px, calc((100% - 1500px) / 2)); 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    background: var(--black); 
+    color: #fff; 
+    border-bottom: 3px solid var(--gold); 
+}
+.brand { 
+    display: flex; 
+    align-items: center; 
+    width: 350px; 
+    flex: 0 0 auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.brand img { width: 100%; height: auto; }
+.primary-nav { height: 100%; display: flex; align-items: center; gap: clamp(17px, 2.1vw, 34px); margin-left: auto; margin-right: clamp(20px, 6vw, 88px); font-size: 16px; font-weight: 600; }
+.primary-nav > a, .nav-dropdown-trigger { height: 100%; display: flex; align-items: center; position: relative; transition: color .2s ease; }
+.primary-nav a:hover, .primary-nav a.active { color: var(--gold); }
+.nav-dropdown { position: relative; height: 100%; display: flex; align-items: center; }
+.nav-dropdown-trigger { padding: 0; border: 0; color: inherit; background: transparent; font: inherit; font-weight: inherit; cursor: pointer; }
+.nav-dropdown:hover .nav-dropdown-trigger, .nav-dropdown:focus-within .nav-dropdown-trigger { color: var(--gold); }
+.nav-submenu { position: absolute; top: 100%; left: 50%; z-index: 10; width: 230px; padding: 10px 0; display: none; transform: translateX(-50%); border: 1px solid #777; border-radius: 8px; background: #080808; box-shadow: 0 12px 28px #0007; }
+.nav-dropdown:hover .nav-submenu, .nav-dropdown:focus-within .nav-submenu { display: block; }
+.nav-submenu a { min-height: 56px; padding: 10px 28px; display: flex; align-items: center; color: #f5f5f5; font-size: 15px; font-weight: 500; line-height: 1.55; transition: color .2s ease, background .2s ease; }
+.nav-submenu a:hover, .nav-submenu a:focus-visible { color: var(--gold); background: #ffffff0d; }
+.header-tools { display: flex; align-items: center; gap: 14px; font-size: 16px; }
+.account-button { width: 40px; aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: white; color: #141414; font-size: 24px; }
+.menu-toggle { display: none; }
+
+.hero { position: relative; overflow: hidden; width: 100%; aspect-ratio: 1600 / 474; max-height: 490px; background: #101010; }
+.hero-track, .hero-slide { position: absolute; inset: 0; }
+.hero-slide { opacity: 0; visibility: hidden; transition: opacity .6s ease, visibility .6s ease; }
+.hero-slide.is-active { opacity: 1; visibility: visible; }
+.hero-slide img { width: 100%; height: 100%; object-fit: cover; }
+.hero-arrow { position: absolute; top: 50%; z-index: 1; width: 38px; height: 48px; transform: translateY(-50%); color: white; background: #1119; border: 0; cursor: pointer; font-size: 34px; line-height: 1; transition: background .2s ease; }
+.hero-arrow:hover { background: #111d; }
+.hero-previous { left: 0; }
+.hero-next { right: 0; }
+.hero-dots { position: absolute; z-index: 1; right: 20px; bottom: 15px; display: flex; gap: 7px; }
+.hero-dot { width: 7px; height: 7px; padding: 0; border: 1px solid white; border-radius: 50%; background: transparent; cursor: pointer; }
+.hero-dot.is-active { background: var(--gold); border-color: var(--gold); }
+
+.booking-wrap { 
+    position: relative; 
+    z-index: 2; display: flex; 
+    justify-content: center; 
+    padding: 20px 20px 0; 
+}
+.booking-form { 
+    width: min(700px, 100%); 
+    min-height: 60px; 
+    padding: 10px; 
+    display: flex; 
+    align-items: center; 
+    border: 1px solid #e2e4e6; 
+    border-radius: 50px; 
+    background: white; 
+    box-shadow: 0 2px 9px #0000000c; 
+}
+.booking-field { min-width: 0; flex: 1; padding: 3px 13px; display: flex; align-items: center; gap: 10px; }
+.location-field { flex: 1.35; border-right: 1px solid var(--line); }
+.field-icon { color: #77818a; font-size: 20px; }
+.field-copy { min-width: 0; display: grid; line-height: 1.35; }
+.field-copy > span { 
+    font-size: 16px; 
+    /* font-weight: 600; */
+ }
+.field-copy input { width: 100%; min-width: 0; padding: 0; color: #707880; border: 0; outline: 0; background: transparent; font-size: 14px; }
+.field-copy input[type=date] { max-width: 100px; }
+.field-copy input[type=date]::-webkit-calendar-picker-indicator { opacity: .55; }
+.date-arrow { color: #95a0a7; font-size: 12px; }
+.search-button { 
+    align-self: stretch; 
+    padding: 0 30px;
+    min-width: 92px; 
+    border: 0; 
+    border-radius: 26px; 
+    color: white; 
+    background: var(--gold); 
+    cursor: pointer; 
+    font-size: 16px; 
+    font-weight: 600; 
+    transition: background .2s ease; 
+}
+.search-button:hover { background: var(--gold-dark); }
+
+.intro { padding-top: 18px; padding-bottom: 48px; display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(32px, 6vw, 86px); align-items: center; }
+.intro-gallery { min-height: 300px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: end; }
+.intro-image { width: 100%; object-fit: cover; object-position: center; border-radius: 200px 200px 8px 8px; box-shadow: -15px 15px 0 0 #D3AF6C; }
+.intro-image-tall { height: 500px; }
+.intro-image-short { height: 400px; }
+.eyebrow { margin: 0 0 6px; color: var(--gold-dark); font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; }
+.intro-copy h1 { 
+    margin: 0 0 20px; 
+    color: var(--gold-dark); 
+    font-family: 'Playfair Display', serif;
+    font-size: 35px; 
+    font-weight: 600; 
+    font-style: italic; 
+    line-height: 1.25; }
+.intro-copy > p:last-child { margin: 0; color: #535a60; font-size: 16px; line-height: 1.75; }
+
+.packages-section { padding: 0 0 48px; }
+.section-heading { margin-bottom: 22px; text-align: center; }
+.section-heading .eyebrow { display: none; }
+.section-heading h2 { margin: 30px 0 0; color: var(--gold); font-size: 30px; line-height: 1.3; }
+.package-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.package-card { min-width: 0; overflow: hidden; border: 1px solid #e4e6e8; border-radius: 8px; background: white; box-shadow: 0 4px 12px #00000008; transition: transform .2s ease, box-shadow .2s ease; }
+.package-card:hover { transform: translateY(-3px); box-shadow: 0 9px 20px #00000012; }
+.package-image { position: relative; display: block; overflow: hidden; aspect-ratio: 1.5; background: #edf1f3; }
+.package-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.package-card:hover .package-image img { transform: scale(1.035); }
+.favorite { position: absolute; top: 12px; right: 12px; color: white; font-size: 21px; text-shadow: 0 1px 5px #0008; }
+.package-info { padding: 11px 14px 10px; }
+.package-info h3 { min-height: 24px; margin: 10px 0 7px; font-size: 18px; font-weight: 600; line-height: 1.45; }
+.rating { margin: 0; padding-bottom: 16px; border-bottom: 1px solid #eceeef; color: #30363b; font-size: 16px; }
+.rating > span { color: #f2a323; }
+.rating small { margin-left: 4px; color: #77818a; font-size: 14px; }
+.package-price { min-height: 36px; display: flex; align-items: end; justify-content: space-between; color: #75808a; font-size: 14px; }
+.package-price strong { color: #21262a; font-size: 16px; }
+.package-price > span:last-child { font-size: 16px; }
+
+
+.commitments { 
+    padding: 0 0 66px;
+}
+.commitments .section-heading { margin-bottom: 20px; }
+.commitments .section-heading h2 { color: #1f2529; }
+.commitment-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.commitment { min-height: 130px; padding: 30px 30px 15px 30px; border-radius: 8px; background: var(--gold); text-align: center; }
+.commitment-icon { width: 36px; height: 36px; margin: -10px auto 8px; display: grid; place-items: center; border: 2px solid #272522; border-radius: 50%; font-size: 30px; font-weight: 700; line-height: 1; }
+.commitment h3 { margin: 0 0 4px; font-size: 22px; font-weight: 500; line-height: 1.35; }
+.commitment p { margin: 0; font-size: 16px; line-height: 1.6; }
+
+.newsletter { min-height: 250px; margin-bottom: 65px; display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
+.newsletter-art { min-height: 350px; background: #fff url('https://alarafat.com/wp-content/uploads/2022/08/02-Apr-10-Apr-2-1-1.png') center / cover no-repeat; }
+.newsletter-panel { min-width: 0; padding: 34px clamp(24px, 5vw, 70px); display: flex; flex-direction: column; justify-content: center; border: 1px solid #e3e5e7; border-radius: 0 10px 10px 0; text-align: center; }
+.newsletter-panel h2 { margin: 0 0 8px; font-size: 24px; line-height: 1.35; }
+.newsletter-panel > p { margin: 0 auto 14px; color: #68717a; font-size: 12px; }
+.newsletter-input { display: flex; width: min(360px, 100%); margin-inline: auto; border: 1px solid #dfe2e4; border-radius: 4px; }
+.newsletter-input input { width: 100%; min-width: 0; padding: 8px 10px; border: 0; outline: 0; font-size: 12px; }
+.newsletter-input button { width: 40px; flex: 0 0 40px; border: 0; color: white; background: var(--gold); cursor: pointer; font-size: 20px; }
+.newsletter-panel .form-message { min-height: 17px; margin: 5px 0 0; color: #50724b; font-size: 11px; }
+
+.testimonials { 
+    /* position: relative;  */
+    margin: auto;
+    width: 85%;
+    margin-bottom: 64px; 
+    padding: 26px 0 0; 
+    background: linear-gradient(to bottom, var(--black) 0, var(--black) 78%, white 68%, white 100%); 
+    text-align: center; 
+    /* border-radius: 8px 8px 8px 8px; */
+}
+.testimonial-inner > .eyebrow { margin-bottom: 4px; color: var(--gold); font-size: 26px; font-weight: 500; letter-spacing: 0; text-transform: none; }
+.testimonial-inner > h2 { margin: 0 0 18px; color: white; font-size: 35px; font-weight: 600; }
+.testimonial-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.testimonial-card { min-height: 145px; padding: 15px 14px 12px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid #e2e4e6; border-radius: 7px; background: white; box-shadow: 0 4px 9px #00000012; }
+.testimonial-card > p { margin: 0 0 12px; color: #707880; font-size: 16px; line-height: 1.65; }
+.reviewer { display: flex; align-items: center; justify-content: center; gap: 10px; text-align: left; }
+.reviewer-avatar { width: 60px; height: 60px; display: grid; place-items: center; border-radius: 50%; color: #526573; background: #e8eef1; font-size: 10px; font-weight: 700; }
+.reviewer strong, .reviewer small { display: block; font-size: 16px; font-weight: 500; line-height: 1.4; }
+.reviewer small { color: #707880; font-size: 14px; }
+
+.partners { overflow: hidden; border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold); }
+.partner-track { width: min(1200px, calc(100% - 56px)); min-height: 94px; margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 42px; }
+.partner-track img { width: auto; max-width: 125px; max-height: 58px; object-fit: contain; }
+.site-footer { color: #f4f4f4; background: var(--black); }
+.footer-main { padding-top: 25px; padding-bottom: 24px; display: grid; grid-template-columns: 1.25fr .85fr 1fr 1.05fr; gap: 40px; }
+.footer-about img { 
+    width: 1200px; 
+    margin-bottom: 8px;
+    height: 240;
+}
+.footer-about p, .footer-column p { margin: 0 0 10px; color: #f0f0f0; font-size: 16px; line-height: 1.65; }
+.footer-column { display: flex; flex-direction: column; align-items: flex-start; }
+.footer-column h2 { width: 100%; margin: 0 0 7px; padding-bottom: 5px; border-bottom: 1px solid var(--gold); color: var(--gold); font-size: 14px; font-weight: 600; text-transform: uppercase; }
+.footer-column > a:not(.footer-contact) { font-size: 14px; line-height: 1.9; }
+.footer-column .footer-contact { margin: -10px 0 12px; padding-left: 10px; border-left: 2px solid var(--gold); font-size: 15px; line-height: 1.4; }
+.footer-social { display: flex; gap: 12px; font-size: 18px; font-weight: 700; }
+.office-column p { font-size: 14px; }
+.footer-bottom { padding: 11px 20px; color: white; background: var(--gold); text-align: center; font-size: 14px; }
+.footer-bottom strong { margin-left: 5px; font-size: 16px; }
+
+.hajj-hero { position: relative; height: 180px; background: #e7e4da url('https://alarafat.com/wp-content/uploads/2025/10/hajj-banner-2.jpg') center 46% / cover no-repeat; }
+.hajj-booking { position: absolute; top: 52px; left: 50%; width: min(650px, calc(100% - 36px)); transform: translateX(-50%); }
+.hajj-packages { padding-top: 14px; padding-bottom: 40px; }
+.hajj-packages .section-heading { margin-bottom: 25px; }
+.hajj-packages .section-heading h1 { margin: 0; color: var(--gold); font-size: 28px; line-height: 1.3; }
+.hajj-packages .package-info h2 { min-height: 24px; margin: 0 0 7px; font-size: 16px; font-weight: 600; line-height: 1.45; }
+.hajj-packages .package-price { min-height: 42px; align-items: center; padding-top: 8px; font-size: 12px; }
+.hajj-packages .package-price strong { margin-left: 5px; font-size: 15px; }
+.hajj-article { padding-top: 12px; padding-bottom: 60px; color: #747474; font-size: 14px; line-height: 1.8; }
+.article-heading h2, .article-opening h3, .article-feature h3 { margin: 0 0 12px; color: var(--gold); font-size: 28px; font-weight: 700; line-height: 1.25; }
+.article-opening { margin-bottom: 38px; }
+.article-opening p, .article-feature p { margin: 0 0 14px; }
+.article-opening h3 { margin-top: 27px; font-size: 25px; }
+.article-feature { margin: 0 0 46px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: center; }
+.article-feature img { width: 100%; aspect-ratio: 1.12; object-fit: cover; }
+.article-feature h3 { margin-bottom: 10px; font-size: 25px; }
+.article-conclusion img { aspect-ratio: 1 / 1; }
+.hajj-reviews { padding: 38px 0 55px; background: #f5f6f7; }
+.hajj-reviews h2 { margin: 0 0 24px; font-size: 22px; }
+.review-strip { display: grid; grid-template-columns: 1.05fr repeat(3, 1fr); gap: 14px; align-items: stretch; }
+.review-strip > article { min-height: 110px; padding: 14px; border-radius: 7px; background: white; box-shadow: 0 2px 12px #0000000a; }
+.review-strip article strong, .review-strip article small { display: block; }
+.review-strip article strong { font-size: 12px; }
+.review-strip article small { color: #78818a; font-size: 10px; }
+.review-strip article b, .review-brand b { color: #f3af24; font-size: 16px; letter-spacing: 1px; }
+.review-strip article p { margin: 3px 0 0; font-size: 11px; }
+.review-brand { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
+.review-brand strong { font-size: 17px; }
+.review-brand span, .review-brand small { font-size: 10px; }
+
+.ziyarat-hero { position: relative; height: 130px; background: #fff url('https://alarafat.com/wp-content/uploads/2022/08/bars.svg') center / 250px repeat; }
+.ziyarat-booking { position: absolute; top: 48px; left: 50%; width: min(650px, calc(100% - 36px)); transform: translateX(-50%); }
+.ziyarat-packages { padding-top: 11px; padding-bottom: 34px; }
+.ziyarat-packages .section-heading { margin-bottom: 24px; }
+.ziyarat-packages .section-heading h1 { margin: 0; color: var(--gold); font-size: 28px; line-height: 1.3; }
+.ziyarat-packages .package-info h2 { min-height: 24px; margin: 0 0 7px; font-size: 14px; font-weight: 600; line-height: 1.45; }
+.ziyarat-article { padding-top: 0; padding-bottom: 46px; }
+.ziyarat-article .article-heading { margin-bottom: 15px; text-align: center; }
+.ziyarat-article .article-heading h2 { margin: 0; }
+.ziyarat-article .article-opening { margin-bottom: 46px; }
+.ziyarat-article .article-feature { margin-bottom: 40px; }
+.ziyarat-article .article-feature img { aspect-ratio: 1.12; }
+.ziyarat-reviews { padding-top: 38px; }
+
+@media (min-width: 1500px) {
+    .hero { max-height: 520px; }
+    .intro { padding-top: 28px; padding-bottom: 62px; }
+    .intro-gallery { min-height: 360px; }
+    .intro-image-tall { height: 345px; }
+    .intro-image-short { height: 270px; }
+}
+
+@media (max-width: 900px) {
+    .site-header { padding-inline: 20px; }
+    .brand { width: 170px; }
+    .primary-nav { gap: 14px; margin-right: 20px; font-size: 11px; }
+    .content-width { width: min(var(--content-width), calc(100% - 40px)); }
+    .intro { gap: 32px; }
+    .intro-gallery { gap: 14px; }
+    .intro-image-tall { height: 240px; }
+    .intro-image-short { height: 190px; }
+    .footer-main { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 38px; }
+    .article-feature { gap: 18px; }
+}
+
+@media (max-width: 640px) {
+    body { font-size: 13px; }
+    .content-width { width: calc(100% - 36px); }
+    .contact-strip { display: none; }
+    .site-header { height: 47px; padding: 0 11px; border-bottom-width: 2px; }
+    .brand { width: 106px; }
+    .menu-toggle { width: 24px; height: 26px; padding: 5px 2px; display: flex; flex-direction: column; justify-content: center; gap: 4px; order: -1; border: 0; background: none; cursor: pointer; }
+    .menu-toggle span { width: 15px; height: 1px; background: white; }
+    .primary-nav { position: absolute; top: 45px; left: 0; right: 0; height: auto; margin: 0; padding: 8px 16px 14px; display: none; flex-direction: column; align-items: stretch; gap: 0; border-bottom: 2px solid var(--gold); background: #090909; font-size: 13px; }
+    .primary-nav.is-open { display: flex; }
+    .primary-nav a { min-height: 38px; border-bottom: 1px solid #ffffff17; }
+    .nav-dropdown { height: auto; display: flex; flex-direction: column; align-items: stretch; }
+    .nav-dropdown-trigger { min-height: 38px; justify-content: flex-start; border-bottom: 1px solid #ffffff17; }
+    .nav-submenu { position: static; width: 100%; padding: 0 0 5px 10px; display: none; transform: none; border: 0; border-radius: 0; background: #101010; box-shadow: none; }
+    .nav-dropdown:hover .nav-submenu, .nav-dropdown:focus-within .nav-submenu { display: none; }
+    .nav-dropdown.is-open .nav-submenu { display: block; }
+    .nav-submenu a { min-height: 38px; padding: 8px 10px; font-size: 12px; }
+    .header-tools { gap: 7px; font-size: 9px; }
+    .account-button { width: 25px; }
+    .hero { min-height: 0; aspect-ratio: 3.15 / 1; }
+    .hero-arrow { width: 24px; height: 34px; font-size: 27px; }
+    .hero-dots { right: 10px; bottom: 8px; gap: 5px; }
+    .hero-dot { width: 6px; height: 6px; }
+    .booking-wrap { padding: 11px 10px 0; }
+    .booking-form { min-height: 0; padding: 6px; flex-wrap: wrap; border-radius: 8px; }
+    .booking-field { min-height: 34px; padding: 3px 6px; gap: 5px; }
+    .location-field { flex-basis: 100%; border-right: 0; border-bottom: 1px solid var(--line); }
+    .location-field .field-copy input { width: 220px; }
+    .booking-field:not(.location-field) { flex: 1 1 37%; }
+    .field-icon { font-size: 13px; }
+    .field-copy > span { font-size: 10px; }
+    .field-copy input { font-size: 9px; }
+    .field-copy input[type=date] { max-width: 112px; }
+    .date-arrow { display: none; }
+    .search-button { min-height: 32px; flex: 1 1 100%; margin-top: 3px; border-radius: 5px; font-size: 11px; }
+    .intro { padding-top: 18px; padding-bottom: 34px; grid-template-columns: 1fr; gap: 19px; }
+    .intro-gallery { width: min(100%, 310px); min-height: 0; grid-template-columns: 1fr; gap: 14px; }
+    .intro-image { width: 90%; border-radius: 90px 90px 3px 3px; border-bottom-width: 6px; }
+    .intro-image-tall { height: 235px; }
+    .intro-image-short { width: 90%; height: 190px; margin-left: 5%; }
+    .intro-copy h1 { margin-bottom: 10px; font-size: 24px; }
+    .intro-copy .eyebrow { display: none; }
+    .intro-copy > p:last-child { font-size: 12px; line-height: 1.75; }
+    .packages-section { padding-bottom: 36px; }
+    .section-heading { margin-bottom: 14px; }
+    .section-heading h2 { font-size: 21px; }
+    .package-grid { grid-template-columns: 1fr; gap: 13px; }
+    .package-image { aspect-ratio: 1.7; }
+    .package-info { padding: 9px 10px 8px; }
+    .package-info h3 { min-height: 0; font-size: 13px; }
+    .commitments { padding-bottom: 38px; }
+    .commitments .section-heading { margin-bottom: 14px; }
+    .commitment-grid { grid-template-columns: 1fr; gap: 12px; }
+    .commitment { min-height: 115px; padding: 12px 14px; }
+    .commitment h3 { font-size: 15px; }
+    .commitment p { font-size: 11px; }
+    .newsletter { margin-bottom: 42px; grid-template-columns: 1fr; }
+    .newsletter-art { min-height: 175px; }
+    .newsletter-panel { min-height: 190px; padding: 22px 20px; border-radius: 0 0 9px 9px; }
+    .newsletter-panel h2 { font-size: 21px; }
+    .newsletter-panel > p { font-size: 11px; }
+    .newsletter-input { display: none; }
+    .newsletter-panel .form-message { display: none; }
+    .testimonials { margin-bottom: 35px; padding-top: 21px; background: linear-gradient(to bottom, var(--black) 0, var(--black) 76%, white 76%, white 100%); }
+    .testimonial-inner > .eyebrow { font-size: 13px; }
+    .testimonial-inner > h2 { margin-bottom: 14px; font-size: 22px; }
+    .testimonial-grid { grid-template-columns: 1fr; gap: 10px; }
+    .testimonial-card { min-height: 130px; padding: 13px 12px; }
+    .testimonial-card > p { font-size: 11px; }
+    .partner-track { width: calc(100% - 24px); min-height: 72px; gap: 25px; justify-content: flex-start; overflow-x: auto; scrollbar-width: none; }
+    .partner-track::-webkit-scrollbar { display: none; }
+    .partner-track img { max-width: 86px; max-height: 45px; flex: 0 0 auto; }
+    .footer-main { width: calc(100% - 36px); padding-top: 20px; padding-bottom: 20px; grid-template-columns: 1fr; gap: 16px; }
+    .footer-about img { width: 150px; }
+    .footer-about p { margin-bottom: 0; font-size: 11px; }
+    .footer-column h2 { margin-bottom: 5px; }
+    .footer-column p { font-size: 11px; }
+    .footer-column .footer-contact { margin-bottom: 9px; font-size: 13px; }
+    .footer-bottom { padding: 10px 12px; font-size: 9px; }
+    .hajj-hero { height: 225px; background-position: center center; }
+    .hajj-booking { top: 128px; }
+    .hajj-packages { padding-top: 92px; padding-bottom: 32px; }
+    .hajj-packages .section-heading { margin-bottom: 26px; }
+    .hajj-packages .section-heading h1 { font-size: 29px; }
+    .hajj-packages .package-grid { gap: 14px; }
+    .hajj-packages .package-image { aspect-ratio: 1.5; }
+    .hajj-packages .package-info { padding: 14px 18px 10px; }
+    .hajj-packages .package-info h2 { margin-bottom: 10px; font-size: 16px; }
+    .hajj-packages .package-price { min-height: 48px; font-size: 13px; }
+    .hajj-packages .package-price strong { font-size: 15px; }
+    .hajj-article { padding-top: 9px; padding-bottom: 38px; font-size: 14px; line-height: 1.8; text-align: justify; }
+    .article-heading h2, .article-opening h3, .article-feature h3 { font-size: 27px; }
+    .article-opening { margin-bottom: 34px; }
+    .article-feature { margin-bottom: 35px; grid-template-columns: 1fr; gap: 16px; }
+    .article-feature img { aspect-ratio: 1.45; }
+    .article-feature-image-last img { order: -1; }
+    .article-feature h3 { font-size: 26px; }
+    .hajj-reviews { padding: 26px 0 34px; }
+    .hajj-reviews h2 { margin-bottom: 17px; font-size: 20px; }
+    .review-strip { grid-template-columns: 1fr; gap: 10px; }
+    .review-strip > article { min-height: 90px; }
+    .ziyarat-hero { height: 120px; background-size: 200px; }
+    .ziyarat-booking { top: 39px; }
+    .ziyarat-packages { padding-top: 12px; padding-bottom: 27px; }
+    .ziyarat-packages .section-heading { margin-bottom: 18px; }
+    .ziyarat-packages .section-heading h1 { font-size: 28px; }
+    .ziyarat-article { padding-top: 0; padding-bottom: 30px; }
+    .ziyarat-article .article-heading { margin-bottom: 12px; }
+    .ziyarat-article .article-opening { margin-bottom: 30px; }
+    .ziyarat-article .article-feature { margin-bottom: 32px; }
+    .ziyarat-article .article-feature img { aspect-ratio: 1.45; }
+}
+
+.about-banner { padding-top: 12px; }
+.about-banner img { width: 100%; height: auto; }
+.about-introduction { padding-top: 16px; padding-bottom: 48px; }
+.about-introduction h1 { margin: 0 0 22px; text-align: center; font-size: 38px; font-weight: 700; }
+.about-copy { max-width: 930px; margin: auto; color: #68717a; font-size: 16px; line-height: 1.8; }
+.about-copy p { margin: 0 0 17px; }
+.about-promise { padding-bottom: 48px; display: grid; grid-template-columns: .92fr 1.08fr; gap: 32px; align-items: center; }
+.about-collage { width: 100%; height: 390px; object-fit: cover; border-radius: 8px; }
+.promise-copy h2 { margin: 0 0 18px; font-size: 32px; line-height: 1.3; }
+.promise-copy p { margin: 0 0 15px; color: #68717a; font-size: 15px; line-height: 1.8; }
+.about-mission { padding-bottom: 70px; }
+.about-mission > h2 { margin: 0 0 28px; text-align: center; font-size: 34px; }
+.mission-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.mission-card { min-height: 215px; padding: 22px 16px 18px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; border-radius: 9px; color: #f8f8f8; background: #242424; box-shadow: 0 5px 14px #0003; text-align: center; }
+.mission-icon { width: 44px; height: 44px; margin-bottom: 12px; display: grid; place-items: center; color: var(--gold); font-size: 36px; font-weight: 700; line-height: 1; }
+.mission-card h3 { margin: 0 0 8px; font-size: 19px; line-height: 1.3; }
+.mission-card p { margin: 0; color: #d5d5d5; font-size: 13px; line-height: 1.65; }
+.about-reviews { padding: 38px 0 55px; }
+.about-reviews .review-strip { grid-template-columns: 1fr 2fr; }
+.about-reviews .review-strip > article { min-height: 165px; padding: 22px; }
+.about-reviews .review-brand strong { font-size: 22px; }
+.about-reviews .review-brand span, .about-reviews .review-brand small { font-size: 13px; }
+.about-reviews .review-strip article strong { font-size: 18px; }
+.about-reviews .review-strip article small, .about-reviews .review-strip article p { font-size: 13px; }
+.about-reviews .review-strip article b { font-size: 22px; }
+
+@media (max-width: 640px) {
+    .about-banner { width: calc(100% - 24px); padding-top: 35px; }
+    .about-introduction { width: calc(100% - 52px); padding-top: 80px; padding-bottom: 50px; }
+    .about-introduction h1 { margin-bottom: 34px; font-size: 36px; }
+    .about-copy { font-size: 16px; line-height: 1.8; text-align: justify; }
+    .about-copy p { margin-bottom: 18px; }
+    .about-promise { width: calc(100% - 24px); padding-bottom: 45px; grid-template-columns: 1fr; gap: 24px; }
+    .about-collage { height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 8px; }
+    .promise-copy h2 { margin-bottom: 24px; font-size: 32px; line-height: 1.25; }
+    .promise-copy p { margin-bottom: 16px; font-size: 15px; line-height: 1.85; text-align: justify; }
+    .about-mission { padding-bottom: 45px; }
+    .about-mission > h2 { max-width: 340px; margin: 0 auto 34px; font-size: 34px; line-height: 1.3; }
+    .mission-grid { grid-template-columns: 1fr; gap: 16px; }
+    .mission-card { min-height: 215px; padding: 27px 18px 21px; border-radius: 14px; }
+    .mission-icon { margin-bottom: 12px; }
+    .mission-card h3 { font-size: 21px; }
+    .mission-card p { font-size: 16px; line-height: 1.75; }
+    .about-reviews { padding: 28px 0 38px; }
+    .about-reviews .review-strip { grid-template-columns: 1fr; gap: 18px; }
+    .about-reviews .review-brand { min-height: 190px; }
+    .about-reviews .review-strip > article { min-height: 205px; padding: 24px; border-radius: 14px; }
+    .about-reviews .review-strip article strong { font-size: 18px; }
+}
+
+.contact-title { padding: 24px 20px 18px; text-align: center; }
+.contact-title h1 { margin: 0; font-size: 32px; line-height: 1.35; }
+.contact-title p { margin: 2px 0 0; color: #747b82; font-size: 14px; }
+.contact-map { width: 100%; height: 235px; overflow: hidden; background: #e6edeb; }
+.contact-map iframe { width: 100%; height: 100%; display: block; border: 0; }
+.contact-content { min-height: 475px; padding-top: 48px; padding-bottom: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(48px, 10vw, 140px); align-items: center; }
+.contact-details h2, .contact-form h2 { margin: 0 0 14px; font-size: 22px; line-height: 1.35; }
+.contact-details address { max-width: 380px; font-style: normal; }
+.contact-detail { min-height: 39px; padding: 8px 0; display: grid; grid-template-columns: 23px 1fr; gap: 8px; align-items: center; border-bottom: 1px solid #eceeef; color: var(--ink); }
+.contact-detail p { margin: 0; font-size: 13px; line-height: 1.6; }
+.contact-detail-icon { color: var(--gold); font-size: 16px; font-weight: 700; }
+.contact-form { min-height: 375px; padding: 16px 17px 10px; display: flex; flex-direction: column; border: 1px solid #eceeef; border-radius: 11px; background: white; box-shadow: 0 4px 16px #0000000b; }
+.contact-form h2 { margin-bottom: 14px; }
+.contact-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 15px 13px; }
+.contact-fields label { min-width: 0; }
+.contact-fields input, .contact-fields textarea { width: 100%; padding: 9px 10px; border: 1px solid #dfe2e4; border-radius: 6px; outline: 0; background: white; color: var(--ink); font-size: 13px; }
+.contact-fields input { height: 39px; }
+.contact-fields input:focus, .contact-fields textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 2px #d3ad6330; }
+.contact-fields .contact-email, .contact-fields .contact-message { grid-column: 1 / -1; }
+.contact-fields textarea { min-height: 92px; resize: vertical; }
+.contact-form .search-button { align-self: flex-start; min-height: 36px; margin-top: auto; padding: 0 18px; }
+
+@media (max-width: 640px) {
+    .contact-title { padding: 40px 16px 20px; }
+    .contact-title h1 { font-size: 36px; }
+    .contact-title p { font-size: 14px; }
+    .contact-map { height: 235px; }
+    .contact-content { width: calc(100% - 36px); min-height: 0; padding-top: 40px; padding-bottom: 48px; grid-template-columns: 1fr; gap: 30px; }
+    .contact-details h2 { margin-bottom: 20px; font-size: 22px; }
+    .contact-details address { max-width: none; }
+    .contact-detail { min-height: 46px; grid-template-columns: 23px 1fr; gap: 9px; }
+    .contact-detail p { font-size: 15px; line-height: 1.65; }
+    .contact-form { min-height: 540px; padding: 22px 20px 18px; border-radius: 14px; }
+    .contact-form h2 { margin-bottom: 22px; font-size: 24px; }
+    .contact-fields { grid-template-columns: 1fr; gap: 20px; }
+    .contact-fields input { height: 43px; }
+    .contact-fields textarea { min-height: 115px; }
+    .contact-form .search-button { min-height: 42px; padding-inline: 22px; }
+}
+
+.umrah-hero { position: relative; height: 180px; background: #f9f8f4 url('https://alarafat.com/wp-content/uploads/2025/09/Al-Arafat-Website-Work.png') center / cover no-repeat; }
+.umrah-booking { position: absolute; top: 48px; left: 50%; width: min(650px, calc(100% - 36px)); transform: translateX(-50%); }
+.umrah-packages { padding-top: 14px; padding-bottom: 42px; }
+.umrah-packages .section-heading { margin-bottom: 25px; }
+.umrah-packages .section-heading h1 { margin: 0; color: var(--gold); font-size: 28px; line-height: 1.3; }
+.umrah-packages .package-info h2 { min-height: 24px; margin: 0 0 7px; font-size: 14px; font-weight: 600; line-height: 1.45; }
+.umrah-packages .package-price { min-height: 38px; align-items: center; padding-top: 5px; font-size: 11px; }
+.umrah-guide { padding-top: 4px; }
+.umrah-guide .article-opening { margin-bottom: 28px; }
+.umrah-guide-section { margin-bottom: 28px; }
+.umrah-guide-section h3, .umrah-faq h2 { margin: 0 0 12px; color: var(--gold); font-size: 25px; line-height: 1.3; }
+.umrah-guide-section p { margin: 0 0 14px; }
+.umrah-feature { margin-bottom: 40px; }
+.umrah-feature img { aspect-ratio: 1.25; }
+.ritual-list { margin: 0; padding-left: 20px; }
+.ritual-list li { margin-bottom: 7px; }
+.umrah-faq { margin: 0 0 46px; }
+.umrah-faq h2 { color: var(--ink); }
+.umrah-faq details { border-bottom: 1px solid var(--line); }
+.umrah-faq summary { padding: 11px 4px; cursor: pointer; color: #41484f; font-size: 14px; }
+.umrah-faq details p { margin: 0; padding: 0 4px 12px; color: #68717a; font-size: 13px; }
+.umrah-reviews { padding: 38px 0 55px; }
+
+@media (max-width: 640px) {
+    .umrah-hero { height: 225px; background-position: center; }
+    .umrah-booking { top: 128px; }
+    .umrah-packages { padding-top: 92px; padding-bottom: 32px; }
+    .umrah-packages .section-heading { margin-bottom: 26px; }
+    .umrah-packages .section-heading h1 { font-size: 29px; }
+    .umrah-packages .package-grid { gap: 14px; }
+    .umrah-packages .package-image { aspect-ratio: 1.5; }
+    .umrah-packages .package-info { padding: 14px 18px 10px; }
+    .umrah-packages .package-info h2 { margin-bottom: 10px; font-size: 15px; }
+    .umrah-packages .package-price { min-height: 48px; font-size: 13px; }
+    .umrah-guide { padding-top: 9px; padding-bottom: 38px; font-size: 14px; line-height: 1.8; text-align: justify; }
+    .umrah-guide .article-heading h2 { font-size: 27px; }
+    .umrah-guide-section { margin-bottom: 34px; }
+    .umrah-guide-section h3, .umrah-faq h2 { font-size: 25px; }
+    .umrah-feature { margin-bottom: 35px; }
+    .umrah-feature img { aspect-ratio: 1.45; }
+    .umrah-faq { margin-bottom: 35px; }
+    .umrah-reviews { padding: 26px 0 34px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
