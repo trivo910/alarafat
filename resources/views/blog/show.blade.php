@@ -12,28 +12,7 @@
     <link rel="stylesheet" href="{{ asset('css/pages/blog-show.css') }}">
 </head>
 <body>
-    <header class="site-header">
-        <a class="brand" href="/" aria-label="Al Arafat Tours & Travels home">
-            <img src="https://alarafat.com/wp-content/uploads/2022/04/Al-arafat-Logo-355-x-71.png" alt="Al Arafat Tours & Travels">
-        </a>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation"><span></span><span></span><span></span></button>
-        <nav class="primary-nav" id="primary-navigation" aria-label="Main navigation">
-            <a href="/">Home</a>
-            <a href="/hajj">Haj</a>
-            <div class="nav-dropdown">
-                <button class="nav-dropdown-trigger" type="button" aria-expanded="false" aria-controls="umrah-submenu">Umrah</button>
-                <div class="nav-submenu" id="umrah-submenu">
-                    <a href="/umrah-package-from-mumbai">Umrah Package From Mumbai</a>
-                    <a href="/ramzan-umrah-package-from-mumbai">Ramzan Umrah From Mumbai</a>
-                </div>
-            </div>
-            <a href="/ziyarat">Ziyarat</a>
-            <a href="/blog">Blog</a>
-            <a href="/about">About</a>
-            <a href="/contact">Contact</a>
-        </nav>
-        <div class="header-tools"><span>INR</span><a class="account-button" href="mailto:umrah@alarafat.com" aria-label="Contact Al Arafat">♙</a></div>
-    </header>
+    @include('partials.site-header', ['activePage' => 'blog'])
 
     <main class="blog-page">
         @if($blog->featured_image)
@@ -84,15 +63,7 @@
         </section>
     </main>
 
-    <footer class="site-footer" id="contact">
-        <div class="footer-main content-width">
-            <div class="footer-about"><a href="/"><img src="https://alarafat.com/wp-content/uploads/2022/09/Al-arafat-Logo-300-x-60.png" alt="Al Arafat Tours & Travels" loading="lazy"></a><p>A long standing and successful travel company which has always strived to provide its customers with the best of travel experiences.</p></div>
-            <div class="footer-column"><h2>Company</h2><a href="/">⊙ &nbsp; Home</a><a href="/blog">⊙ &nbsp; Blog</a><a href="/about">⊙ &nbsp; About</a><a href="/contact">⊙ &nbsp; Contact</a><a href="/hajj">⊙ &nbsp; Hajj</a><a href="/ziyarat">⊙ &nbsp; Ziyarat</a></div>
-            <div class="footer-column"><h2>Need help?</h2><p>Call Us</p><a class="footer-contact" href="tel:+919867851046">+91 98678 51046</a><p>Email for Us</p><a class="footer-contact" href="mailto:umrah@alarafat.com">umrah@alarafat.com</a></div>
-            <div class="footer-column office-column"><h2>Our Offices</h2><p>Ground floor-154, No. 01, 1229, Motilal Nagar No. 1, near Sai Baba Mandir, Prarthana Society, Motilal Nagar I, Goregaon West, Mumbai, Maharashtra 400104</p></div>
-        </div>
-        <div class="footer-bottom">© Al Arafat. ALL RIGHT RESERVED 2021-22 · DESIGNED &amp; MARKETED BY <strong>trivo.</strong></div>
-    </footer>
+    @include('partials.site-footer')
     <script src="{{ asset('js/home.js') }}" defer></script>
 </body>
 </html>

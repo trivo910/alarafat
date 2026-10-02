@@ -4,19 +4,16 @@ use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminPackageController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\PackageController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/hajj', function () {
-    return view('hajj');
-});
+Route::get('/hajj', [PackageController::class, 'hajj']);
 
-Route::get('/ziyarat', function () {
-    return view('ziyarat');
-});
+Route::get('/ziyarat', [PackageController::class, 'ziyarat']);
 
 Route::get('/about', function () {
     return view('about');
@@ -26,13 +23,11 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/umrah-package-from-mumbai', function () {
-    return view('umrah');
-});
+Route::get('/umrah-package-from-mumbai', [PackageController::class, 'umrah']);
 
-Route::get('/ramzan-umrah-package-from-mumbai', function () {
-    return view('ramzan');
-});
+Route::get('/ramzan-umrah-package-from-mumbai', [PackageController::class, 'ramzan']);
+
+Route::get('/st-tour/{slug}', [PackageController::class, 'show'])->name('packages.show');
 
 Route::get('/blog', [BlogController::class, 'publicIndex']);
 

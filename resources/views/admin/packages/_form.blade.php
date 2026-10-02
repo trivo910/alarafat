@@ -17,7 +17,7 @@
             <label>Title<input name="title" value="{{ old('title', $package?->title) }}" required></label>
             <label>Category
                 <select name="category" required>
-                    @foreach(['Umrah', 'Hajj', 'Ziyarat'] as $category)
+                    @foreach(['Umrah', 'Hajj', 'Ramzan', 'Ziyarat'] as $category)
                         <option value="{{ $category }}" {{ old('category', $package?->category) === $category ? 'selected' : '' }}>{{ $category }}</option>
                     @endforeach
                 </select>

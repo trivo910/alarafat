@@ -147,6 +147,55 @@ class AdminBlogTest extends TestCase
         Storage::disk('public')->assertMissing($galleryImage);
     }
 
+    public function test_published_hajj_package_appears_on_its_page_and_uses_st_tour_url(): void
+    {
+        $this->actingAs(User::factory()->create());
+
+        $package = Package::create([
+            'title' => 'Pilgrim Hajj Package',
+            'slug' => 'pilgrim-hajj-package',
+            'category' => 'Hajj',
+            'price' => 840000,
+            'description' => '<p>Package details for Hajj pilgrims.</p>',
+            'status' => 'published',
+        ]);
+
+        $this->get('/admin/packages')
+            ->assertOk()
+            ->assertSee('/st-tour/pilgrim-hajj-package', false);
+
+        $this->get('/hajj')
+            ->assertOk()
+            ->assertSee('Pilgrim Hajj Package')
+            ->assertSee('/st-tour/pilgrim-hajj-package', false);
+
+        $this->get('/st-tour/pilgrim-hajj-package')
+            ->assertOk()
+            ->assertSee('Pilgrim Hajj Package')
+            ->assertSee('Package details for Hajj pilgrims.');
+    }
+
+    public function test_admin_can_publish_a_ramzan_package_to_the_ramzan_page(): void
+    {
+        $this->actingAs(User::factory()->create())
+            ->post('/admin/packages', [
+                'title' => 'Ramzan Admin Package',
+                'slug' => 'ramzan-admin-package',
+                'category' => 'Ramzan',
+                'status' => 'published',
+                'price' => '125000',
+            ])
+            ->assertRedirect('/admin/packages');
+
+        $this->get('/ramzan-umrah-package-from-mumbai')
+            ->assertOk()
+            ->assertSee('Ramzan Admin Package')
+            ->assertSee('/st-tour/ramzan-admin-package', false);
+
+        $this->get('/umrah-package-from-mumbai')
+            ->assertDontSee('Ramzan Admin Package');
+    }
+
     public function test_published_admin_blogs_appear_on_listing_and_reusable_detail_page(): void
     {
         Storage::fake('public');

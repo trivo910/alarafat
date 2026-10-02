@@ -3,44 +3,46 @@ const dotsContainer = document.querySelector('.hero-dots');
 let activeSlide = 0;
 let carouselTimer;
 
-function showSlide(index) {
-    activeSlide = (index + slides.length) % slides.length;
-    slides.forEach((slide, slideIndex) => {
-        slide.classList.toggle('is-active', slideIndex === activeSlide);
-    });
-    [...dotsContainer.children].forEach((dot, dotIndex) => {
-        dot.classList.toggle('is-active', dotIndex === activeSlide);
-        dot.setAttribute('aria-current', dotIndex === activeSlide ? 'true' : 'false');
-    });
-}
+if (slides.length && dotsContainer) {
+    function showSlide(index) {
+        activeSlide = (index + slides.length) % slides.length;
+        slides.forEach((slide, slideIndex) => {
+            slide.classList.toggle('is-active', slideIndex === activeSlide);
+        });
+        [...dotsContainer.children].forEach((dot, dotIndex) => {
+            dot.classList.toggle('is-active', dotIndex === activeSlide);
+            dot.setAttribute('aria-current', dotIndex === activeSlide ? 'true' : 'false');
+        });
+    }
 
-function restartCarousel() {
-    window.clearInterval(carouselTimer);
-    carouselTimer = window.setInterval(() => showSlide(activeSlide + 1), 6500);
-}
+    function restartCarousel() {
+        window.clearInterval(carouselTimer);
+        carouselTimer = window.setInterval(() => showSlide(activeSlide + 1), 6500);
+    }
 
-slides.forEach((_, index) => {
-    const dot = document.createElement('button');
-    dot.className = 'hero-dot';
-    dot.type = 'button';
-    dot.setAttribute('aria-label', `Show banner ${index + 1}`);
-    dot.addEventListener('click', () => {
-        showSlide(index);
+    slides.forEach((_, index) => {
+        const dot = document.createElement('button');
+        dot.className = 'hero-dot';
+        dot.type = 'button';
+        dot.setAttribute('aria-label', `Show banner ${index + 1}`);
+        dot.addEventListener('click', () => {
+            showSlide(index);
+            restartCarousel();
+        });
+        dotsContainer.append(dot);
+    });
+
+    document.querySelector('.hero-previous')?.addEventListener('click', () => {
+        showSlide(activeSlide - 1);
         restartCarousel();
     });
-    dotsContainer.append(dot);
-});
-
-document.querySelector('.hero-previous').addEventListener('click', () => {
-    showSlide(activeSlide - 1);
+    document.querySelector('.hero-next')?.addEventListener('click', () => {
+        showSlide(activeSlide + 1);
+        restartCarousel();
+    });
+    showSlide(0);
     restartCarousel();
-});
-document.querySelector('.hero-next').addEventListener('click', () => {
-    showSlide(activeSlide + 1);
-    restartCarousel();
-});
-showSlide(0);
-restartCarousel();
+}
 
 document.querySelector('.menu-toggle').addEventListener('click', (event) => {
     const button = event.currentTarget;
@@ -85,12 +87,15 @@ umrahDropdown.addEventListener('focusout', (event) => {
     if (!umrahDropdown.contains(event.relatedTarget)) umrahDropdownTrigger.setAttribute('aria-expanded', 'false');
 });
 
-document.querySelector('.booking-form').addEventListener('submit', (event) => {
+document.querySelector('.booking-form')?.addEventListener('submit', (event) => {
+    const packages = document.querySelector('#packages');
+    if (!packages) return;
+
     event.preventDefault();
-    document.querySelector('#packages').scrollIntoView({ behavior: 'smooth' });
+    packages.scrollIntoView({ behavior: 'smooth' });
 });
 
-document.querySelector('.newsletter-panel').addEventListener('submit', (event) => {
+document.querySelector('.newsletter-panel')?.addEventListener('submit', (event) => {
     event.preventDefault();
     const message = document.querySelector('.form-message');
     message.textContent = 'Thank you for subscribing. We will be in touch.';

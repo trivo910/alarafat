@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Package;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -31,6 +32,41 @@ class ExampleTest extends TestCase
             ->assertSee('Hajj Package 2026 Double Sharing')
             ->assertSee('₹840,000')
             ->assertSee('Exploring the Spiritual and Cultural Significance of Hajj');
+    }
+
+    public function test_published_packages_appear_on_their_matching_category_page(): void
+    {
+        $packagePages = [
+            ['category' => 'Hajj', 'route' => '/hajj', 'slug' => 'category-hajj-package'],
+            ['category' => 'Umrah', 'route' => '/umrah-package-from-mumbai', 'slug' => 'category-umrah-package'],
+            ['category' => 'Ramzan', 'route' => '/ramzan-umrah-package-from-mumbai', 'slug' => 'category-ramzan-package'],
+            ['category' => 'Ziyarat', 'route' => '/ziyarat', 'slug' => 'category-ziyarat-package'],
+        ];
+
+        foreach ($packagePages as $page) {
+            Package::create([
+                'title' => $page['category'] . ' Admin Package',
+                'slug' => $page['slug'],
+                'category' => $page['category'],
+                'status' => 'published',
+            ]);
+        }
+
+        foreach ($packagePages as $page) {
+            $this->get($page['route'])
+                ->assertOk()
+                ->assertSee($page['category'] . ' Admin Package')
+                ->assertSee('/st-tour/' . $page['slug'], false);
+        }
+
+        Package::create([
+            'title' => 'Draft Hajj Package',
+            'slug' => 'draft-hajj-package',
+            'category' => 'Hajj',
+            'status' => 'draft',
+        ]);
+
+        $this->get('/hajj')->assertDontSee('Draft Hajj Package');
     }
 
     public function test_the_ziyarat_page_shows_packages_and_article(): void

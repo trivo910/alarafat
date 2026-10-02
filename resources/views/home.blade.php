@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#090909">
-    <meta name="description" content="Book trusted Hajj, Umrah and Ziyarat packages from Mumbai with Al Arafat Tours & Travels.">
-    <title>Al Arafat Tours &amp; Travels | Hajj &amp; Umrah Packages</title>
+    <meta name="description" content="Book your Umrah Package from Mumbai with Al Arafat Haj &amp; Umrah Tours. Affordable prices, expert guidance, and comfortable travel arrangements for a hassle-free spiritual journey.">
+    <title>Umrah Package From Mumbai | Al Arafat Haj &amp; Umrah Tours</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
@@ -13,42 +13,7 @@
     <link rel="stylesheet" href="{{ asset('css/pages/home.css') }}">
 </head>
 <body>
-    <div class="contact-strip">
-        <div class="contact-inner">
-            <div class="contact-links">
-                <a href="tel:+919867851046"><span aria-hidden="true">☎</span> +91 98678 51046</a>
-                <a href="mailto:umrah@alarafat.com"><span aria-hidden="true">✉</span> umrah@alarafat.com</a>
-            </div>
-            <div class="social-links" aria-label="Social media">
-                <a href="https://www.facebook.com/people/al-arafat/100085602021408/" aria-label="Facebook">f</a>
-                <a href="https://twitter.com/alarafatmumbai/" aria-label="Twitter">𝕏</a>
-                <a href="https://www.instagram.com/alarafat_official/" aria-label="Instagram">◎</a>
-                <a href="https://www.linkedin.com/company/al-arafat-com/" aria-label="LinkedIn">in</a>
-            </div>
-        </div>
-    </div>
-    <header class="site-header">
-        <a class="brand" href="#top" aria-label="Al Arafat Tours & Travels home">
-            <img src="{{ asset('storage/logo/Al-arafat-Logo-355-x-71 (1).png') }}" alt="Al Arafat Tours & Travels">
-        </a>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation"><span></span><span></span><span></span></button>
-        <nav class="primary-nav" id="primary-navigation" aria-label="Main navigation">
-            <a class="active" href="#top">Home</a>
-            <a href="/hajj">Hajj</a>
-            <div class="nav-dropdown">
-                <button class="nav-dropdown-trigger" type="button" aria-expanded="false" aria-controls="umrah-submenu">Umrah</button>
-                <div class="nav-submenu" id="umrah-submenu">
-                    <a href="/umrah-package-from-mumbai">Umrah Package From Mumbai</a>
-                    <a href="/ramzan-umrah-package-from-mumbai">Ramzan Umrah From Mumbai</a>
-                </div>
-            </div>
-            <a href="/ziyarat">Ziyarat</a>
-            <a href="/blog">Blog</a>
-            <a href="/about">About</a>
-            <a href="/contact">Contact</a>
-        </nav>
-        <div class="header-tools"><span>INR</span><a class="account-button" href="mailto:umrah@alarafat.com" aria-label="Contact Al Arafat">♙</a></div>
-    </header>
+    @include('partials.site-header', ['activePage' => 'home'])
 
     <main id="top">
         <section class="hero" aria-label="Featured pilgrimage packages">
@@ -141,15 +106,7 @@
         </div></section>
     </main>
 
-    <footer class="site-footer" id="contact">
-        <div class="footer-main content-width">
-            <div class="footer-about"><a href="#top"><img src="{{ asset('storage/logo/Al-arafat-Logo-355-x-71 (1).png') }}" alt="Al Arafat Tours & Travels" alt="Al Arafat Tours & Travels" loading="lazy"></a><p>A long standing and successful travel company which has always strived to provide its customers with the best of travel experiences.</p></div>
-            <div class="footer-column"><h2>Company</h2><a href="#packages">⊙ &nbsp; Package</a><a href="/blog">⊙ &nbsp; Blog</a><a href="#contact">⊙ &nbsp; FAQ</a><a href="#contact">⊙ &nbsp; Privacy Policy</a><a href="#contact">⊙ &nbsp; Terms &amp; Conditions</a><a href="/contact">⊙ &nbsp; Contact</a></div>
-            <div class="footer-column"><h2>Need help?</h2><p>Call Us</p><a class="footer-contact" href="tel:+919867851046">+91 98678 51046</a><p>Email for Us</p><a class="footer-contact" href="mailto:umrah@alarafat.com">umrah@alarafat.com</a><p>Follow Us</p><div class="footer-social"><a href="https://www.facebook.com/people/al-arafat/100085602021408/" aria-label="Facebook">f</a><a href="https://twitter.com/alarafatmumbai/" aria-label="Twitter">𝕏</a><a href="https://www.instagram.com/alarafat_official/" aria-label="Instagram">◎</a></div></div>
-            <div class="footer-column office-column"><h2>Our Offices</h2><p>Ground floor-154, No. 01, 1229, Motilal Nagar No. 1, near Sai Baba Mandir, Prarthana Society, Motilal Nagar I, Goregaon West, Mumbai, Maharashtra 400104</p></div>
-        </div>
-        <div class="footer-bottom">© Al Arafat. ALL RIGHT RESERVED 2021-22 · DESIGNED &amp; MARKETED BY <strong><a href="https://trivo.in/">trivo.in</a></strong></div>
-    </footer>
+    @include('partials.site-footer')
     <script src="{{ asset('js/home.js') }}" defer></script>
 </body>
 </html>

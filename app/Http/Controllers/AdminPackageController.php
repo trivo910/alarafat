@@ -93,7 +93,7 @@ class AdminPackageController extends Controller
         return [
             'title' => ['required', 'string', 'max:255'],
             'slug' => ['nullable', 'string', 'max:255', $uniqueSlug],
-            'category' => ['required', 'in:Umrah,Hajj,Ziyarat'],
+            'category' => ['required', 'in:Umrah,Hajj,Ramzan,Ziyarat'],
             'price' => ['nullable', 'numeric', 'min:0'],
             'featured_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:4096'],
             'image_alt_text' => ['nullable', 'string', 'max:255'],

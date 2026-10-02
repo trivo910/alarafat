@@ -499,97 +499,6 @@
 }
 
 /* =========================================
-   FOOTER
-========================================= */
-
-.site-footer {
-    background: #030303;
-    color: #fff;
-}
-
-.footer-main {
-    display: grid;
-    grid-template-columns: 1.45fr 1fr 1.15fr 1.45fr;
-    gap: 30px;
-    padding-top: 32px;
-    padding-bottom: 30px;
-}
-
-.footer-about img {
-    width: 175px;
-    margin-bottom: 20px;
-}
-
-.footer-about p {
-    max-width: 210px;
-    margin: 0;
-    color: #fff;
-    font-size: 10px;
-    line-height: 1.8;
-}
-
-.footer-column h2 {
-    color: #d8b56b;
-    text-transform: uppercase;
-    font-size: 10px;
-    margin: 0 0 10px;
-    font-weight: 600;
-}
-
-.footer-column > a {
-    display: block;
-    color: #fff;
-    font-size: 10px;
-    margin-bottom: 7px;
-}
-
-.footer-column > a:hover {
-    color: #d8b56b;
-}
-
-.footer-column p {
-    margin: 0 0 2px;
-    font-size: 9px;
-    color: #fff;
-}
-
-.footer-column .footer-contact {
-    display: block;
-    font-size: 13px;
-    color: #fff;
-    margin-bottom: 15px;
-}
-
-.office-column p {
-    line-height: 1.55;
-    font-size: 9px;
-}
-
-.footer-social {
-    display: flex;
-    gap: 14px;
-    margin-top: 5px;
-}
-
-.footer-social a {
-    font-size: 14px;
-    color: #fff;
-}
-
-.footer-bottom {
-    background: #d8b56b;
-    color: #fff;
-    text-align: center;
-    padding: 9px 10px;
-    font-size: 9px;
-}
-
-.footer-bottom strong {
-    color: #fff;
-    font-size: 12px;
-}
-
-/* =========================================
    RESPONSIVE
 ========================================= */
 
@@ -597,28 +506,6 @@
 
     .content-width {
         width: calc(100% - 40px);
-    }
-
-    .site-header {
-        padding: 0 20px;
-    }
-
-    .brand {
-        width: auto;
-    }
-
-    .brand img {
-        width: 190px;
-    }
-
-    .primary-nav {
-        gap: 17px;
-        margin-right: 15px;
-    }
-
-    .primary-nav > a,
-    .nav-dropdown-trigger {
-        font-size: 10px;
     }
 
     .mission-grid {
@@ -633,89 +520,9 @@
         display: none;
     }
 
-    .footer-main {
-        grid-template-columns: repeat(2, 1fr);
-    }
 }
 
 @media (max-width: 650px) {
-
-    body {
-        font-size: 12px;
-    }
-
-    .contact-strip {
-        height: 28px;
-    }
-
-    .contact-inner {
-        width: calc(100% - 20px);
-    }
-
-    .social-links {
-        display: none;
-    }
-
-    .contact-links {
-        gap: 10px;
-        font-size: 9px;
-    }
-
-    .site-header {
-        height: 65px;
-    }
-
-    .brand img {
-        width: 175px;
-    }
-
-    .menu-toggle {
-        display: block;
-        margin-left: auto;
-        margin-right: 10px;
-    }
-
-    .header-tools {
-        display: none;
-    }
-
-    .primary-nav {
-        display: none;
-        position: absolute;
-        top: 93px;
-        left: 0;
-        width: 100%;
-        height: auto;
-        background: #050505;
-        margin: 0;
-        padding: 15px 20px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0;
-        z-index: 999;
-    }
-
-    .primary-nav.open {
-        display: flex;
-    }
-
-    .primary-nav > a,
-    .nav-dropdown {
-        width: 100%;
-        padding: 10px 0;
-    }
-
-    .nav-dropdown {
-        display: block;
-        height: auto;
-    }
-
-    .nav-submenu {
-        position: static;
-        width: 100%;
-        border-top: 0;
-        padding-left: 15px;
-    }
 
     .about-banner {
         width: calc(100% - 20px);
@@ -726,7 +533,6 @@
         height: 160px;
     }
 
-    .content-width,
     .about-reviews .content-width {
         width: calc(100% - 30px);
     }
@@ -784,25 +590,9 @@
         margin-bottom: 25px;
     }
 
-    .footer-main {
-        grid-template-columns: 1fr 1fr;
-        gap: 25px 15px;
-    }
-
-    .footer-about img {
-        width: 150px;
-    }
 }
 
 @media (max-width: 430px) {
-
-    .contact-links a:first-child {
-        display: none;
-    }
-
-    .brand img {
-        width: 160px;
-    }
 
     .about-banner img {
         height: 130px;
@@ -812,11 +602,4 @@
         grid-template-columns: 1fr;
     }
 
-    .footer-main {
-        grid-template-columns: 1fr;
-    }
-
-    .footer-about p {
-        max-width: 100%;
-    }
 }

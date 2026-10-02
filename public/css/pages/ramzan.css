@@ -1,1 +1,2 @@
-/* Ramzan Umrah page overrides. Loaded after the shared site stylesheet. */
+/* Ramzan uses the shared Umrah page styles. */
+@import url('./umrah.css');

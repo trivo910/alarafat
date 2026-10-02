@@ -1,1 +1,27 @@
 /* Ziyarat page overrides. Loaded after the shared site stylesheet. */
+.ziyarat-hero { position: relative; height: 130px; background: #fff url('https://alarafat.com/wp-content/uploads/2022/08/bars.svg') center / 250px repeat; }
+.ziyarat-booking { position: absolute; top: 48px; left: 50%; width: min(650px, calc(100% - 36px)); transform: translateX(-50%); }
+.ziyarat-packages { padding-top: 11px; padding-bottom: 34px; }
+.ziyarat-packages .section-heading { margin-bottom: 24px; }
+.ziyarat-packages .section-heading h1 { margin: 0; color: var(--gold); font-size: 28px; line-height: 1.3; }
+.ziyarat-packages .package-info h2 { min-height: 24px; margin: 0 0 7px; font-size: 14px; font-weight: 600; line-height: 1.45; }
+.ziyarat-article { padding-top: 0; padding-bottom: 46px; }
+.ziyarat-article .article-heading { margin-bottom: 15px; text-align: center; }
+.ziyarat-article .article-heading h2 { margin: 0; }
+.ziyarat-article .article-opening { margin-bottom: 46px; }
+.ziyarat-article .article-feature { margin-bottom: 40px; }
+.ziyarat-article .article-feature img { aspect-ratio: 1.12; }
+.ziyarat-reviews { padding-top: 38px; }
+
+@media (max-width: 640px) {
+	.ziyarat-hero { height: 120px; background-size: 200px; }
+	.ziyarat-booking { top: 39px; }
+	.ziyarat-packages { padding-top: 12px; padding-bottom: 27px; }
+	.ziyarat-packages .section-heading { margin-bottom: 18px; }
+	.ziyarat-packages .section-heading h1 { font-size: 28px; }
+	.ziyarat-article { padding-top: 0; padding-bottom: 30px; }
+	.ziyarat-article .article-heading { margin-bottom: 12px; }
+	.ziyarat-article .article-opening { margin-bottom: 30px; }
+	.ziyarat-article .article-feature { margin-bottom: 32px; }
+	.ziyarat-article .article-feature img { aspect-ratio: 1.45; }
+}

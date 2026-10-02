@@ -1,1 +1,1020 @@
 /* Hajj page overrides. Loaded after the shared site stylesheet. */
+/* .hajj-hero { position: relative; height: 180px; background: #e7e4da url('https://alarafat.com/wp-content/uploads/2025/10/hajj-banner-2.jpg') center 46% / cover no-repeat; }
+.hajj-booking { position: absolute; top: 52px; left: 50%; width: min(650px, calc(100% - 36px)); transform: translateX(-50%); }
+.hajj-article { padding-top: 12px; padding-bottom: 60px; color: #747474; font-size: 14px; line-height: 1.8; }
+.hajj-reviews { padding: 38px 0 55px; background: #f5f6f7; }
+.hajj-reviews h2 { margin: 0 0 24px; font-size: 22px; }
+
+@media (max-width: 640px) {
+	.hajj-hero { height: 225px; background-position: center center; }
+	.hajj-booking { top: 128px; }
+	.hajj-article { padding-top: 9px; padding-bottom: 38px; font-size: 14px; line-height: 1.8; text-align: justify; }
+	.hajj-reviews { padding: 26px 0 34px; }
+	.hajj-reviews h2 { margin-bottom: 17px; font-size: 20px; }
+} */
+
+/* =========================================================
+   AL-ARAFAT HAJJ PAGE
+   Reference Design
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   HERO
+--------------------------------------------------------- */
+
+.hajj-hero {
+    position: relative;
+    height: 350px;
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(255,255,255,0.02) 35%,
+            rgba(255,255,255,0.82) 100%
+        ),
+        url('https://alarafat.com/wp-content/uploads/2025/10/hajj-banner-2.jpg')
+        center 47% / cover no-repeat;
+}
+
+/* ---------------------------------------------------------
+   BOOKING / SEARCH BAR
+--------------------------------------------------------- */
+
+.hajj-booking {
+    position: absolute;
+    z-index: 5;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+    /* max-width: calc(100% - 40px); */
+    min-height: 60px;
+    background: rgba(255,255,255,0.96);
+    border-radius: 50px;
+    padding: 10px 10px 10px 10px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    border: 1px solid rgba(220,220,220,0.7);
+    /* padding: 15px 10px 15px 10px; */
+}
+
+/* Individual fields */
+
+.booking-field {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+    height: 42px;
+    padding: 3px 13px;
+    border-right: 1px solid #e7e7e7;
+    cursor: pointer;
+}
+
+.booking-field.location-field {
+    flex: 1.15;
+}
+
+.field-icon {
+    width: 24px;
+    color: #777;
+    font-size: 20px;
+    margin-right: 7px;
+    text-align: center;
+}
+
+.field-copy {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.field-copy > span {
+    font-size: 16px;
+    color: #222;
+    font-weight: 500;
+    line-height: 1.1;
+    margin-bottom: 3px;
+}
+
+.field-copy input {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    padding: 0;
+    color: #999;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.field-copy input::placeholder {
+    color: #aaa;
+}
+
+.date-arrow {
+    color: #aaa;
+    font-size: 12px;
+    margin: 0 -3px;
+    z-index: 2;
+}
+
+.search-button {
+    /* flex: 0 0 72px; */
+    margin-left: 10px;
+    height: 42px;
+    border: 0;
+    border-radius: 25px;
+    background: #d8b56b;
+    color: #fff;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.search-button:hover {
+    background: #c7a258;
+}
+
+/* ---------------------------------------------------------
+   PACKAGE SECTION
+--------------------------------------------------------- */
+
+.hajj-packages {
+    padding-top: 18px;
+    padding-bottom: 42px;
+}
+
+.hajj-packages .section-heading {
+    text-align: center;
+
+    margin-bottom: 22px;
+}
+
+.hajj-packages .section-heading h1 {
+    font-family: "DM Sans", Sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 46px;
+    color: #D3AF6C;
+}
+
+/* Package grid */
+
+.package-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    width: 100%;
+}
+
+/* Card */
+
+.package-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #eeeeee;
+    box-shadow: 0 2px 7px rgba(0,0,0,0.08);
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.package-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,0.12);
+}
+
+/* Package image */
+
+.package-image {
+    display: block;
+
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 1.5;
+
+    overflow: hidden;
+}
+
+.package-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+/* Favorite */
+
+.favorite {
+    position: absolute;
+
+    top: 8px;
+    right: 8px;
+
+    color: #fff;
+
+    font-size: 18px;
+
+    line-height: 1;
+
+    text-shadow:
+        0 1px 4px rgba(0,0,0,.5);
+}
+
+/* Package information */
+
+.package-info {
+    padding: 10px 11px 11px;
+}
+
+.package-info h2 {
+    margin: 0 0 7px;
+
+    min-height: 29px;
+
+    font-size: 18px;
+
+    line-height: 1.45;
+
+    font-weight: 600;
+
+    color: #333;
+}
+
+.package-info h2 a {
+    color: inherit;
+    font-size: 18px;
+}
+
+.package-info h2 a:hover {
+    color: #d2a957;
+}
+
+/* Rating */
+
+.package-info .rating {
+    margin: 0;
+
+    padding-bottom: 8px;
+
+    border-bottom: 1px solid #ededed;
+
+    font-size: 16px;
+
+    color: #555;
+}
+
+.package-info .rating span {
+    color: #f2ad00;
+    font-size: 16px;
+    margin-right: 2px;
+}
+
+.package-info .rating small {
+    color: #999;
+    font-size: 14px;
+}
+
+/* Price */
+
+.package-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 9px;
+    color: #888;
+    font-size: 16px;
+}
+
+.package-price strong {
+    color: #333;
+
+    font-size: 16px;
+
+    font-weight: 600;
+}
+
+.package-price span:last-child {
+    white-space: nowrap;
+}
+
+/* ---------------------------------------------------------
+   ARTICLE
+--------------------------------------------------------- */
+
+.hajj-article {
+    padding-top: 0;
+
+    padding-bottom: 55px;
+
+    color: #777;
+
+    font-size: 10px;
+
+    line-height: 1.65;
+}
+
+/* Main heading */
+
+.hajj-article .article-heading {
+    margin: 0 0 12px;
+}
+
+.hajj-article .article-heading h2 {
+    margin: 0;
+    color: #d5ad60;
+    font-size: 30px;
+    line-height: 1.35;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Paragraphs */
+
+.hajj-article p {
+    margin: 0 0 9px;
+    color: #777;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.article-subheading{
+    margin: 0;
+    color: #d5ad60;
+    font-size: 30px;
+    line-height: 1.35;
+    font-weight: 600;
+}
+
+/* Opening */
+
+.article-opening {
+    margin-bottom: 20px;
+}
+
+/* Article subheadings */
+
+.hajj-article h3 {
+    margin: 16px 0 8px;
+
+    color: #d5ad60;
+
+    font-size: 17px;
+
+    line-height: 1.3;
+
+    font-weight: 600;
+}
+
+/* ---------------------------------------------------------
+   ARTICLE IMAGE / TEXT SECTIONS
+--------------------------------------------------------- */
+
+.article-feature {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+
+    align-items: center;
+
+    margin-top: 28px;
+
+    margin-bottom: 28px;
+}
+
+.article-feature > img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 2px 7px #d3af6c;
+}
+
+.article-feature > div {
+    width: 100%;
+}
+
+.article-feature h3 {
+    margin-top: 0;
+
+    font-size: 17px;
+}
+
+/* First image */
+
+.article-feature-image-first > img {
+    grid-column: 1;
+}
+
+.article-feature-image-first > div {
+    grid-column: 2;
+}
+
+/* Last image */
+
+.article-feature-image-last > div {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.article-feature-image-last > img {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+/* Conclusion */
+
+.article-conclusion {
+    margin-bottom: 0;
+}
+
+/* ---------------------------------------------------------
+   REVIEWS
+--------------------------------------------------------- */
+
+.hajj-reviews {
+    background: #f5f6f8;
+
+    padding: 42px 0 60px;
+}
+
+.hajj-reviews .content-width {
+    width: calc(100% - 150px);
+
+    max-width: 1080px;
+
+    margin: 0 auto;
+}
+
+.hajj-reviews h2 {
+    margin: 0 0 45px;
+
+    color: #111;
+
+    font-size: 22px;
+
+    line-height: 1.3;
+
+    font-weight: 600;
+}
+
+/* Reviews row */
+
+.hajj-reviews .review-strip {
+    display: grid;
+
+    grid-template-columns:
+        280px
+        repeat(3, minmax(0, 1fr));
+
+    gap: 16px;
+
+    align-items: center;
+
+    position: relative;
+}
+
+/* Business */
+
+.hajj-reviews .review-brand {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    justify-content: center;
+}
+
+.hajj-reviews .review-brand::before {
+    content: "";
+
+    width: 62px;
+    height: 62px;
+
+    background:
+        #050505
+        url('https://alarafat.com/wp-content/uploads/2022/09/Al-arafat-Logo-300-x-60.png')
+        center / 55px auto
+        no-repeat;
+
+    border-radius: 3px;
+
+    margin-bottom: 8px;
+}
+
+.hajj-reviews .review-brand strong {
+    font-size: 14px;
+
+    line-height: 1.3;
+
+    color: #111;
+
+    font-weight: 600;
+}
+
+.hajj-reviews .review-brand span {
+    font-size: 9px;
+
+    color: #555;
+}
+
+.hajj-reviews .review-brand b {
+    color: #f5b400;
+
+    font-size: 17px;
+
+    line-height: 1;
+
+    margin-top: 7px;
+}
+
+.hajj-reviews .review-brand small {
+    font-size: 10px;
+
+    color: #333;
+
+    margin-top: 5px;
+}
+
+/* Write review button */
+
+.hajj-reviews .review-brand::after {
+    content: "Write a review";
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 138px;
+
+    height: 34px;
+
+    margin-top: 10px;
+
+    border: 1px solid #777;
+
+    border-radius: 4px;
+
+    color: #111;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    background: #fff;
+}
+
+/* Review cards */
+
+.hajj-reviews .review-strip article {
+    position: relative;
+
+    height: 185px;
+
+    background: #fff;
+
+    border-radius: 9px;
+
+    padding: 18px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 1px 5px rgba(0,0,0,.04);
+}
+
+.hajj-reviews .review-strip article::after {
+    content: "G";
+
+    position: absolute;
+
+    top: 17px;
+    right: 17px;
+
+    color: #4285f4;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 20px;
+
+    font-weight: 700;
+}
+
+.hajj-reviews .review-strip article strong {
+    display: block;
+
+    color: #111;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    padding-right: 25px;
+}
+
+.hajj-reviews .review-strip article small {
+    display: block;
+
+    color: #888;
+
+    font-size: 9px;
+
+    margin-top: 1px;
+}
+
+.hajj-reviews .review-strip article b {
+    display: block;
+
+    color: #f5b400;
+
+    font-size: 17px;
+
+    line-height: 1;
+
+    margin-top: 9px;
+}
+
+.hajj-reviews .review-strip article p {
+    margin: 11px 0 0;
+
+    color: #222;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+}
+
+/* Review arrows */
+
+.hajj-reviews .review-strip::before {
+    content: "‹";
+
+    position: absolute;
+
+    left: 276px;
+
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    color: #777;
+
+    font-size: 25px;
+
+    z-index: 10;
+
+    box-shadow:
+        0 1px 4px rgba(0,0,0,.08);
+}
+
+.hajj-reviews .review-strip::after {
+    content: "›";
+
+    position: absolute;
+
+    right: -8px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #444;
+
+    color: #fff;
+
+    font-size: 25px;
+
+    z-index: 10;
+}
+
+/* Trustindex */
+
+.hajj-reviews .content-width::after {
+    content: "Verified by Trustindex ⓘ";
+
+    display: block;
+
+    width: max-content;
+
+    margin-left: auto;
+
+    margin-top: 12px;
+
+    padding: 5px 12px;
+
+    background: #14845d;
+
+    border-radius: 3px;
+
+    color: #fff;
+
+    font-size: 8px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .hajj-packages,
+    .hajj-article {
+        width: calc(100% - 40px);
+    }
+
+    .hajj-booking {
+        width: 620px;
+    }
+
+    .package-grid {
+        gap: 10px;
+    }
+
+    .article-feature {
+        gap: 15px;
+    }
+
+    .article-feature > img {
+        height: 250px;
+    }
+
+    .hajj-reviews .content-width {
+        width: calc(100% - 40px);
+    }
+
+    .hajj-reviews .review-strip {
+        grid-template-columns:
+            220px
+            repeat(3, 1fr);
+    }
+
+    .hajj-reviews .review-strip::before {
+        left: 216px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+
+    /* Hero */
+
+    .hajj-hero {
+        height: 220px;
+
+        background-position: center center;
+    }
+
+    /* Search */
+
+    .hajj-booking {
+        top: 120px;
+
+        width: calc(100% - 25px);
+
+        min-height: auto;
+
+        padding: 8px;
+
+        border-radius: 15px;
+
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 5px;
+    }
+
+    .booking-field {
+        height: 45px;
+
+        border-right: 0;
+
+        border-bottom: 1px solid #eee;
+    }
+
+    .booking-field.location-field {
+        grid-column: 1 / -1;
+    }
+
+    .date-arrow {
+        display: none;
+    }
+
+    .search-button {
+        grid-column: 1 / -1;
+
+        width: 100%;
+
+        height: 40px;
+    }
+
+    /* Packages */
+
+    .hajj-packages {
+        width: calc(100% - 30px);
+
+        padding-top: 25px;
+
+        padding-bottom: 30px;
+    }
+
+    .hajj-packages .section-heading h1 {
+        font-size: 20px;
+    }
+
+    .package-grid {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+    }
+
+    .package-info h2 {
+        font-size: 12px;
+    }
+
+    .package-info .rating {
+        font-size: 9px;
+    }
+
+    .package-price {
+        font-size: 9px;
+    }
+
+    .package-price strong {
+        font-size: 10px;
+    }
+
+    /* Article */
+
+    .hajj-article {
+        width: calc(100% - 30px);
+
+        padding-bottom: 35px;
+
+        font-size: 11px;
+    }
+
+    .hajj-article .article-heading h2 {
+        font-size: 19px;
+    }
+
+    .hajj-article p {
+        font-size: 10px;
+
+        line-height: 1.7;
+    }
+
+    .hajj-article h3 {
+        font-size: 17px;
+    }
+
+    /* Stack image/text */
+
+    .article-feature {
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 15px;
+
+        margin-top: 25px;
+        margin-bottom: 30px;
+
+        align-items: stretch;
+    }
+
+    .article-feature-image-first > img,
+    .article-feature-image-first > div,
+    .article-feature-image-last > img,
+    .article-feature-image-last > div {
+        order: initial;
+
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .article-feature > img {
+        height: auto;
+
+        aspect-ratio: 1.5;
+
+        object-fit: cover;
+    }
+
+    /* Reviews */
+
+    .hajj-reviews {
+        padding: 35px 0 45px;
+    }
+
+    .hajj-reviews .content-width {
+        width: calc(100% - 30px);
+    }
+
+    .hajj-reviews h2 {
+        font-size: 20px;
+
+        margin-bottom: 25px;
+    }
+
+    .hajj-reviews .review-strip {
+        display: flex;
+
+        overflow-x: auto;
+
+        gap: 12px;
+
+        padding-bottom: 10px;
+
+        scroll-snap-type: x mandatory;
+    }
+
+    .hajj-reviews .review-brand {
+        min-width: 180px;
+
+        scroll-snap-align: start;
+    }
+
+    .hajj-reviews .review-strip article {
+        min-width: 270px;
+
+        height: 180px;
+
+        scroll-snap-align: start;
+    }
+
+    .hajj-reviews .review-strip::before,
+    .hajj-reviews .review-strip::after {
+        display: none;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .hajj-hero {
+        height: 225px;
+    }
+
+    .hajj-booking {
+        top: 125px;
+    }
+
+    .hajj-packages .section-heading h1 {
+        font-size: 18px;
+    }
+
+    .hajj-article .article-heading h2 {
+        font-size: 18px;
+    }
+}

@@ -17,7 +17,14 @@
                     <tbody>
                         @foreach($packages as $package)
                             <tr>
-                                <td><strong>{{ $package->title }}</strong><small class="subline">/{{ $package->slug }}</small></td>
+                                <td>
+                                    @if($package->status === 'published')
+                                        <strong><a href="{{ url('/st-tour/' . $package->slug) }}">{{ $package->title }}</a></strong>
+                                    @else
+                                        <strong>{{ $package->title }}</strong>
+                                    @endif
+                                    <small class="subline">/st-tour/{{ $package->slug }}</small>
+                                </td>
                                 <td>{{ $package->category }}</td>
                                 <td>{{ $package->price !== null ? '₹' . number_format((float) $package->price, 2) : '—' }}</td>
                                 <td><span class="status-pill {{ $package->status }}">{{ ucfirst($package->status) }}</span></td>

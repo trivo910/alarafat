@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#090909">
-    <meta name="description" content="Explore Hajj packages from Mumbai for the 2026 pilgrimage with Al Arafat Tours & Travels.">
+    <meta name="description" content="Embark on Hajj with confidence. Al Arafat Tours delivers trusted service &amp; affordable care. Reserve today!">
     <title>Best Hajj Package from Mumbai 2026 | Al Arafat Tours</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,28 +13,13 @@
     <link rel="stylesheet" href="{{ asset('css/pages/hajj.css') }}">
 </head>
 <body>
-    <div class="contact-strip">
-        <div class="contact-inner">
-            <div class="contact-links"><a href="tel:+919867851046"><span aria-hidden="true">☎</span> +91 98678 51046</a><a href="mailto:umrah@alarafat.com"><span aria-hidden="true">✉</span> umrah@alarafat.com</a></div>
-            <div class="social-links" aria-label="Social media"><a href="https://www.facebook.com/people/al-arafat/100085602021408/" aria-label="Facebook">f</a><a href="https://twitter.com/alarafatmumbai/" aria-label="Twitter">𝕏</a><a href="https://www.instagram.com/alarafat_official/" aria-label="Instagram">◎</a><a href="https://www.linkedin.com/company/al-arafat-com/" aria-label="LinkedIn">in</a></div>
-        </div>
-    </div>
-    <header class="site-header">
-        <a class="brand" href="/" aria-label="Al Arafat Tours & Travels home"><img src="https://alarafat.com/wp-content/uploads/2022/04/Al-arafat-Logo-355-x-71.png" alt="Al Arafat Tours & Travels"></a>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation"><span></span><span></span><span></span></button>
-        <nav class="primary-nav" id="primary-navigation" aria-label="Main navigation">
-            <a href="/">Home</a><a class="active" href="/hajj">Hajj</a>
-            <div class="nav-dropdown"><button class="nav-dropdown-trigger" type="button" aria-expanded="false" aria-controls="umrah-submenu">Umrah</button><div class="nav-submenu" id="umrah-submenu"><a href="/umrah-package-from-mumbai">Umrah Package From Mumbai</a><a href="/ramzan-umrah-package-from-mumbai">Ramzan Umrah From Mumbai</a></div></div>
-            <a href="/ziyarat">Ziyarat</a><a href="/blog">Blog</a><a href="/about">About</a><a href="/contact">Contact</a>
-        </nav>
-        <div class="header-tools"><span>INR</span><a class="account-button" href="mailto:umrah@alarafat.com" aria-label="Contact Al Arafat">♙</a></div>
-    </header>
+    @include('partials.site-header', ['activePage' => 'hajj'])
 
     <main>
         <section class="hajj-hero" aria-label="Hajj packages from Mumbai">
             <form class="booking-form hajj-booking" action="#hajj-packages">
                 <label class="booking-field location-field"><span class="field-icon" aria-hidden="true">⌖</span><span class="field-copy"><span>Location</span><input name="location" placeholder="Where are you going?" aria-label="Destination"></span></label>
-                <label class="booking-field"><span class="field-icon" aria-hidden="true">▦</span><span class="field-copy"><span>Date</span><input type="date" name="date" aria-label="Departure date"></span></label><span class="date-arrow" aria-hidden="true">→</span>
+                <label class="booking-field"><span class="field-icon" aria-hidden="true">▦</span><span class="field-copy"><span>Date</span><input type="date" name="date" aria-label="Departure date"></span></label><span class="date-arrow" aria-hidden="true"></span>
                 <label class="booking-field"><span class="field-icon" aria-hidden="true">▦</span><span class="field-copy"><span>Check out</span><input type="date" name="return" aria-label="Return date"></span></label>
                 <button class="search-button" type="submit">Search</button>
             </form>
@@ -43,38 +28,63 @@
         <section class="hajj-packages content-width" id="hajj-packages">
             <div class="section-heading"><h1>Hajj packages from Mumbai</h1></div>
             <div class="package-grid">
+                @if($packages->isNotEmpty())
+                    @foreach($packages as $package)
+                        @include('partials.package-card', ['package' => $package])
+                    @endforeach
+                @else
                 <article class="package-card"><a class="package-image" href="https://alarafat.com/st-tour/hajj-package-2026-double-sharing/"><img src="https://alarafat.com/wp-content/uploads/2025/11/Gemini_Generated_Image_li0mg6li0mg6li0m-450x300.png" alt="Hajj Package 2026 Double Sharing" loading="lazy"><span class="favorite" aria-hidden="true">♡</span></a><div class="package-info"><h2><a href="https://alarafat.com/st-tour/hajj-package-2026-double-sharing/">Hajj Package 2026 Double Sharing</a></h2><p class="rating"><span>★</span> 0 <small>(No Review)</small></p><div class="package-price"><span>From <strong>₹840,000</strong></span><span>◷ 35 Days</span></div></div></article>
                 <article class="package-card"><a class="package-image" href="https://alarafat.com/st-tour/hajj-package-2026-triple-sharing/"><img src="https://alarafat.com/wp-content/uploads/2022/04/1600-X-474-2-450x300.jpg" alt="Hajj Package 2026 Triple Sharing" loading="lazy"><span class="favorite" aria-hidden="true">♡</span></a><div class="package-info"><h2><a href="https://alarafat.com/st-tour/hajj-package-2026-triple-sharing/">Hajj Package 2026 Triple Sharing</a></h2><p class="rating"><span>★</span> 0 <small>(No Review)</small></p><div class="package-price"><span>From <strong>₹750,000</strong></span><span>◷ 35 Days</span></div></div></article>
                 <article class="package-card"><a class="package-image" href="https://alarafat.com/st-tour/hajj-package-2026-quint-sharing/"><img src="https://alarafat.com/wp-content/uploads/2025/11/Gemini_Generated_Image_10neil10neil10ne-450x300.png" alt="Hajj Package 2026 Quint Sharing" loading="lazy"><span class="favorite" aria-hidden="true">♡</span></a><div class="package-info"><h2><a href="https://alarafat.com/st-tour/hajj-package-2026-quint-sharing/">Hajj Package 2026 Quint Sharing</a></h2><p class="rating"><span>★</span> 0 <small>(No Review)</small></p><div class="package-price"><span>From <strong>₹700,000</strong></span><span>◷ 35 Days</span></div></div></article>
+                @endif
             </div>
         </section>
 
         <article class="hajj-article content-width">
             <header class="article-heading"><h2>Exploring the Spiritual and Cultural Significance of Hajj</h2></header>
             <div class="article-opening">
-                <p>Hajj is one of the most important religious rituals for Muslims, observed for centuries. It is the annual pilgrimage to Mecca, the holiest city in Islam, and a mandatory religious duty for those who are able.</p>
-                <p>The journey is physically and emotionally demanding, calling for patience and determination. Pilgrims travel to Mecca and take part in a series of rituals and prayers performed in and around the city.</p>
-                <p>Hajj is a spiritual journey of deep significance for Muslims around the world. It also brings together people from many cultures, creating a shared experience that lasts long after the pilgrimage.</p>
-                <p>Here is a closer look at the rituals of Hajj and its spiritual and cultural meaning for pilgrims.</p>
-                <h3>Rituals of Hajj</h3>
-                <p>One of the central rituals is Tawaf: walking seven times around the Kaaba at the heart of the Grand Mosque in Mecca. The Kaaba is Islam's most sacred site and is traditionally associated with the Prophet Abraham and his son Ishmael.</p>
-                <p>Another important ritual is Sa'i, walking between the hills of Safa and Marwah. It recalls Hajar's search for water for her son Ishmael.</p>
-                <p>Pilgrims also take part in the stoning of the pillars at Mina, symbolizing the rejection of evil. After completing the rites, they celebrate Eid al-Adha, marking the end of Hajj.</p>
+                <p>Hajj is one of the most important religious rituals for Muslims, and has been for centuries. And cheap hajj packages in 2023 is still one of the toughest question. Hajj is the annual pilgrimage to Mecca, the holiest city in Islam, and is considered a mandatory religious duty for those who are able to.</p>
+                <p>The journey to <strong>pilgrimage to mecca</strong> for Hajj is a physically and emotionally demanding experience that requires patience and determination. Pilgrims typically spend several days traveling to Mecca and then participate in a series of rituals and prayers that are performed in and around the city.</p>
+                <p>As such, it’s a spiritual journey that has a deep and profound significance for Muslims all over the world. But beyond its spiritual significance, Hajj also has a strong cultural component that has a lasting impact on those who take part in it.</p>
+                <p>In this article, we’ll explore both the spiritual and cultural significance of Hajj, and how it can benefit people who are looking for cheap Hajj packages in 2023.</p>
+                <h2 class="article-subheading">Rituals of Hajj</h2>
+                <p>One of the most important rituals of Hajj is the Tawaf, which involves walking seven times around the Kaaba, the holiest site in Islam. The Kaaba is a large cubic structure located in the center of the Grand Mosque in Mecca. It is considered the most sacred site in Islam, and is believed to have been built by the Prophet Abraham and his son Ishmael.</p>
+                <p>Another important ritual during Hajj is the Sa’i, which involves walking seven times between the hills of Safa and Marwah. This ritual is a reenactment of the journey made by the Prophet’s wife, Hajar, as she searched for water for her son Ishmael.</p>
+                <p>Pilgrims also participate in the stoning of the devil, a ritual in which they throw pebbles at three pillars that represent the devil. This ritual symbolizes the rejection of evil and the strength of faith.</p>
+                <p>After completing these rituals, pilgrims partake in the Eid al-Adha, a feast that marks the end of Hajj. You can look out various sites where you can find <strong>cheap hajj packages in 2023</strong>, Because Hajj is a powerful spiritual experience that brings Muslims from all over the world together in a common quest for spiritual fulfillment. It is a time of reflection, devotion, and renewal, and is an important part of the Muslim faith.</p>
             </div>
             <section class="article-feature article-feature-image-first">
                 <img src="https://alarafat.com/wp-content/uploads/2022/12/pexels-taha-elahi-7984586-1024x1024.jpg" alt="Pilgrims gathered around the Kaaba" loading="lazy">
-                <div><h3>The Spiritual Significance of Hajj</h3><p>For Muslims, Hajj is a chance to reaffirm faith in Allah and draw closer to Him. The rituals are acts of worship, and pilgrims believe their devotion will be rewarded in the afterlife.</p><p>The pilgrimage also offers time for reflection and introspection. Pilgrims consider their lives and their relationship with Allah.</p><p>Hajj brings Muslims from across the world together in worship. This shared gathering reflects unity and solidarity among the community.</p></div>
+                <div>
+                    <h2 class="article-subheading">The Spiritual Significance of Hajj</h2>
+                <p>Hajj is a deeply spiritual experience for muslim pilgrimage, as it is a chance to reaffirm their faith in Allah and to be closer to Him. Performing the rituals associated with Hajj is seen as an act of worship, and it is believed that these acts will be rewarded in the afterlife.</p>
+                <p>Additionally, Hajj is seen as a time of self-reflection and introspection, as pilgrims are encouraged to reflect on their lives and their relationship with Allah.</p>
+                <p>The spiritual significance of Hajj can also be seen in the communal aspect of the pilgrimage. Hajj is a time for Muslims from all over the world to come together and celebrate their faith.</p>
+                <p>This sense of unity and solidarity is seen as a sign of strength, and it is believed that it will help to strengthen the faith of all those who take part in the pilgrimage.</p>
+            </div>
             </section>
             <section class="article-feature article-feature-image-last">
-                <div><h3>The Cultural Significance of Hajj</h3><p>Hajj gives pilgrims the chance to encounter different cultures and traditions. People from many countries and backgrounds gather in fellowship and solidarity.</p><p>This shared experience can foster understanding and appreciation for other cultures and beliefs.</p><p>It is also a time to learn more about Islamic faith, history, and the teachings of the Prophet Muhammad.</p></div>
+                <div><h2 class="article-subheading">The Cultural Significance of Hajj</h2>
+                <p>Hajj is also a deeply cultural experience, as it allows pilgrims to experience different cultures and traditions. Hajj is a time for people from different countries, cultures, and backgrounds to come together in fellowship and solidarity.</p>
+                <p>This shared experience helps to foster a sense of understanding and appreciation for different cultures and beliefs.</p>
+                <p>Hajj is also a time to learn about the Islamic faith. Many pilgrims take this opportunity to learn more about the teachings of the Prophet Muhammad and to gain a deeper understanding of the Islamic faith.</p>
+                <p>This can be a very enriching experience, as pilgrims are exposed to different perspectives and learn more about the history and culture of the Islamic faith.</p>
+            </div>
                 <img src="https://alarafat.com/wp-content/uploads/2022/12/71-768x512.jpg" alt="Pilgrims at Al-Masjid an-Nabawi in Madinah" loading="lazy">
             </section>
             <section class="article-feature article-feature-image-first">
                 <img src="https://alarafat.com/wp-content/uploads/2022/12/ryan-pradipta-putra-MWJ7JpFBlGk-unsplash-1024x1024.jpg" alt="The Prophet's Mosque in Madinah" loading="lazy">
-                <div><h3>Benefits of Using Hajj Packages</h3><p>A well-planned Hajj package brings essential travel arrangements and support together, helping pilgrims focus on their pilgrimage.</p><p>Options can include accommodation, transportation, and guidance throughout the journey. Comparing packages helps travelers choose arrangements that suit their needs and budget.</p><p>For many pilgrims, having practical details handled in advance makes this important journey more comfortable.</p></div>
+                <div><h2 class="article-subheading">Benefits of Using Hajj Packages</h2>
+                <p>Cheap Hajj packages in 2023 are an excellent way for pilgrims to make the most of their pilgrimage. These packages provide pilgrims with all the necessary resources and amenities for a successful Hajj.</p>
+                <p>We offer a range of options, from basic packages to more luxurious options. This allows pilgrims to choose a package that best suits their needs and budget. Additionally, these packages often include accommodations, transportation, and other services that make the pilgrimage more convenient and enjoyable.</p>
+                <p>Cheap Hajj packages in 2023 are also a great way to save money. As the cost of the pilgrimage can be quite expensive, these packages can help pilgrims save a significant amount of money. This can be particularly beneficial for those who are on a tight budget, as the cost of the pilgrimage can be quite prohibitive.</p></div>
             </section>
             <section class="article-feature article-feature-image-last article-conclusion">
-                <div><h3>Conclusion</h3><p>Hajj is a deeply spiritual and cultural experience that can have a profound impact on those who take part. It is a time for reflection and renewal, as well as an opportunity for people from many backgrounds to come together in fellowship.</p><p>When planning your pilgrimage, review package details and speak with a trusted travel provider to find arrangements that suit your needs.</p></div>
+                <div><h2 class="article-subheading">Conclusion</h2>
+                <p>Hajj is a deeply spiritual and cultural experience that has a profound impact on those who take part in it. It’s a time for reflection and introspection, as well as a time for people from all backgrounds to come together in fellowship and solidarity.</p>
+                <p>Cheap Hajj packages in 2023 are an excellent way to make the most of the pilgrimage, as they provide pilgrims with all the necessary amenities and services for a successful Hajj. To find the best Hajj packages 2023, make sure to do your research and speak to other pilgrims who have used the same package.</p>
+                <p>Hajj is an incredibly powerful experience, and it can have a lasting impact on those who take part in it. Whether it’s for spiritual or cultural reasons, Hajj is an experience that should not be missed. So, if you’re planning on taking part in the pilgrimage this year, make sure to take advantage of cheap Hajj packages in 2023 to make the most of your journey.</p>
+            </div>
                 <img src="https://alarafat.com/wp-content/uploads/2022/12/ekrem-osmanoglu-R_t4oOh-Lvg-unsplash-1536x1536.jpg" alt="The Kaaba surrounded by Hajj pilgrims" loading="lazy">
             </section>
         </article>
@@ -84,12 +94,7 @@
         </section>
     </main>
 
-    <footer class="site-footer" id="contact"><div class="footer-main content-width">
-        <div class="footer-about"><a href="/"><img src="https://alarafat.com/wp-content/uploads/2022/09/Al-arafat-Logo-300-x-60.png" alt="Al Arafat Tours & Travels" loading="lazy"></a><p>A long standing and successful travel company which has always strived to provide its customers with the best of travel experiences.</p></div>
-        <div class="footer-column"><h2>Company</h2><a href="#hajj-packages">⊙ &nbsp; Package</a><a href="/blog">⊙ &nbsp; Blog</a><a href="https://alarafat.com/faq/">⊙ &nbsp; FAQ</a><a href="https://alarafat.com/privacy-policy/">⊙ &nbsp; Privacy Policy</a><a href="https://alarafat.com/terms-conditions/">⊙ &nbsp; Terms &amp; Conditions</a><a href="/contact">⊙ &nbsp; Contact</a></div>
-        <div class="footer-column"><h2>Need help?</h2><p>Call Us</p><a class="footer-contact" href="tel:+919867851046">+91 98678 51046</a><p>Email for Us</p><a class="footer-contact" href="mailto:umrah@alarafat.com">umrah@alarafat.com</a><p>Follow Us</p><div class="footer-social"><a href="https://www.facebook.com/people/al-arafat/100085602021408/" aria-label="Facebook">f</a><a href="https://twitter.com/alarafatmumbai/" aria-label="Twitter">𝕏</a><a href="https://www.instagram.com/alarafat_official/" aria-label="Instagram">◎</a></div></div>
-        <div class="footer-column office-column"><h2>Our Offices</h2><p>Ground floor-154, No. 01, 1229, Motilal Nagar No. 1, near Sai Baba Mandir, Prarthana Society, Motilal Nagar I, Goregaon West, Mumbai, Maharashtra 400104</p></div>
-    </div><div class="footer-bottom">© Al Arafat. ALL RIGHT RESERVED 2021-22 · DESIGNED &amp; MARKETED BY <strong>trivo.</strong></div></footer>
+    @include('partials.site-footer')
     <script src="{{ asset('js/hajj.js') }}" defer></script>
 </body>
 </html>
