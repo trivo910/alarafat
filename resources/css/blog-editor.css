@@ -25,7 +25,12 @@
     font-size: 15px;
 }
 
+.blog-rich-editor.ql-container {
+    height: auto;
+}
+
 .blog-rich-editor .ql-editor {
+    height: auto;
     min-height: 320px;
     line-height: 1.6;
 }

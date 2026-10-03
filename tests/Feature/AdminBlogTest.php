@@ -32,7 +32,10 @@ class AdminBlogTest extends TestCase
 
         $this->assertAuthenticated();
 
-        $this->get('/admin/blogs')->assertOk();
+        $this->get('/admin/blogs')
+            ->assertOk()
+            ->assertSee('Save as draft')
+            ->assertSee('Publish blog');
     }
 
     public function test_admin_cannot_publish_an_empty_rich_text_blog(): void
@@ -47,6 +50,23 @@ class AdminBlogTest extends TestCase
             ->assertSessionHasErrors('content');
 
         $this->assertDatabaseMissing('blogs', ['slug' => 'empty-blog-draft']);
+    }
+
+    public function test_admin_can_publish_blog_using_publish_action(): void
+    {
+        $this->actingAs(User::factory()->create())
+            ->post('/admin/blogs', [
+                'title' => 'Publish Action Blog',
+                'slug' => 'publish-action-blog',
+                'content' => '<p>Blog content ready to publish.</p>',
+                'status' => 'published',
+            ])
+            ->assertRedirect('/admin/blogs');
+
+        $this->assertDatabaseHas('blogs', [
+            'slug' => 'publish-action-blog',
+            'status' => 'published',
+        ]);
     }
 
     public function test_admin_dashboard_and_enquiries_start_empty_without_fake_counts(): void
@@ -216,9 +236,9 @@ class AdminBlogTest extends TestCase
         $this->get('/blog')
             ->assertOk()
             ->assertSee('Latest Admin Umrah Update')
-            ->assertSee('/blog/latest-admin-umrah-update');
+            ->assertSee('/latest-admin-umrah-update');
 
-        $this->get('/blog/latest-admin-umrah-update')
+        $this->get('/latest-admin-umrah-update')
             ->assertOk()
             ->assertSee('Latest Admin Umrah Update')
             ->assertSee('Fresh information for Umrah travelers.')
@@ -230,6 +250,9 @@ class AdminBlogTest extends TestCase
             ->assertSee('aria-label="Instagram"', false)
             ->assertSee('aria-label="Facebook"', false)
             ->assertSee('aria-label="X"', false);
+
+        $this->get('/blog/latest-admin-umrah-update')
+            ->assertRedirect('/latest-admin-umrah-update', 301);
 
         $this->put('/admin/blogs/' . $blog->id, [
             'title' => $blog->title,

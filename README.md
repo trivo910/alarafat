@@ -4,9 +4,12 @@ A responsive Laravel site based on the Al Arafat Hajj, Umrah, Ziyarat, About, an
 
 ## Run locally
 
-Requirements: PHP 8.2+, Composer, and the dependencies installed in `vendor/`.
+Requirements: PHP 8.2+, Composer, MySQL, and the dependencies installed in `vendor/`.
+
+The app uses the MySQL database `alarafat-lara` by default. Create that database in MySQL/phpMyAdmin, then update `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, and `DB_PASSWORD` in `.env` if your local MySQL settings differ. Create the application tables with:
 
 ```powershell
+php artisan migrate
 php artisan serve
 ```
 
@@ -32,4 +35,3 @@ The logo, banners, package photography, partner marks, and newsletter artwork ar
 ## Current interactions
 
 Banner arrows and dots change slides; the Umrah submenu opens on desktop hover or keyboard focus and on mobile tap; the mobile navigation expands and collapses; booking search scrolls to each page's package list. The Hajj and Ziyarat pages list package details and articles; the Umrah page includes seven package options, a pilgrimage guide, and FAQs. The contact form opens the visitor's configured email application; connect it to a mail service for server-side delivery. Newsletter submission currently displays an in-page confirmation only. Connect it to a mailing-list service before collecting real subscriptions. Package cards and the Umrah submenu link to their current Al Arafat pages.
-

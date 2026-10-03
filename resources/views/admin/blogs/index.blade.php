@@ -56,17 +56,17 @@
             <label>Slug<input name="slug" value="{{ old('slug') }}"></label>
             <label>Featured image<input name="featured_image" type="file" accept="image/jpeg,image/png,image/webp"></label>
             <label>Image alt text<input name="image_alt_text" value="{{ old('image_alt_text') }}"></label>
-            <div class="form-columns">
-                <label>Meta title<input name="meta_title" value="{{ old('meta_title') }}"></label>
-                <label>Status<select name="status"><option value="draft">Draft</option><option value="published" {{ old('status') === 'published' ? 'selected' : '' }}>Published</option></select></label>
-            </div>
+            <label>Meta title<input name="meta_title" value="{{ old('meta_title') }}"></label>
             <label>Meta description<textarea name="meta_description" rows="3">{{ old('meta_description') }}</textarea></label>
             <div class="blog-editor-field">
                 <label for="blog-content-editor">Content</label>
                 <textarea class="blog-content-source" name="content" aria-hidden="true" tabindex="-1">{{ old('content') }}</textarea>
                 <div id="blog-content-editor" class="blog-rich-editor" data-blog-editor aria-label="Blog content editor"></div>
             </div>
-            <button class="button-primary" type="submit">Save blog</button>
+            <div class="form-actions">
+                <button class="button-secondary" type="submit" name="status" value="draft">Save as draft</button>
+                <button class="button-primary" type="submit" name="status" value="published">Publish blog</button>
+            </div>
         </form>
     </section>
 @endsection

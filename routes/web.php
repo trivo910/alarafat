@@ -31,7 +31,9 @@ Route::get('/st-tour/{slug}', [PackageController::class, 'show'])->name('package
 
 Route::get('/blog', [BlogController::class, 'publicIndex']);
 
-Route::get('/blog/{slug}', [BlogController::class, 'showPublic'])->name('blog.show');
+Route::get('/blog/{slug}', function (string $slug) {
+    return redirect()->route('blog.show', ['slug' => $slug], 301);
+});
 
 Route::get('/admin', function () {
     return redirect()->route(auth()->check() ? 'admin.dashboard' : 'admin.login');
@@ -57,4 +59,6 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::delete('/blogs/{blog}', [BlogController::class, 'destroy'])->name('admin.blogs.destroy');
     Route::post('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 });
+
+Route::get('/{slug}', [BlogController::class, 'showPublic'])->name('blog.show');
 
