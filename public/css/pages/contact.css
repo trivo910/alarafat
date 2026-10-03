@@ -1,25 +1,83 @@
 /* Contact page overrides. Loaded after the shared site stylesheet. */
 .contact-title { padding: 24px 20px 18px; text-align: center; }
-.contact-title h1 { margin: 0; font-size: 32px; line-height: 1.35; }
-.contact-title p { margin: 2px 0 0; color: #747b82; font-size: 14px; }
-.contact-map { width: 100%; height: 235px; overflow: hidden; background: #e6edeb; }
+.contact-title h1 { 
+	    font-weight: 700;
+    	font-size: 36px;
+    	line-height: 46px;
+    	color: #232323;
+	}
+.contact-title p { 
+	font-size: 16px;
+    line-height: 26px;
+    color: #727272; }
+.contact-map { width: 85%; margin:auto; height: 400px; overflow: hidden; background: #e6edeb; border-radius: 8px; box-shadow: 0 4px 16px #0000000b; }
 .contact-map iframe { width: 100%; height: 100%; display: block; border: 0; }
-.contact-content { min-height: 475px; padding-top: 48px; padding-bottom: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(48px, 10vw, 140px); align-items: center; }
-.contact-details h2, .contact-form h2 { margin: 0 0 14px; font-size: 22px; line-height: 1.35; }
-.contact-details address { max-width: 380px; font-style: normal; }
-.contact-detail { min-height: 39px; padding: 8px 0; display: grid; grid-template-columns: 23px 1fr; gap: 8px; align-items: center; border-bottom: 1px solid #eceeef; color: var(--ink); }
-.contact-detail p { margin: 0; font-size: 13px; line-height: 1.6; }
-.contact-detail-icon { color: var(--gold); font-size: 16px; font-weight: 700; }
-.contact-form { min-height: 375px; padding: 16px 17px 10px; display: flex; flex-direction: column; border: 1px solid #eceeef; border-radius: 11px; background: white; box-shadow: 0 4px 16px #0000000b; }
-.contact-form h2 { margin-bottom: 14px; }
+.contact-content { 
+	min-height: 500px; 
+	padding-top: 48px; 
+	padding-bottom: 48px; 
+	display: grid; 
+	grid-template-columns: 1fr 1fr; 
+	gap: clamp(48px, 10vw, 140px); 
+	/* align-items: center; */
+	}
+.contact-details h2, .contact-form h2 { 
+	margin: 0 0 14px; 
+	font-size: 30px; 
+	line-height: 1.35; 
+	}
+.contact-details address { 
+	max-width: 400px; 
+	font-style: normal; 
+	}
+.contact-detail { 
+	min-height: 39px; 
+	padding: 8px 0; 
+	display: grid; 
+	grid-template-columns: 23px 1fr; 
+	gap: 8px; 
+	align-items: center; 
+	border-bottom: 1px solid #eceeef; 
+	color: var(--ink);
+}
+.contact-detail p { margin: 0; font-size: 16px; line-height: 1.6; }
+.contact-detail-icon { 
+	color: var(--gold); 
+	font-size: 25px; 
+	font-weight: 700; 
+}
+.contact-form { min-height: 375px; padding: 30px; display: flex; flex-direction: column; border: 1px solid #eceeef; border-radius: 11px; background: white; box-shadow: 0 4px 16px #0000000b; }
+.contact-form h2 { margin-bottom: 30px; }
 .contact-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 15px 13px; }
 .contact-fields label { min-width: 0; }
-.contact-fields input, .contact-fields textarea { width: 100%; padding: 9px 10px; border: 1px solid #dfe2e4; border-radius: 6px; outline: 0; background: white; color: var(--ink); font-size: 13px; }
+.contact-fields input, .contact-fields textarea { 
+	width: 100%; 
+	padding: 10px 10px;
+	margin-bottom: 10px; 
+	border: 1px solid #dfe2e4; 
+	border-radius: 6px; 
+	outline: 0; 
+	background: white; 
+	color: var(--ink); 
+	font-size: 16px; }
 .contact-fields input { height: 39px; }
-.contact-fields input:focus, .contact-fields textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 2px #d3ad6330; }
-.contact-fields .contact-email, .contact-fields .contact-message { grid-column: 1 / -1; }
-.contact-fields textarea { min-height: 92px; resize: vertical; }
-.contact-form .search-button { align-self: flex-start; min-height: 36px; margin-top: auto; padding: 0 18px; }
+.contact-fields input:focus, .contact-fields textarea:focus { 
+	border-color: var(--gold); 
+	box-shadow: 0 0 0 2px #d3ad6330; 
+}
+.contact-fields .contact-email, .contact-fields .contact-message { 
+	grid-column: 1 / -1;
+	/* margin-bottom: 10px;  */
+}
+.contact-fields textarea { 
+	min-height: 92px; 
+	resize: vertical; 
+}
+.contact-form .search-button { 
+	align-self: flex-start; 
+	min-height: 36px; 
+	margin-top: auto; 
+	padding: 10px 20px; }
 
 @media (max-width: 640px) {
 	.contact-title { padding: 40px 16px 20px; }

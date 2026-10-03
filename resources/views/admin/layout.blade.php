@@ -18,6 +18,8 @@
             <a class="{{ request()->routeIs('admin.blogs.*') ? 'active' : '' }}" href="{{ route('admin.blogs.index') }}">Blog</a>
             <span class="nav-section-label">Operations</span>
             <a class="{{ request()->routeIs('admin.enquiries') ? 'active' : '' }}" href="{{ route('admin.enquiries') }}">Enquiries</a>
+            <span class="nav-section-label">Settings</span>
+            <a class="{{ request()->routeIs('admin.smtp.*') ? 'active' : '' }}" href="{{ route('admin.smtp.edit') }}">SMTP</a>
         </nav>
         <form class="sidebar-logout" method="POST" action="{{ route('admin.logout') }}">
             @csrf

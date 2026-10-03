@@ -46,6 +46,7 @@ body.admin-body { min-height: 100vh; margin: 0; color: #17202c; background: #f2f
 .admin-form textarea { resize: vertical; }
 .admin-form input[type=file] { padding: 7px; }
 .form-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.smtp-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .form-actions { margin-top: 4px; }
 .package-preview { width: min(100%, 320px); max-height: 190px; object-fit: cover; border-radius: 5px; }
 .package-form-panel { padding: 0 20px 22px; }
@@ -105,6 +106,7 @@ body.admin-body { min-height: 100vh; margin: 0; color: #17202c; background: #f2f
     .admin-nav a[href$="packages"]::after { content: "P"; font-size: 14px; }
     .admin-nav a[href$="blogs"]::after { content: "B"; font-size: 14px; }
     .admin-nav a[href$="enquiries"]::after { content: "E"; font-size: 14px; }
+    .admin-nav a[href$="smtp"]::after { content: "S"; font-size: 14px; }
     .sidebar-logout { padding: 14px 6px; text-align: center; }
     .sidebar-logout button { font-size: 0; }
     .sidebar-logout button::after { content: "↪"; font-size: 16px; }
@@ -115,6 +117,7 @@ body.admin-body { min-height: 100vh; margin: 0; color: #17202c; background: #f2f
     .stat-card { min-height: 72px; border-right: 0; border-bottom: 1px solid #dededb; }
     .stat-card:last-child { border-bottom: 0; }
     .form-columns { grid-template-columns: 1fr; }
+    .smtp-form-grid { grid-template-columns: 1fr; }
     .package-form-grid, .package-form-grid-three { grid-template-columns: 1fr; }
     .admin-table th, .admin-table td { padding: 11px 12px; }
 }

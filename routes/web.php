@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminPackageController;
+use App\Http\Controllers\AdminSmtpSettingsController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PackageController;
 use Illuminate\Support\Facades\Route;
@@ -47,6 +48,8 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/enquiries', [AdminDashboardController::class, 'enquiries'])->name('admin.enquiries');
+    Route::get('/smtp', [AdminSmtpSettingsController::class, 'edit'])->name('admin.smtp.edit');
+    Route::put('/smtp', [AdminSmtpSettingsController::class, 'update'])->name('admin.smtp.update');
     Route::get('/packages', [AdminPackageController::class, 'index'])->name('admin.packages.index');
     Route::post('/packages', [AdminPackageController::class, 'store'])->name('admin.packages.store');
     Route::get('/packages/{package}/edit', [AdminPackageController::class, 'edit'])->name('admin.packages.edit');
@@ -61,4 +64,3 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 });
 
 Route::get('/{slug}', [BlogController::class, 'showPublic'])->name('blog.show');
-
