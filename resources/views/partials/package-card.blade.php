@@ -3,7 +3,7 @@
         @if($package->featured_image_url)
             <img src="{{ $package->featured_image_url }}" alt="{{ $package->image_alt_text ?: $package->title }}" loading="lazy">
         @else
-            <span class="package-image-placeholder">{{ $package->category }} Package</span>
+            <span class="package-image-placeholder">{{ implode(', ', $package->categories ?: [$package->category]) }} Package</span>
         @endif
         <span class="favorite" aria-hidden="true">♡</span>
     </a>

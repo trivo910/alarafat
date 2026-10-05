@@ -3,6 +3,7 @@
     $includedItems = old('included', $package?->included ?? []);
     $excludedItems = old('excluded', $package?->excluded ?? []);
     $itineraryItems = old('itinerary', $package?->itinerary ?? []);
+    $selectedCategories = old('categories', $package?->categories ?: ($package?->category ? [$package->category] : []));
 @endphp
 
 <form method="POST" action="{{ $formAction }}" enctype="multipart/form-data" class="admin-form package-form">
@@ -15,13 +16,15 @@
         <h3>Basic info</h3>
         <div class="package-form-grid">
             <label>Title<input name="title" value="{{ old('title', $package?->title) }}" required></label>
-            <label>Category
-                <select name="category" required>
+            <fieldset class="category-field">
+                <legend>Categories</legend>
+                <div class="category-options">
                     @foreach(['Umrah', 'Hajj', 'Ramzan', 'Ziyarat'] as $category)
-                        <option value="{{ $category }}" {{ old('category', $package?->category) === $category ? 'selected' : '' }}>{{ $category }}</option>
+                        <label class="checkbox-label"><input type="checkbox" name="categories[]" value="{{ $category }}" {{ in_array($category, $selectedCategories, true) ? 'checked' : '' }}> {{ $category }}</label>
                     @endforeach
-                </select>
-            </label>
+                </div>
+                <span class="field-help">Select every category this package belongs to.</span>
+            </fieldset>
         </div>
         <label>Slug<input name="slug" value="{{ old('slug', $package?->slug) }}" placeholder="Generated from title if left blank"></label>
         <div class="blog-editor-field">
@@ -40,7 +43,6 @@
                     <option value="published" {{ old('status', $package?->status) === 'published' ? 'selected' : '' }}>Published</option>
                 </select>
             </label>
-            <label class="checkbox-label"><input type="checkbox" name="is_featured" value="1" {{ old('is_featured', $package?->is_featured) ? 'checked' : '' }}> Feature this package</label>
         </div>
         <label class="checkbox-label"><input type="checkbox" name="show_in_trending" value="1" {{ old('show_in_trending', $package?->show_in_trending) ? 'checked' : '' }}> Show in “Trending Packages”</label>
     </section>

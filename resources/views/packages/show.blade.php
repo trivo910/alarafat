@@ -1,4 +1,5 @@
 @php
+    $packageCategories = $package->categories ?: [$package->category];
     $galleryImages = collect($package->gallery_images ?? [])
         ->map(fn (string $image): string => Str::startsWith($image, ['http://', 'https://', '/']) ? $image : asset('storage/' . $image))
         ->prepend($package->featured_image_url)
@@ -10,7 +11,7 @@
         ['category' => 'Umrah', 'title' => 'Umrah packages from Mumbai', 'url' => '/umrah-package-from-mumbai', 'image' => 'https://alarafat.com/wp-content/uploads/2026/09/mumbai-umrah-2026-450x300.png'],
         ['category' => 'Ramzan', 'title' => 'Ramzan Umrah packages', 'url' => '/ramzan-umrah-package-from-mumbai', 'image' => 'https://alarafat.com/wp-content/uploads/2026/09/from-mumbai-2026-silver-450x300.png'],
         ['category' => 'Ziyarat', 'title' => 'Ziyarat tours', 'url' => '/ziyarat', 'image' => 'https://alarafat.com/wp-content/uploads/2022/12/71-768x512.jpg'],
-    ])->reject(fn (array $option): bool => $option['category'] === $package->category)->values();
+    ])->reject(fn (array $option): bool => in_array($option['category'], $packageCategories, true))->values();
 @endphp
 <!doctype html>
 <html lang="en">
@@ -31,7 +32,7 @@
 
     <nav class="package-breadcrumb content-width" aria-label="Breadcrumb">
         <a href="{{ url('/') }}">Home</a><span aria-hidden="true">›</span>
-        <a href="{{ url($categoryUrl) }}">{{ $package->category }}</a><span aria-hidden="true">›</span>
+        <a href="{{ url($categoryUrl) }}">{{ implode(', ', $packageCategories) }}</a><span aria-hidden="true">›</span>
         <span>{{ $package->title }}</span>
     </nav>
 
@@ -45,7 +46,7 @@
             @forelse($galleryImages as $image)
                 <img src="{{ $image }}" alt="{{ $package->image_alt_text ?: $package->title }}" loading="{{ $loop->first ? 'eager' : 'lazy' }}">
             @empty
-                <div class="package-gallery-placeholder">{{ $package->category }} package</div>
+                <div class="package-gallery-placeholder">{{ implode(', ', $packageCategories) }} package</div>
             @endforelse
         </section>
 
@@ -63,7 +64,7 @@
                     @if($package->description)
                         <div class="package-description">{!! $package->description !!}</div>
                     @else
-                        <p>Contact Al Arafat Tours &amp; Travels for details about this {{ strtolower($package->category) }} package.</p>
+                        <p>Contact Al Arafat Tours &amp; Travels for details about this {{ strtolower(implode(', ', $packageCategories)) }} package.</p>
                     @endif
                 </section>
 

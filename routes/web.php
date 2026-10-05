@@ -8,9 +8,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PackageController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [PackageController::class, 'home']);
 
 Route::get('/hajj', [PackageController::class, 'hajj']);
 

@@ -11,12 +11,12 @@ class Package extends Model
         'title',
         'slug',
         'category',
+        'categories',
         'price',
         'featured_image',
         'image_alt_text',
         'description',
         'status',
-        'is_featured',
         'show_in_trending',
         'duration',
         'tour_type',
@@ -33,8 +33,8 @@ class Package extends Model
 
     protected $casts = [
         'price' => 'decimal:2',
-        'is_featured' => 'boolean',
         'show_in_trending' => 'boolean',
+        'categories' => 'array',
         'gallery_images' => 'array',
         'included' => 'array',
         'excluded' => 'array',
@@ -53,6 +53,6 @@ class Package extends Model
             return $image;
         }
 
-        return asset('storage/' . $image);
+        return asset('storage/'.$image);
     }
 }

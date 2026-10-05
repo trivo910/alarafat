@@ -52,6 +52,25 @@
         <section class="packages-section content-width" id="packages">
             <div class="section-heading"><h2>Best Umrah &amp; Hajj Packages From Mumbai</h2></div>
             <div class="package-grid">
+                @forelse($trendingPackages as $package)
+                    <article class="package-card">
+                        <a class="package-image" href="{{ route('packages.show', $package->slug) }}">
+                            @if($package->featured_image_url)
+                                <img src="{{ $package->featured_image_url }}" alt="{{ $package->image_alt_text ?: $package->title }}" loading="lazy">
+                            @else
+                                <span class="package-image-placeholder">{{ implode(', ', $package->categories ?: [$package->category]) }} Package</span>
+                            @endif
+                        </a>
+                        <div class="package-info">
+                            <h3><a href="{{ route('packages.show', $package->slug) }}">{{ $package->title }}</a></h3>
+                            <p class="rating"><span>★</span> 0 <small>(No Review)</small></p>
+                            <div class="package-price">
+                                <span>{{ $package->price !== null ? 'From' : 'Contact for price' }} @if($package->price !== null)<strong>₹{{ number_format((float) $package->price) }}</strong>@endif</span>
+                                <span aria-hidden="true">◷</span>
+                            </div>
+                        </div>
+                    </article>
+                @empty
                 <article class="package-card">
                     <a class="package-image" href="https://alarafat.com/st-tour/mumbai-umrah-packages-2026/"><img src="https://alarafat.com/wp-content/uploads/2026/09/mumbai-umrah-2026-450x300.png" alt="Mumbai Umrah Packages 2026" loading="lazy"></a>
                     <div class="package-info"><h3><a href="https://alarafat.com/st-tour/mumbai-umrah-packages-2026/">Mumbai Umrah Packages 2026</a></h3><p class="rating"><span>★</span> 0 <small>(No Review)</small></p><div class="package-price"><span>From <strong>₹80,786</strong></span><span aria-hidden="true">◷</span></div></div>
@@ -64,6 +83,7 @@
                     <a class="package-image" href="https://alarafat.com/st-tour/15-days-umrah-package-from-mumbai-2026-bronze-plus/"><img src="https://alarafat.com/wp-content/uploads/2026/09/from-mumbai-2026-bronze-plus-450x300.png" alt="15 Days Umrah Package from Mumbai Bronze Plus" loading="lazy"></a>
                     <div class="package-info"><h3><a href="https://alarafat.com/st-tour/15-days-umrah-package-from-mumbai-2026-bronze-plus/">15 Days Umrah Package From Mumbai – 2026 (Bronze Plus)</a></h3><p class="rating"><span>★</span> 0 <small>(No Review)</small></p><div class="package-price"><span>From <strong>₹88,786</strong></span><span aria-hidden="true">◷</span></div></div>
                 </article>
+                @endforelse
             </div>
         </section>
 

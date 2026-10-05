@@ -59,6 +59,10 @@ body.admin-body { min-height: 100vh; margin: 0; color: #17202c; background: #f2f
 .package-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-bottom: 14px; }
 .package-form-grid:last-child { margin-bottom: 0; }
 .package-form-grid-three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.category-field { min-width: 0; margin: 0; padding: 0; border: 0; }
+.category-field legend { margin-bottom: 7px; color: #243143; font-weight: 600; }
+.category-options { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+.category-field .field-help { display: block; margin: 7px 0 0; }
 .package-publish-grid { max-width: 650px; align-items: end; }
 .admin-form .checkbox-label { min-height: 40px; display: flex; grid-template-columns: none; align-items: center; gap: 8px; font-weight: 400; }
 .admin-form .checkbox-label input { width: auto; min-height: auto; margin: 0; }

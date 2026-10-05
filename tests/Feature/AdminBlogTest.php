@@ -2,8 +2,9 @@
 
 namespace Tests\Feature;
 
-use App\Models\User;
+use App\Models\Blog;
 use App\Models\Package;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -99,7 +100,6 @@ class AdminBlogTest extends TestCase
                 'price' => '95000',
                 'description' => '<p>Package details entered by the admin.</p>',
                 'status' => 'published',
-                'is_featured' => '1',
                 'show_in_trending' => '1',
                 'duration' => '15 Days',
                 'tour_type' => 'Daily Tour',
@@ -119,8 +119,8 @@ class AdminBlogTest extends TestCase
         $package = Package::firstOrFail();
         $this->assertSame('test-umrah-package', $package->slug);
         $this->assertSame('published', $package->status);
-        $this->assertTrue($package->is_featured);
         $this->assertTrue($package->show_in_trending);
+        $this->assertSame(['Umrah'], $package->categories);
         $this->assertSame(['Visa application', 'Return flights'], $package->included);
         $this->assertSame('5 Days', $package->itinerary[0]['days_label']);
         Storage::disk('public')->assertExists($package->featured_image);
@@ -131,17 +131,18 @@ class AdminBlogTest extends TestCase
             ->assertSee('Test Umrah Package')
             ->assertSee('Umrah');
 
-        $this->get('/admin/packages/' . $package->id . '/edit')
+        $this->get('/admin/packages/'.$package->id.'/edit')
             ->assertOk()
             ->assertSee('Pricing & duration')
             ->assertSee('Current gallery images')
             ->assertSee('Itinerary overview')
             ->assertSee('Test Package SEO')
-            ->assertSee('data-source-name="description"', false);
+            ->assertSee('data-source-name="description"', false)
+            ->assertDontSee('Feature this package');
 
         $thumbnail = $package->featured_image;
         $galleryImage = $package->gallery_images[0];
-        $this->put('/admin/packages/' . $package->id, [
+        $this->put('/admin/packages/'.$package->id, [
             'title' => 'Updated Umrah Package',
             'slug' => $package->slug,
             'category' => 'Umrah',
@@ -165,6 +166,27 @@ class AdminBlogTest extends TestCase
         $this->assertSame([], $package->gallery_images);
         Storage::disk('public')->assertExists($thumbnail);
         Storage::disk('public')->assertMissing($galleryImage);
+    }
+
+    public function test_admin_can_assign_multiple_categories_to_a_package(): void
+    {
+        $this->actingAs(User::factory()->create())
+            ->post('/admin/packages', [
+                'title' => 'Hajj and Umrah Package',
+                'slug' => 'hajj-and-umrah-package',
+                'categories' => ['Hajj', 'Umrah'],
+                'status' => 'published',
+                'show_in_trending' => '1',
+            ])
+            ->assertRedirect('/admin/packages');
+
+        $package = Package::where('slug', 'hajj-and-umrah-package')->firstOrFail();
+        $this->assertSame(['Hajj', 'Umrah'], $package->categories);
+        $this->assertSame('Hajj', $package->category);
+
+        $this->get('/hajj')->assertSee('Hajj and Umrah Package');
+        $this->get('/umrah-package-from-mumbai')->assertSee('Hajj and Umrah Package');
+        $this->get('/')->assertSee('Hajj and Umrah Package');
     }
 
     public function test_published_hajj_package_appears_on_its_page_and_uses_st_tour_url(): void
@@ -230,7 +252,7 @@ class AdminBlogTest extends TestCase
             'status' => 'published',
         ])->assertRedirect('/admin/blogs');
 
-        $blog = \App\Models\Blog::where('slug', 'latest-admin-umrah-update')->firstOrFail();
+        $blog = Blog::where('slug', 'latest-admin-umrah-update')->firstOrFail();
         Storage::disk('public')->assertExists($blog->featured_image);
 
         $this->get('/blog')
@@ -245,7 +267,7 @@ class AdminBlogTest extends TestCase
             ->assertSee('<h2>Fresh information for Umrah travelers.</h2>', false)
             ->assertSee('<strong>Departure update</strong>', false)
             ->assertDontSee('unsafe')
-            ->assertSee('storage/' . $blog->featured_image, false)
+            ->assertSee('storage/'.$blog->featured_image, false)
             ->assertSee('Latest Posts')
             ->assertSee('aria-label="Instagram"', false)
             ->assertSee('aria-label="Facebook"', false)
@@ -254,7 +276,7 @@ class AdminBlogTest extends TestCase
         $this->get('/blog/latest-admin-umrah-update')
             ->assertRedirect('/latest-admin-umrah-update', 301);
 
-        $this->put('/admin/blogs/' . $blog->id, [
+        $this->put('/admin/blogs/'.$blog->id, [
             'title' => $blog->title,
             'slug' => $blog->slug,
             'image_alt_text' => $blog->image_alt_text,

@@ -25,7 +25,7 @@
                                     @endif
                                     <small class="subline">/st-tour/{{ $package->slug }}</small>
                                 </td>
-                                <td>{{ $package->category }}</td>
+                                <td>{{ implode(', ', $package->categories ?: [$package->category]) }}</td>
                                 <td>{{ $package->price !== null ? '₹' . number_format((float) $package->price, 2) : '—' }}</td>
                                 <td><span class="status-pill {{ $package->status }}">{{ ucfirst($package->status) }}</span></td>
                                 <td class="table-actions">

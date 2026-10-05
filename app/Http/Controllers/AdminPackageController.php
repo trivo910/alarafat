@@ -22,8 +22,11 @@ class AdminPackageController extends Controller
 
     public function store(Request $request)
     {
+        $this->normalizeCategories($request);
         $validated = $request->validate($this->rules());
 
+        $validated['categories'] = array_values(array_unique($validated['categories']));
+        $validated['category'] = $validated['categories'][0];
         $validated['slug'] = Str::slug($validated['slug'] ?: $validated['title']);
         $validated['description'] = BlogContentSanitizer::sanitize($validated['description'] ?? '');
         $validated['featured_image'] = $request->file('featured_image')
@@ -33,7 +36,6 @@ class AdminPackageController extends Controller
         $validated['included'] = $this->cleanList($request->input('included', []));
         $validated['excluded'] = $this->cleanList($request->input('excluded', []));
         $validated['itinerary'] = $this->cleanItinerary($request->input('itinerary', []));
-        $validated['is_featured'] = $request->boolean('is_featured');
         $validated['show_in_trending'] = $request->boolean('show_in_trending');
         Package::create($validated);
 
@@ -47,14 +49,16 @@ class AdminPackageController extends Controller
 
     public function update(Request $request, Package $package)
     {
+        $this->normalizeCategories($request);
         $validated = $request->validate($this->rules($package));
 
+        $validated['categories'] = array_values(array_unique($validated['categories']));
+        $validated['category'] = $validated['categories'][0];
         $validated['slug'] = Str::slug($validated['slug']);
         $validated['description'] = BlogContentSanitizer::sanitize($validated['description'] ?? '');
         $validated['included'] = $this->cleanList($request->input('included', []));
         $validated['excluded'] = $this->cleanList($request->input('excluded', []));
         $validated['itinerary'] = $this->cleanItinerary($request->input('itinerary', []));
-        $validated['is_featured'] = $request->boolean('is_featured');
         $validated['show_in_trending'] = $request->boolean('show_in_trending');
 
         $oldThumbnail = $package->featured_image;
@@ -98,7 +102,8 @@ class AdminPackageController extends Controller
         return [
             'title' => ['required', 'string', 'max:255'],
             'slug' => ['nullable', 'string', 'max:255', $uniqueSlug],
-            'category' => ['required', 'in:Umrah,Hajj,Ramzan,Ziyarat'],
+            'categories' => ['required', 'array', 'min:1'],
+            'categories.*' => ['required', 'in:Umrah,Hajj,Ramzan,Ziyarat'],
             'price' => ['nullable', 'numeric', 'min:0'],
             'featured_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:4096'],
             'image_alt_text' => ['nullable', 'string', 'max:255'],
@@ -123,6 +128,13 @@ class AdminPackageController extends Controller
             'remove_gallery_images' => ['nullable', 'array'],
             'remove_gallery_images.*' => ['string'],
         ];
+    }
+
+    private function normalizeCategories(Request $request): void
+    {
+        if (! $request->exists('categories') && $request->exists('category')) {
+            $request->merge(['categories' => [$request->input('category')]]);
+        }
     }
 
     private function storeGallery(Request $request): array

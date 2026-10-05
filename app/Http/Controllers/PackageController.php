@@ -7,6 +7,17 @@ use Illuminate\View\View;
 
 class PackageController extends Controller
 {
+    public function home(): View
+    {
+        $trendingPackages = Package::query()
+            ->where('status', 'published')
+            ->where('show_in_trending', true)
+            ->latest()
+            ->get();
+
+        return view('home', compact('trendingPackages'));
+    }
+
     public function hajj(): View
     {
         return $this->listing('hajj', 'Hajj');
@@ -38,13 +49,13 @@ class PackageController extends Controller
             'Hajj' => 'hajj',
             'Ramzan' => 'ramzan',
             'Ziyarat' => 'ziyarat',
-                default => 'umrah',
-            };
-            $categoryUrl = match ($package->category) {
-                'Hajj' => '/hajj',
-                'Ramzan' => '/ramzan-umrah-package-from-mumbai',
-                'Ziyarat' => '/ziyarat',
-                default => '/umrah-package-from-mumbai',
+            default => 'umrah',
+        };
+        $categoryUrl = match ($package->category) {
+            'Hajj' => '/hajj',
+            'Ramzan' => '/ramzan-umrah-package-from-mumbai',
+            'Ziyarat' => '/ziyarat',
+            default => '/umrah-package-from-mumbai',
         };
 
         $relatedPackages = Package::query()
@@ -61,7 +72,10 @@ class PackageController extends Controller
     {
         $packages = Package::query()
             ->where('status', 'published')
-            ->where('category', $category)
+            ->where(function ($query) use ($category) {
+                $query->whereJsonContains('categories', $category)
+                    ->orWhere('category', $category);
+            })
             ->latest()
             ->get();
 
