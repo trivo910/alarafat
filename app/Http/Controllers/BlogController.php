@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Support\BlogContentSanitizer;
+use App\Support\PublicImageStorage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -11,6 +12,8 @@ use Illuminate\Validation\ValidationException;
 
 class BlogController extends Controller
 {
+    public function __construct(private PublicImageStorage $imageStorage) {}
+
     public function publicIndex()
     {
         $blogs = Blog::where('status', 'published')
@@ -48,7 +51,9 @@ class BlogController extends Controller
 
         $validated['slug'] = Str::slug($validated['slug']);
         $validated['content'] = $this->sanitizeContent($validated['content']);
-        $validated['featured_image'] = $request->file('featured_image')?->store('blogs', 'public');
+        $validated['featured_image'] = $request->file('featured_image')
+            ? $this->imageStorage->store($request->file('featured_image'), 'blogs')
+            : null;
         $validated['published_at'] = $validated['status'] === 'published' ? ($validated['published_at'] ?? now()) : null;
 
         Blog::create($validated);
@@ -65,7 +70,7 @@ class BlogController extends Controller
     {
         $validated = $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'max:255', 'unique:blogs,slug,' . $blog->id],
+            'slug' => ['required', 'string', 'max:255', 'unique:blogs,slug,'.$blog->id],
             'featured_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
             'image_alt_text' => ['nullable', 'string', 'max:255'],
             'content' => ['required', 'string'],
@@ -80,7 +85,7 @@ class BlogController extends Controller
         unset($validated['featured_image']);
         $oldImage = $blog->featured_image;
         if ($request->hasFile('featured_image')) {
-            $validated['featured_image'] = $request->file('featured_image')->store('blogs', 'public');
+            $validated['featured_image'] = $this->imageStorage->store($request->file('featured_image'), 'blogs');
         }
         $validated['published_at'] = $validated['status'] === 'published' ? ($validated['published_at'] ?? $blog->published_at ?? now()) : null;
 

@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Package;
 use App\Support\BlogContentSanitizer;
+use App\Support\PublicImageStorage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class AdminPackageController extends Controller
 {
+    public function __construct(private PublicImageStorage $imageStorage) {}
+
     public function index()
     {
         $packages = Package::latest()->get();
@@ -23,7 +26,9 @@ class AdminPackageController extends Controller
 
         $validated['slug'] = Str::slug($validated['slug'] ?: $validated['title']);
         $validated['description'] = BlogContentSanitizer::sanitize($validated['description'] ?? '');
-        $validated['featured_image'] = $request->file('featured_image')?->store('packages', 'public');
+        $validated['featured_image'] = $request->file('featured_image')
+            ? $this->imageStorage->store($request->file('featured_image'), 'packages')
+            : null;
         $validated['gallery_images'] = $this->storeGallery($request);
         $validated['included'] = $this->cleanList($request->input('included', []));
         $validated['excluded'] = $this->cleanList($request->input('excluded', []));
@@ -55,7 +60,7 @@ class AdminPackageController extends Controller
         $oldThumbnail = $package->featured_image;
         unset($validated['featured_image']);
         if ($request->hasFile('featured_image')) {
-            $validated['featured_image'] = $request->file('featured_image')->store('packages', 'public');
+            $validated['featured_image'] = $this->imageStorage->store($request->file('featured_image'), 'packages');
         }
 
         $gallery = $package->gallery_images ?? [];
@@ -88,7 +93,7 @@ class AdminPackageController extends Controller
 
     private function rules(?Package $package = null): array
     {
-        $uniqueSlug = 'unique:packages,slug' . ($package ? ',' . $package->id : '');
+        $uniqueSlug = 'unique:packages,slug'.($package ? ','.$package->id : '');
 
         return [
             'title' => ['required', 'string', 'max:255'],
@@ -124,7 +129,7 @@ class AdminPackageController extends Controller
     {
         $paths = [];
         foreach ($request->file('gallery_images', []) as $image) {
-            $paths[] = $image->store('packages/gallery', 'public');
+            $paths[] = $this->imageStorage->store($image, 'packages/gallery');
         }
 
         return $paths;
