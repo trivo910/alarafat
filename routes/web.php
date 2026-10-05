@@ -22,6 +22,8 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
+Route::get('/packages', [PackageController::class, 'allPackages'])->name('packages.index');
+
 Route::get('/umrah-package-from-mumbai', [PackageController::class, 'umrah']);
 
 Route::get('/ramzan-umrah-package-from-mumbai', [PackageController::class, 'ramzan']);

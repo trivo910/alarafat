@@ -34,6 +34,46 @@ class ExampleTest extends TestCase
             ->assertSee('Exploring the Spiritual and Cultural Significance of Hajj');
     }
 
+    public function test_all_packages_page_displays_and_filters_packages_in_a_single_grid(): void
+    {
+        Package::create([
+            'title' => 'Hajj and Ziyarat Package',
+            'slug' => 'hajj-ziyarat-package',
+            'category' => 'Hajj',
+            'categories' => ['Hajj', 'Ziyarat'],
+            'status' => 'published',
+        ]);
+        Package::create([
+            'title' => 'Unpublished Umrah Package',
+            'slug' => 'unpublished-umrah-package',
+            'category' => 'Umrah',
+            'status' => 'draft',
+        ]);
+
+        $this->get('/packages')
+            ->assertOk()
+            ->assertSee('All Packages')
+            ->assertSee('Hajj and Ziyarat Package')
+            ->assertSee('1 tour found')
+            ->assertSee('name="category"', false)
+            ->assertDontSee('Unpublished Umrah Package');
+
+        $this->get('/packages?category=Ziyarat')
+            ->assertOk()
+            ->assertSee('Hajj and Ziyarat Package')
+            ->assertSee('1 tour found');
+
+        $this->get('/packages?q=missing-package')
+            ->assertOk()
+            ->assertSee('No packages match your search.')
+            ->assertSee('0 tours found');
+
+        $this->get('/')
+            ->assertOk()
+            ->assertSee('/packages')
+            ->assertSee('All Packages');
+    }
+
     public function test_published_packages_appear_on_their_matching_category_page(): void
     {
         $packagePages = [
@@ -45,7 +85,7 @@ class ExampleTest extends TestCase
 
         foreach ($packagePages as $page) {
             Package::create([
-                'title' => $page['category'] . ' Admin Package',
+                'title' => $page['category'].' Admin Package',
                 'slug' => $page['slug'],
                 'category' => $page['category'],
                 'status' => 'published',
@@ -55,8 +95,8 @@ class ExampleTest extends TestCase
         foreach ($packagePages as $page) {
             $this->get($page['route'])
                 ->assertOk()
-                ->assertSee($page['category'] . ' Admin Package')
-                ->assertSee('/st-tour/' . $page['slug'], false);
+                ->assertSee($page['category'].' Admin Package')
+                ->assertSee('/st-tour/'.$page['slug'], false);
         }
 
         Package::create([

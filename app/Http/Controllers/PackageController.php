@@ -18,6 +18,47 @@ class PackageController extends Controller
         return view('home', compact('trendingPackages'));
     }
 
+    public function allPackages(): View
+    {
+        $query = Package::query()
+            ->where('status', 'published')
+            ->when(request('category'), function ($query, string $category): void {
+                $query->where(function ($query) use ($category): void {
+                    $query->whereJsonContains('categories', $category)
+                        ->orWhere('category', $category);
+                });
+            })
+            ->when(request('q'), function ($query, string $search): void {
+                $query->where('title', 'like', '%'.$search.'%');
+            })
+            ->when(request('price') === 'low', fn ($query) => $query->orderByRaw('price IS NULL')->orderBy('price'))
+            ->when(request('price') === 'high', fn ($query) => $query->orderByRaw('price IS NULL')->orderByDesc('price'))
+            ->when(request('duration'), fn ($query, string $duration) => $query->where('duration', $duration))
+            ->when(request('language'), fn ($query, string $language) => $query->where('languages', 'like', '%'.$language.'%'));
+
+        if (! in_array(request('price'), ['low', 'high'], true)) {
+            $query->latest();
+        }
+
+        $packages = $query->get();
+        $durations = Package::query()
+            ->where('status', 'published')
+            ->whereNotNull('duration')
+            ->where('duration', '!=', '')
+            ->distinct()
+            ->orderBy('duration')
+            ->pluck('duration');
+        $languages = Package::query()
+            ->where('status', 'published')
+            ->whereNotNull('languages')
+            ->where('languages', '!=', '')
+            ->distinct()
+            ->orderBy('languages')
+            ->pluck('languages');
+
+        return view('packages.index', compact('packages', 'durations', 'languages'));
+    }
+
     public function hajj(): View
     {
         return $this->listing('hajj', 'Hajj');
