@@ -21,10 +21,10 @@
 .package-fact small { color: var(--muted); font-size: 11px; line-height: 1.5; }
 .package-content-layout { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(260px, .9fr); gap: 36px; align-items: start; }
 .package-main-content { min-width: 0; }
-.package-tour-copy h2, .package-detail-section h2 { margin: 0 0 10px; color: #292c30; font-size: 21px; line-height: 1.35; }
-.package-description { color: #6d747a; font-size: 13px; line-height: 1.75; overflow-wrap: anywhere; }
+.package-tour-copy h2, .package-detail-section h2 { margin: 0 0 10px; color: #292c30; font-size: 30px; line-height: 1.35; }
+.package-description { color: #6d747a; font-size: 16px; line-height: 1.75; overflow-wrap: anywhere; }
 .package-description > :first-child { margin-top: 0; }
-.package-description h2, .package-description h3 { margin: 18px 0 7px; color: #30343a; font-size: 17px; }
+.package-description h2, .package-description h3 { margin: 18px 0 7px; color: #30343a; font-size: 30px; }
 .package-description p { margin: 0 0 8px; }
 .package-sidebar { position: sticky; top: 18px; display: grid; gap: 16px; }
 .package-enquiry, .package-contact-card { padding: 20px 24px; border: 1px solid #e0e3e6; border-radius: 18px; background: #fff; box-shadow: 0 3px 13px #0000000b; }
@@ -36,8 +36,8 @@
 .package-enquiry textarea { min-height: 82px; resize: vertical; }
 .package-enquiry input::placeholder, .package-enquiry textarea::placeholder { color: #8995a8; opacity: 1; }
 .package-enquiry input:focus, .package-enquiry textarea:focus { border-color: #98aeca; outline: 2px solid #dce6f2; }
-.booking-submit { width: 100%; min-height: 44px; border: 0; border-radius: 24px; color: #fff; background: #f18e79; box-shadow: 0 4px 0 #e35d43; cursor: pointer; font-size: 13px; font-weight: 600; }
-.booking-submit:hover { background: #e97860; }
+.booking-submit { width: 100%; min-height: 44px; border: 0; border-radius: 24px; color: #fff; background: #d3ad63; box-shadow: 0 4px 0 #a3854a; cursor: pointer; font-size: 16px; font-weight: 600; }
+.booking-submit:hover { background: #e2bd73; }
 .enquiry-status, .enquiry-errors { margin: 0 0 12px; color: #276749; font-size: 12px; line-height: 1.5; }
 .enquiry-errors { color: #a52828; }
 .enquiry-errors p { margin: 0 0 4px; }
@@ -57,11 +57,11 @@
 .package-itinerary h3 { margin: 0 0 6px; }
 .package-itinerary article > div { color: #626a71; font-size: 13px; line-height: 1.7; }
 .package-inclusions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
-.package-inclusions ul { margin: 0; padding-left: 19px; color: #626a71; font-size: 12px; line-height: 1.8; }
+.package-inclusions ul { margin: 0; padding-left: 19px; color: #626a71; font-size: 14px; line-height: 1.8; }
 .package-map iframe { width: 100%; min-height: 280px; border: 0; }
 .related-packages { margin-top: 76px; margin-bottom: 56px; }
 .related-packages > h2 { margin: 0 0 22px; color: #292c30; font-size: 22px; }
-.related-packages .package-info h2 { font-size: 14px; }
+.related-packages .package-info h2 { font-size: 16px; }
 .related-packages .package-image-placeholder { min-height: 100%; }
 
 @media (max-width: 760px) {
