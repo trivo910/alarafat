@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminPackageController;
 use App\Http\Controllers\AdminSmtpSettingsController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PackageController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +21,9 @@ Route::get('/about', function () {
 
 Route::get('/contact', function () {
     return view('contact');
-});
+})->name('contact');
+
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.submit');
 
 Route::get('/packages', [PackageController::class, 'allPackages'])->name('packages.index');
 

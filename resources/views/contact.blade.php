@@ -27,9 +27,23 @@
                     <a class="contact-detail" href="mailto:umrah@alarafat.com"><span class="contact-detail-icon" aria-hidden="true">✉</span><p>umrah@alarafat.com</p></a>
                 </address>
             </div>
-            <form class="contact-form" action="mailto:umrah@alarafat.com" method="post" enctype="text/plain">
+            <form class="contact-form" action="{{ route('contact.submit', [], false) }}" method="post">
+                @csrf
                 <h2>Send a message</h2>
-                <div class="contact-fields"><label><span class="visually-hidden">Your name</span><input name="name" autocomplete="name" placeholder="Your name*" required></label><label><span class="visually-hidden">Phone number</span><input name="phone" type="tel" autocomplete="tel" placeholder="Phone number"></label><label class="contact-email"><span class="visually-hidden">Your email</span><input name="email" type="email" autocomplete="email" placeholder="Your email*" required></label><label class="contact-message"><span class="visually-hidden">Message</span><textarea name="message" placeholder="Message" required></textarea></label></div>
+                @if (session('status'))
+                    <p role="status">{{ session('status') }}</p>
+                @endif
+                @if ($errors->any())
+                    <div role="alert">
+                        <p>Please correct the following errors:</p>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <div class="contact-fields"><label><span class="visually-hidden">Your name</span><input name="name" autocomplete="name" placeholder="Your name*" value="{{ old('name') }}" required></label><label><span class="visually-hidden">Phone number</span><input name="phone" type="tel" autocomplete="tel" placeholder="Phone number" value="{{ old('phone') }}"></label><label class="contact-email"><span class="visually-hidden">Your email</span><input name="email" type="email" autocomplete="email" placeholder="Your email*" value="{{ old('email') }}" required></label><label class="contact-message"><span class="visually-hidden">Message</span><textarea name="message" placeholder="Message" required>{{ old('message') }}</textarea></label></div>
                 <button type="submit" class="search-button">Submit</button>
             </form>
         </section>
