@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminPackageController;
 use App\Http\Controllers\AdminSmtpSettingsController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PackageEnquiryController;
 use App\Http\Controllers\PackageController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,7 @@ Route::get('/umrah-package-from-mumbai', [PackageController::class, 'umrah']);
 Route::get('/ramzan-umrah-package-from-mumbai', [PackageController::class, 'ramzan']);
 
 Route::get('/st-tour/{slug}', [PackageController::class, 'show'])->name('packages.show');
+Route::post('/st-tour/{slug}/enquiry', [PackageEnquiryController::class, 'store'])->name('packages.enquiry');
 
 Route::get('/blog', [BlogController::class, 'publicIndex']);
 
@@ -51,6 +53,7 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/enquiries', [AdminDashboardController::class, 'enquiries'])->name('admin.enquiries');
+    Route::get('/enquiries/{enquiry}', [AdminDashboardController::class, 'showEnquiry'])->name('admin.enquiries.show');
     Route::get('/smtp', [AdminSmtpSettingsController::class, 'edit'])->name('admin.smtp.edit');
     Route::put('/smtp', [AdminSmtpSettingsController::class, 'update'])->name('admin.smtp.update');
     Route::get('/packages', [AdminPackageController::class, 'index'])->name('admin.packages.index');

@@ -34,6 +34,17 @@ body.admin-body { min-height: 100vh; margin: 0; color: #17202c; background: #f2f
 .table-actions, .form-actions { display: flex; align-items: center; gap: 14px; }
 .table-actions form { margin: 0; }
 .table-actions a, .button-link { color: #3f648b; }
+.enquiry-filters { margin-bottom: 18px; display: flex; gap: 9px; }
+.enquiry-filters a { padding: 9px 13px; border: 1px solid #dededb; border-radius: 5px; color: #3f648b; background: #fff; }
+.enquiry-filters a.active { border-color: #234563; color: #fff; background: #234563; }
+.enquiry-back { margin: 0 0 16px; }
+.enquiry-back a { color: #3f648b; }
+.enquiry-detail { padding: 24px; }
+.enquiry-detail dl { margin: 0; display: grid; gap: 18px; }
+.enquiry-detail dt { margin-bottom: 5px; color: #8490a0; font-size: 12px; }
+.enquiry-detail dd { margin: 0; color: #17202c; font-size: 16px; overflow-wrap: anywhere; }
+.enquiry-detail-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.enquiry-detail .enquiry-message { white-space: pre-wrap; line-height: 1.6; }
 .button-link { padding: 0; border: 0; background: none; font: inherit; cursor: pointer; }
 .danger-link { color: #bd3b3b; }
 .page-actions { margin-bottom: 16px; display: flex; justify-content: flex-end; }
@@ -96,6 +107,7 @@ body.admin-body { min-height: 100vh; margin: 0; color: #17202c; background: #f2f
     .admin-header { padding-inline: 20px; }
     .admin-content { padding: 20px; }
     .stat-card { padding-inline: 14px; }
+    .enquiry-detail-columns { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
     .admin-sidebar { width: 64px; }
@@ -117,6 +129,7 @@ body.admin-body { min-height: 100vh; margin: 0; color: #17202c; background: #f2f
     .admin-main { margin-left: 64px; }
     .admin-header { height: 56px; padding-inline: 14px; }
     .admin-content { padding: 14px 10px 30px; }
+    .enquiry-detail { padding: 18px; }
     .stat-grid { grid-template-columns: 1fr; }
     .stat-card { min-height: 72px; border-right: 0; border-bottom: 1px solid #dededb; }
     .stat-card:last-child { border-bottom: 0; }

@@ -11,6 +11,9 @@ class Enquiry extends Model
         'email',
         'phone',
         'type',
+        'package_id',
+        'package_name',
+        'message',
         'status',
     ];
 }

@@ -102,17 +102,32 @@
             </article>
 
             <aside class="package-sidebar">
-                <form class="package-booking" data-package-booking data-package-title="{{ $package->title }}">
+                <form class="package-enquiry" method="POST" action="{{ route('packages.enquiry', ['slug' => $package->slug], false) }}">
+                    @csrf
                     <p class="booking-price"><small>From:</small> <strong>₹{{ $package->price !== null ? number_format((float) $package->price) : 'Contact us' }}</strong></p>
-                    <label class="booking-date">Date<input name="date" type="date" required></label>
-                    <div class="traveler-counts">
-                        <label>Adults <small>Over 18+</small><input name="adults" type="number" min="1" value="1" required></label>
-                        <label>Children <small>Under 12</small><input name="children" type="number" min="0" value="0"></label>
-                        <label>Infant <small>Under 3</small><input name="infants" type="number" min="0" value="0"></label>
-                    </div>
-                    <label class="booking-guest">Guest name<input name="guest" type="text" autocomplete="name" placeholder="Your name" required></label>
-                    <p class="booking-total">Package price <strong>₹{{ $package->price !== null ? number_format((float) $package->price) : 'On request' }}</strong></p>
-                    <button class="booking-submit" type="submit">Book now</button>
+                    <h2>Enquire About This Package</h2>
+                    @if (session('status'))
+                        <p class="enquiry-status" role="status">{{ session('status') }}</p>
+                    @endif
+                    @if ($errors->any())
+                        <div class="enquiry-errors" role="alert">
+                            <p>Please correct the following errors:</p>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <label class="visually-hidden" for="enquiry-name">Your name</label>
+                    <input id="enquiry-name" name="name" type="text" autocomplete="name" placeholder="Your Name*" value="{{ old('name') }}" required>
+                    <label class="visually-hidden" for="enquiry-email">Your email</label>
+                    <input id="enquiry-email" name="email" type="email" autocomplete="email" placeholder="Your Email*" value="{{ old('email') }}" required>
+                    <label class="visually-hidden" for="enquiry-phone">Phone number</label>
+                    <input id="enquiry-phone" name="phone" type="tel" autocomplete="tel" placeholder="Phone Number" value="{{ old('phone') }}">
+                    <label class="visually-hidden" for="enquiry-message">Your message</label>
+                    <textarea id="enquiry-message" name="message" placeholder="Your Message" required>{{ old('message') }}</textarea>
+                    <button class="booking-submit" type="submit">Send Enquiry</button>
                 </form>
 
                 <section class="package-contact-card">
@@ -147,6 +162,5 @@
 
     @include('partials.site-footer')
     <script src="{{ asset('js/hajj.js') }}" defer></script>
-    <script src="{{ asset('js/package-show.js') }}" defer></script>
 </body>
 </html>

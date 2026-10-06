@@ -14,14 +14,16 @@
         @else
             <div class="table-scroll">
                 <table class="admin-table">
-                    <thead><tr><th>Name</th><th>Type</th><th>Status</th><th>Received</th></tr></thead>
+                    <thead><tr><th>Name</th><th>Type</th><th>Package</th><th>Status</th><th>Received</th><th>Actions</th></tr></thead>
                     <tbody>
                         @foreach($recentEnquiries as $enquiry)
                             <tr>
                                 <td>{{ $enquiry->name ?: '—' }}</td>
                                 <td>{{ $enquiry->type ?: '—' }}</td>
+                                <td>{{ $enquiry->package_name ?: '—' }}</td>
                                 <td>{{ ucfirst($enquiry->status) }}</td>
                                 <td>{{ $enquiry->created_at->format('d M Y, H:i') }}</td>
+                                <td><a href="{{ route('admin.enquiries.show', $enquiry) }}">View</a></td>
                             </tr>
                         @endforeach
                     </tbody>

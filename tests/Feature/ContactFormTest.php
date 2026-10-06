@@ -32,6 +32,13 @@ class ContactFormTest extends TestCase
         ])->assertRedirect('/contact')
             ->assertSessionHas('status');
 
+        $this->assertDatabaseHas('enquiries', [
+            'name' => 'Arafat Visitor',
+            'email' => 'visitor@example.com',
+            'type' => 'Contact',
+            'message' => 'Please share details about your packages.',
+        ]);
+
         Mail::assertSent(ContactMessage::class, function (ContactMessage $mail): bool {
             return $mail->hasTo('umrah@alarafat.com')
                 && $mail->name === 'Arafat Visitor'
