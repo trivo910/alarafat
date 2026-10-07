@@ -1,2 +1,3 @@
 User-agent: *
-Disallow:
+Disallow: /admin
+Sitemap: https://alarafat.com/sitemap_index.xml

@@ -1,0 +1,165 @@
+.faq-page {
+    padding: 42px 0 0;
+}
+
+.faq-intro {
+    margin: 0 auto 36px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.faq-intro h1 {
+    margin: 0 0 6px;
+    font-size: clamp(25px, 3vw, 32px);
+    line-height: 1.3;
+}
+
+.faq-intro p {
+    margin: 0;
+    font-size: 15px;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 16px;
+    padding-bottom: 60px;
+}
+
+.faq-column {
+    display: grid;
+    align-content: start;
+    gap: 14px;
+}
+
+.faq-item {
+    padding: 0 16px;
+    border: 1px solid #ececee;
+    border-radius: 13px;
+    background: #fff;
+    box-shadow: 0 3px 12px #0000000b;
+}
+
+.faq-item summary {
+    position: relative;
+    padding: 16px 28px 16px 0;
+    color: #17191c;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary::after {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    display: grid;
+    width: 20px;
+    height: 20px;
+    place-items: center;
+    border-radius: 50%;
+    color: #fff;
+    background: #073c68;
+    content: "+";
+    font-size: 14px;
+    line-height: 1;
+    transform: translateY(-50%);
+}
+
+.faq-item[open] summary::after {
+    content: "−";
+}
+
+.faq-item p {
+    margin: -2px 0 16px;
+    color: #68717a;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.faq-promo {
+    min-height: 330px;
+    margin-top: 70px;
+    margin-bottom: 65px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+}
+
+.faq-promo-art {
+    min-height: 300px;
+    background: #fff url('https://alarafat.com/wp-content/uploads/2022/08/02-Apr-10-Apr-2-1-1.png') center / cover no-repeat;
+}
+
+.faq-promo-copy {
+    padding: 34px clamp(24px, 5vw, 70px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e3e5e7;
+    border-radius: 0 10px 10px 0;
+    text-align: center;
+}
+
+.faq-promo-copy h2 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    line-height: 1.35;
+}
+
+.faq-promo-copy p {
+    margin: 0 0 18px;
+    color: #68717a;
+    font-size: 13px;
+}
+
+.faq-promo-copy a {
+    padding: 9px 20px;
+    border-radius: 999px;
+    color: #fff;
+    background: var(--gold);
+    font-weight: 600;
+}
+
+.faq-promo-copy a:hover,
+.faq-promo-copy a:focus-visible {
+    background: var(--gold-dark);
+}
+
+@media (max-width: 760px) {
+    .faq-page {
+        padding-top: 32px;
+    }
+
+    .faq-intro {
+        margin-bottom: 26px;
+    }
+
+    .faq-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .faq-promo {
+        grid-template-columns: 1fr;
+        margin-top: 42px;
+        margin-bottom: 42px;
+    }
+
+    .faq-promo-art {
+        min-height: 220px;
+    }
+
+    .faq-promo-copy {
+        min-height: 220px;
+        border-radius: 0 0 10px 10px;
+    }
+}

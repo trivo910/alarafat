@@ -18,6 +18,8 @@ class ExampleTest extends TestCase
         $response = $this->get('/');
 
         $response->assertStatus(200)
+            ->assertSee('<script type="application/ld+json">', false)
+            ->assertSee('"@type" : "LocalBusiness"', false)
             ->assertSee('Welcome to Al Arafat Tours')
             ->assertSee('Mumbai Umrah Packages 2026')
             ->assertSee('Our Commitments')
@@ -157,6 +159,37 @@ class ExampleTest extends TestCase
             ->assertSee('Ramzan Umrah Packages from Mumbai')
             ->assertSee('The Spiritual and Physical Benefits of Umrah')
             ->assertSee('What our clients say');
+    }
+
+    public function test_the_faq_page_shows_questions_and_is_linked_from_the_footer(): void
+    {
+        $this->get('/faq')
+            ->assertOk()
+            ->assertSee('<script type="application/ld+json">', false)
+            ->assertSee('Frequently Asked Questions')
+            ->assertSee('What is Umrah and how is it different from Hajj?')
+            ->assertSee('Can women travel for Umrah without a male guardian?')
+            ->assertSee('href="'.route('faq').'"', false);
+    }
+
+    public function test_the_privacy_policy_page_is_linked_from_the_footer(): void
+    {
+        $this->get('/privacy-policy')
+            ->assertOk()
+            ->assertSee('Privacy Policy for Al Arafat')
+            ->assertSee('Information we may collect')
+            ->assertSee('Your privacy choices and rights')
+            ->assertSee('href="'.route('privacy-policy').'"', false);
+    }
+
+    public function test_the_terms_conditions_page_is_linked_from_the_footer(): void
+    {
+        $this->get('/terms-conditions')
+            ->assertOk()
+            ->assertSee('Terms & Conditions')
+            ->assertSee('Travel information and bookings')
+            ->assertSee('Disclaimer and limitation of liability')
+            ->assertSee('href="'.route('terms-conditions').'"', false);
     }
 
     public function test_the_blog_page_loads_with_listing_content(): void

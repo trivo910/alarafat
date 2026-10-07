@@ -32,5 +32,6 @@
         <a @class(['active' => ($activePage ?? '') === 'about']) href="{{ url('/about') }}">About</a>
         <a @class(['active' => ($activePage ?? '') === 'contact']) href="{{ url('/contact') }}">Contact</a>
     </nav>
-    <div class="header-tools"><span>INR</span><a class="account-button" href="mailto:umrah@alarafat.com" aria-label="Contact Al Arafat">♙</a></div>
+    <!-- <div class="header-tools"><span>INR</span><a class="account-button" href="mailto:umrah@alarafat.com" aria-label="Contact Al Arafat">♙</a></div> -->
+     
 </header>

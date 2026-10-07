@@ -20,8 +20,13 @@ class BlogController extends Controller
             ->orderByDesc('published_at')
             ->orderByDesc('id')
             ->get();
+        $popularBlogs = Blog::where('status', 'published')
+            ->orderByDesc('published_at')
+            ->orderByDesc('id')
+            ->limit(5)
+            ->get();
 
-        return view('blog', compact('blogs'));
+        return view('blog', compact('blogs', 'popularBlogs'));
     }
 
     public function index()

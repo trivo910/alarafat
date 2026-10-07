@@ -89,6 +89,34 @@ class AdminBlogTest extends TestCase
             ->assertSee('No enquiries yet.');
     }
 
+    public function test_blog_page_shows_five_latest_published_posts_without_categories(): void
+    {
+        $publishedBlogs = collect();
+
+        foreach (range(1, 6) as $number) {
+            $publishedBlogs->push(Blog::create([
+                'title' => 'Published blog '.$number,
+                'slug' => 'published-blog-'.$number,
+                'content' => '<p>Published content.</p>',
+                'status' => 'published',
+                'published_at' => now()->subDays(7 - $number),
+            ]));
+        }
+
+        Blog::create([
+            'title' => 'Draft blog',
+            'slug' => 'draft-blog',
+            'content' => '<p>Draft content.</p>',
+            'status' => 'draft',
+        ]);
+
+        $this->get('/blog')
+            ->assertOk()
+            ->assertDontSee('Categories')
+            ->assertViewHas('popularBlogs', fn ($popularBlogs) => $popularBlogs->pluck('id')->all()
+                === $publishedBlogs->reverse()->take(5)->pluck('id')->all());
+    }
+
     public function test_admin_can_create_a_package_manually(): void
     {
         Storage::fake('public');

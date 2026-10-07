@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pages/blog.css') }}">
+    @include('components.schema')
 </head>
 <body>
     @include('partials.site-header', ['activePage' => 'blog'])
@@ -57,29 +58,21 @@
                 <div class="panel">
                     <h3>Popular posts</h3>
                     <div class="popular-list">
-                        <a class="popular-item" href="#">
-                            <img src="https://alarafat.com/wp-content/uploads/2022/12/ziyarah_al_masjid_6f21f1147b-1536x1536.jpg" alt="Begin your blessed journey">
-                            <div>
-                                <strong>Begin Your Blessed Journey – Umrah Packages from Mumbai</strong>
-                                <span>November 1, 2025</span>
-                            </div>
-                        </a>
+                        @foreach($popularBlogs as $popularBlog)
+                            <a class="popular-item" href="{{ route('blog.show', $popularBlog->slug) }}">
+                                @if($popularBlog->featured_image)
+                                    <img src="{{ $popularBlog->featured_image_url }}" alt="{{ $popularBlog->image_alt_text ?: $popularBlog->title }}">
+                                @else
+                                    <span class="popular-placeholder" aria-hidden="true"></span>
+                                @endif
+                                <div>
+                                    <strong>{{ $popularBlog->title }}</strong>
+                                    <span>{{ optional($popularBlog->published_at)->format('F j, Y') ?: 'Recently' }}</span>
+                                </div>
+                            </a>
+                        @endforeach
                     </div>
                 </div>
-
-                <div class="panel">
-                    <h3>Categories</h3>
-                    <div class="category-list">
-                        <div class="category-item"><div class="left"><span class="dot" style="background:#c89d57"></span>Blog</div><span class="count">6</span></div>
-                        <div class="category-item"><div class="left"><span class="dot" style="background:#d86f56"></span>Booking</div><span class="count">0</span></div>
-                        <div class="category-item"><div class="left"><span class="dot" style="background:#7ba7df"></span>Hotel</div><span class="count">0</span></div>
-                        <div class="category-item"><div class="left"><span class="dot" style="background:#8bc38d"></span>Stays</div><span class="count">0</span></div>
-                        <div class="category-item"><div class="left"><span class="dot" style="background:#d3a064"></span>Travel</div><span class="count">0</span></div>
-                        <div class="category-item"><div class="left"><span class="dot" style="background:#72c7c1"></span>Umrah</div><span class="count">3</span></div>
-                        <div class="category-item"><div class="left"><span class="dot" style="background:#b99ed0"></span>Uncategorized</div><span class="count">0</span></div>
-                    </div>
-                </div>
-
             </aside>
         </div>
     </main>

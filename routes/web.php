@@ -6,8 +6,8 @@ use App\Http\Controllers\AdminPackageController;
 use App\Http\Controllers\AdminSmtpSettingsController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\PackageEnquiryController;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\PackageEnquiryController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PackageController::class, 'home']);
@@ -25,6 +25,18 @@ Route::get('/contact', function () {
 })->name('contact');
 
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.submit');
+
+Route::get('/faq', function () {
+    return view('faq');
+})->name('faq');
+
+Route::get('/privacy-policy', function () {
+    return view('privacy-policy');
+})->name('privacy-policy');
+
+Route::get('/terms-conditions', function () {
+    return view('terms-conditions');
+})->name('terms-conditions');
 
 Route::get('/packages', [PackageController::class, 'allPackages'])->name('packages.index');
 
