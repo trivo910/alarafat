@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#090909">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}?v=20261007">
     <meta name="description" content="About Al Arafat - Al Arafat is one of the first travel agencies to offer hajj and umrah tours with the main focus of creating affordable packages,">
     <title>About Al Arafat</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">

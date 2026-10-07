@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}?v=20261007">
     <meta name="theme-color" content="#090909">
     <meta name="description" content="Embark on Hajj with confidence. Al Arafat Tours delivers trusted service &amp; affordable care. Reserve today!">
     <title>Best Hajj Package from Mumbai 2026 | Al Arafat Tours</title>

@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}?v=20261007">
     <meta name="theme-color" content="#090909">
     <meta name="description" content="Discover the best Umrah package from Mumbai with comfort, affordable prices, and top-notch services for a peaceful and spiritual journey. Book your pilgrimage today!">
     <title>Best Umrah Package from Mumbai | Al-arafat</title>

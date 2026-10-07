@@ -18,6 +18,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}?v=20261007">
     <meta name="theme-color" content="#090909">
     <meta name="description" content="{{ $package->meta_description ?: Str::limit(strip_tags($package->description ?? ''), 160) }}">
     <title>{{ $package->meta_title ?: $package->title }}</title>

@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}?v=20261007">
     <meta name="theme-color" content="#090909">
     <meta name="description" content="If You have any Query feel free to Contact Al Arafat">
     <title>Contact Al Arafat</title>

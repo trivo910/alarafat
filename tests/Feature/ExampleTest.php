@@ -18,6 +18,7 @@ class ExampleTest extends TestCase
         $response = $this->get('/');
 
         $response->assertStatus(200)
+            ->assertSee('/favicon.ico?v=20261007', false)
             ->assertSee('<script type="application/ld+json">', false)
             ->assertSee('"@type" : "LocalBusiness"', false)
             ->assertSee('Welcome to Al Arafat Tours')

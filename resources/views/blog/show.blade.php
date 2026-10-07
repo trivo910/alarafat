@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}?v=20261007">
     <title>{{ $blog->meta_title ?: $blog->title }}</title>
     <meta name="description" content="{{ $blog->meta_description ?: strip_tags(Str::limit($blog->content, 160)) }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">

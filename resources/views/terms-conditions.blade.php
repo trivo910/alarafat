@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}?v=20261007">
     <meta name="theme-color" content="#090909">
     <meta name="description" content="Read the terms and conditions for using the Al Arafat Tours & Travels website and its travel information and services.">
     <title>Terms &amp; Conditions - Al Arafat</title>

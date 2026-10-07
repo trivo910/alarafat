@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#090909">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}?v=20261007">
     <meta name="description" content="Blog page consider as you are planning on going for Hajj or Umrah, then it is a good idea to consider a Zirayat tour package.">
     <title>Blog - Al Arafat</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">

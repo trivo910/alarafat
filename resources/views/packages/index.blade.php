@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}?v=20261007">
     <meta name="theme-color" content="#090909">
     <meta name="description" content="Explore all published Umrah, Hajj, Ramzan, and Ziyarat packages from Al Arafat Tours & Travels.">
     <title>All Packages | Al Arafat Tours &amp; Travels</title>

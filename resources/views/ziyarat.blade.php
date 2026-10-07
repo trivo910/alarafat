@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}?v=20261007">
     <meta name="theme-color" content="#090909">
     <meta name="description" content="Ziyarat Al Arafat - Al Arafat is one of the first travel agencies to offer hajj and umrah tours with the main focus of creating affordable packages,">
     <title>Ziyarat Al Arafat</title>

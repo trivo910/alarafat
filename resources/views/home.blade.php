@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}?v=20261007">
     <meta name="theme-color" content="#090909">
     <meta name="description" content="Book your Umrah Package from Mumbai with Al Arafat Haj &amp; Umrah Tours. Affordable prices, expert guidance, and comfortable travel arrangements for a hassle-free spiritual journey.">
     <title>Umrah Package From Mumbai | Al Arafat Haj &amp; Umrah Tours</title>
