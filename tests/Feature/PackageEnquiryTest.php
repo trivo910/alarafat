@@ -57,6 +57,7 @@ class PackageEnquiryTest extends TestCase
 
         $this->get(route('admin.enquiries.show', $enquiryId))
             ->assertOk()
+            ->assertSee('admin.css?v='.filemtime(public_path('css/pages/admin.css')), false)
             ->assertSee('visitor@example.com')
             ->assertSee('+91 98765 43210')
             ->assertSee($package->title)
