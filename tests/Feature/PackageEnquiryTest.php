@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\Package;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
 class PackageEnquiryTest extends TestCase
@@ -53,7 +54,7 @@ class PackageEnquiryTest extends TestCase
             ->assertSee($package->title)
             ->assertSee('Booking');
 
-        $enquiryId = (int) \Illuminate\Support\Facades\DB::table('enquiries')->value('id');
+        $enquiryId = (int) DB::table('enquiries')->value('id');
 
         $this->get(route('admin.enquiries.show', $enquiryId))
             ->assertOk()
@@ -78,6 +79,29 @@ class PackageEnquiryTest extends TestCase
             ->assertSessionHasErrors(['name', 'email', 'message']);
 
         $this->assertDatabaseCount('enquiries', 0);
+    }
+
+    public function test_package_detail_only_renders_validated_google_maps_embeds(): void
+    {
+        $package = $this->publishedPackage();
+        $package->update(['map_embed' => '<iframe src="https://attacker.example/maps"></iframe>']);
+
+        $this->get(route('packages.show', $package->slug))
+            ->assertOk()
+            ->assertDontSee('attacker.example')
+            ->assertDontSee('package-location');
+    }
+
+    public function test_package_detail_renders_a_safe_google_maps_iframe_from_a_stored_url(): void
+    {
+        $package = $this->publishedPackage();
+        $package->update(['map_embed' => 'https://www.google.com/maps/embed?pb=test']);
+
+        $this->get(route('packages.show', $package->slug))
+            ->assertOk()
+            ->assertSee('<iframe', false)
+            ->assertSee('src="https://www.google.com/maps/embed?pb=test"', false)
+            ->assertDontSee('onload=');
     }
 
     private function publishedPackage(): Package

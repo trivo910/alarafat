@@ -58,7 +58,7 @@
             <label>Group size<input name="group_size" value="{{ old('group_size', $package?->group_size) }}"></label>
             <label>Languages<input name="languages" value="{{ old('languages', $package?->languages) }}"></label>
         </div>
-        <label>Map embed (iframe / HTML)<textarea name="map_embed" rows="3">{{ old('map_embed', $package?->map_embed) }}</textarea></label>
+        <label>Google Maps embed URL or iframe<textarea name="map_embed" rows="3">{{ old('map_embed', $package?->map_embed) }}</textarea></label>
     </section>
 
     <section class="package-form-section">

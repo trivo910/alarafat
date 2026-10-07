@@ -32,10 +32,6 @@
 
                 <button type="submit">Login</button>
             </form>
-
-            <!-- <div class="text-muted">
-                Default admin: admin / Admin@123
-            </div> -->
         </div>
     </div>
 </body>

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Support\GoogleMapsEmbed;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
@@ -54,5 +55,10 @@ class Package extends Model
         }
 
         return asset('storage/'.$image);
+    }
+
+    public function getMapEmbedUrlAttribute(): ?string
+    {
+        return GoogleMapsEmbed::extractUrl($this->map_embed);
     }
 }

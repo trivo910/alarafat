@@ -5,8 +5,10 @@ namespace Tests\Feature;
 use App\Models\Blog;
 use App\Models\Package;
 use App\Models\User;
+use Database\Seeders\DatabaseSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
@@ -37,6 +39,49 @@ class AdminBlogTest extends TestCase
             ->assertOk()
             ->assertSee('Save as draft')
             ->assertSee('Publish blog');
+    }
+
+    public function test_database_seeder_does_not_create_a_default_admin_account(): void
+    {
+        config(['admin.bootstrap_user' => [
+            'name' => null,
+            'username' => null,
+            'email' => null,
+            'password' => null,
+        ]]);
+
+        $this->seed(DatabaseSeeder::class);
+
+        $this->assertDatabaseMissing('users', ['email' => 'admin@alarafat.com']);
+    }
+
+    public function test_database_seeder_creates_an_admin_only_with_explicit_credentials(): void
+    {
+        config(['admin.bootstrap_user' => [
+            'name' => 'Deployment Admin',
+            'username' => 'deployment-admin',
+            'email' => 'deployment-admin@example.com',
+            'password' => 'Generated-Random-Passphrase-2026',
+        ]]);
+
+        $this->seed(DatabaseSeeder::class);
+
+        $this->assertDatabaseHas('users', [
+            'name' => 'Deployment Admin',
+            'username' => 'deployment-admin',
+            'email' => 'deployment-admin@example.com',
+        ]);
+        $this->assertTrue(Hash::check(
+            'Generated-Random-Passphrase-2026',
+            User::where('email', 'deployment-admin@example.com')->value('password')
+        ));
+    }
+
+    public function test_admin_password_reset_rejects_an_unknown_account(): void
+    {
+        $this->artisan('admin:password-reset', ['email' => 'missing-admin@example.com'])
+            ->expectsOutput('No user account was found for that email address.')
+            ->assertExitCode(1);
     }
 
     public function test_admin_cannot_publish_an_empty_rich_text_blog(): void
@@ -133,7 +178,7 @@ class AdminBlogTest extends TestCase
                 'tour_type' => 'Daily Tour',
                 'group_size' => '1 person',
                 'languages' => 'English',
-                'map_embed' => '<iframe title="Map"></iframe>',
+                'map_embed' => '<iframe title="Map" src="https://www.google.com/maps/embed?pb=test"></iframe>',
                 'featured_image' => UploadedFile::fake()->create('thumbnail.jpg', 10, 'image/jpeg'),
                 'gallery_images' => [UploadedFile::fake()->create('gallery.jpg', 10, 'image/jpeg')],
                 'included' => ['Visa application', '', 'Return flights'],
@@ -151,6 +196,7 @@ class AdminBlogTest extends TestCase
         $this->assertSame(['Umrah'], $package->categories);
         $this->assertSame(['Visa application', 'Return flights'], $package->included);
         $this->assertSame('5 Days', $package->itinerary[0]['days_label']);
+        $this->assertSame('https://www.google.com/maps/embed?pb=test', $package->map_embed);
         Storage::disk('public')->assertExists($package->featured_image);
         Storage::disk('public')->assertExists($package->gallery_images[0]);
 
@@ -194,6 +240,22 @@ class AdminBlogTest extends TestCase
         $this->assertSame([], $package->gallery_images);
         Storage::disk('public')->assertExists($thumbnail);
         Storage::disk('public')->assertMissing($galleryImage);
+    }
+
+    public function test_admin_cannot_save_scriptable_map_embed_html(): void
+    {
+        $this->actingAs(User::factory()->create())
+            ->post('/admin/packages', [
+                'title' => 'Unsafe Map Package',
+                'slug' => 'unsafe-map-package',
+                'category' => 'Umrah',
+                'description' => 'Package details.',
+                'status' => 'draft',
+                'map_embed' => '<iframe src="https://attacker.example/maps"></iframe><script>alert(1)</script>',
+            ])
+            ->assertSessionHasErrors('map_embed');
+
+        $this->assertDatabaseMissing('packages', ['slug' => 'unsafe-map-package']);
     }
 
     public function test_admin_can_assign_multiple_categories_to_a_package(): void

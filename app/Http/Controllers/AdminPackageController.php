@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Package;
 use App\Support\BlogContentSanitizer;
+use App\Support\GoogleMapsEmbed;
 use App\Support\PublicImageStorage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -28,6 +29,7 @@ class AdminPackageController extends Controller
         $validated['categories'] = array_values(array_unique($validated['categories']));
         $validated['category'] = $validated['categories'][0];
         $validated['slug'] = Str::slug($validated['slug'] ?: $validated['title']);
+        $validated['map_embed'] = GoogleMapsEmbed::extractUrl($validated['map_embed'] ?? null);
         $validated['description'] = BlogContentSanitizer::sanitize($validated['description'] ?? '');
         $validated['featured_image'] = $request->file('featured_image')
             ? $this->imageStorage->store($request->file('featured_image'), 'packages')
@@ -55,6 +57,7 @@ class AdminPackageController extends Controller
         $validated['categories'] = array_values(array_unique($validated['categories']));
         $validated['category'] = $validated['categories'][0];
         $validated['slug'] = Str::slug($validated['slug']);
+        $validated['map_embed'] = GoogleMapsEmbed::extractUrl($validated['map_embed'] ?? null);
         $validated['description'] = BlogContentSanitizer::sanitize($validated['description'] ?? '');
         $validated['included'] = $this->cleanList($request->input('included', []));
         $validated['excluded'] = $this->cleanList($request->input('excluded', []));
@@ -113,7 +116,16 @@ class AdminPackageController extends Controller
             'tour_type' => ['nullable', 'string', 'max:100'],
             'group_size' => ['nullable', 'string', 'max:100'],
             'languages' => ['nullable', 'string', 'max:255'],
-            'map_embed' => ['nullable', 'string', 'max:10000'],
+            'map_embed' => [
+                'nullable',
+                'string',
+                'max:10000',
+                function (string $attribute, mixed $value, \Closure $fail): void {
+                    if ($value !== null && trim($value) !== '' && GoogleMapsEmbed::extractUrl($value) === null) {
+                        $fail('The map embed must be a Google Maps embed URL or iframe.');
+                    }
+                },
+            ],
             'gallery_images' => ['nullable', 'array', 'max:10'],
             'gallery_images.*' => ['image', 'mimes:jpg,jpeg,png', 'max:4096'],
             'included' => ['nullable', 'array'],

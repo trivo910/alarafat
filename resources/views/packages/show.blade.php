@@ -95,10 +95,10 @@
                     </section>
                 @endif
 
-                @if($package->map_embed)
+                @if($package->map_embed_url)
                     <section class="package-detail-section package-location">
                         <h2>Tour's location</h2>
-                        <div class="package-map">{!! $package->map_embed !!}</div>
+                        <div class="package-map"><iframe title="{{ $package->title }} location map" src="{{ $package->map_embed_url }}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
                     </section>
                 @endif
             </article>
