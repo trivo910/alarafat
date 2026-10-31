@@ -14,7 +14,7 @@
 </div>
 <header class="site-header">
     <a class="brand" href="{{ url('/') }}" aria-label="Al Arafat Tours & Travels home">
-        <img src="{{ asset('storage/logo/Al-arafat-Logo-355-x-71 (1).png') }}" alt="Al Arafat Tours & Travels">
+        <img src="{{ asset('images/homepage/Al-arafat-Logo-355-x-71 (1).png') }}" alt="Al Arafat Tours & Travels">
     </a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation"><span></span><span></span><span></span></button>
     <nav class="primary-nav" id="primary-navigation" aria-label="Main navigation">
