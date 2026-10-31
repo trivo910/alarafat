@@ -814,7 +814,6 @@
 
     .hajj-booking {
         top: 120px;
-
         width: calc(100% - 25px);
 
         min-height: auto;
@@ -865,7 +864,7 @@
     }
 
     .hajj-packages .section-heading h1 {
-        font-size: 20px;
+        font-size: 30px;
     }
 
     .package-grid {
@@ -897,21 +896,21 @@
 
         padding-bottom: 35px;
 
-        font-size: 11px;
+        font-size: 14px;
     }
 
     .hajj-article .article-heading h2 {
-        font-size: 19px;
+        font-size: 25px;
     }
 
     .hajj-article p {
-        font-size: 10px;
+        font-size: 14px;
 
         line-height: 1.7;
     }
 
     .hajj-article h3 {
-        font-size: 17px;
+        font-size: 18px;
     }
 
     /* Stack image/text */
@@ -1011,7 +1010,7 @@
     }
 
     .hajj-packages .section-heading h1 {
-        font-size: 18px;
+        font-size: 30px;
     }
 
     .hajj-article .article-heading h2 {

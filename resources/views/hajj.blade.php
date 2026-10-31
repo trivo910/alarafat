@@ -19,11 +19,11 @@
 
     <main>
         <section class="hajj-hero" aria-label="Hajj packages from Mumbai">
-            <form class="booking-form hajj-booking" action="#hajj-packages">
+            <!-- <form class="booking-form hajj-booking" action="#hajj-packages">
                 <label class="booking-field location-field"><span class="field-icon" aria-hidden="true">⌖</span><span class="field-copy"><span>Location</span><input name="location" placeholder="Where are you going?" aria-label="Destination"></span></label>
                 <label class="booking-field"><span class="field-icon" aria-hidden="true">▦</span><span class="field-copy"><span>Date</span><input type="date" name="date" aria-label="Departure date"></span></label><span class="date-arrow" aria-hidden="true"></span>
                 <label class="booking-field"><span class="field-icon" aria-hidden="true">▦</span><span class="field-copy"><span>Check out</span><input type="date" name="return" aria-label="Return date"></span></label>
-                <button class="search-button" type="submit">Search</button>
+                <button class="search-button" type="submit">Search</button> -->
             </form>
         </section>
 
