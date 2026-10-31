@@ -60,15 +60,15 @@
                 <p>Having these details coordinated can save time and effort, letting travelers focus on their spiritual experience.</p>
             </section>
             <section class="article-feature article-feature-image-first umrah-feature">
-                <img src="https://alarafat.com/wp-content/uploads/2022/12/ibrahim-uz-3Z3RvzpVAqM-unsplash-768x512.jpg" alt="Pilgrims performing Tawaf around the Kaaba" loading="lazy">
+                <img src="{{ asset('images/umrahpage/ibrahim-uz-3Z3RvzpVAqM-unsplash-768x512.jpg') }}" alt="Pilgrims performing Tawaf around the Kaaba" loading="lazy">
                 <div><h3>The rituals of the Umrah pilgrimage</h3><ul class="ritual-list"><li><strong>Entering ihram</strong> — wearing simple clothing and making the intention for pilgrimage.</li><li><strong>Performing Tawaf</strong> — circling the Kaaba seven times in a counterclockwise direction.</li><li><strong>Completing Sa'i</strong> — walking between the hills of Safa and Marwah seven times.</li><li><strong>Trimming or shaving the hair</strong> — marking the completion of the Umrah rites.</li></ul></div>
             </section>
             <section class="article-feature article-feature-image-last umrah-feature">
                 <div><h3>The cost of the Umrah pilgrimage</h3><p>The cost of Umrah varies depending on the package and travel provider. It can include airfare, accommodation, transportation, and meals.</p><p>Prices depend on the length of the trip and the level of service. Compare what is included and choose an option that suits your preferences and budget.</p><p>Many packages offer flexible options for duration and accommodation, helping pilgrims plan a journey that meets their needs.</p></div>
-                <img src="https://alarafat.com/wp-content/uploads/2022/12/243-2435986_hajj-mecca-1-1024x1024.jpg" alt="A pilgrim at the Grand Mosque in Makkah" loading="lazy">
+                <img src="{{ asset('images/umrahpage/243-2435986_hajj-mecca-1-1024x1024.jpg') }}" alt="A pilgrim at the Grand Mosque in Makkah" loading="lazy">
             </section>
             <section class="article-feature article-feature-image-first umrah-feature">
-                <img src="https://alarafat.com/wp-content/uploads/2022/12/ziyarah_al_masjid_6f21f1147b-1536x1536.jpg" alt="Pilgrims visiting Al-Masjid an-Nabawi" loading="lazy">
+                <img src="{{ asset('images/umrahpage/ziyarah_al_masjid_6f21f1147b-1536x1536.jpg') }}" alt="Pilgrims visiting Al-Masjid an-Nabawi" loading="lazy">
                 <div><h3>The significance of the Umrah pilgrimage</h3><p>Umrah is an opportunity to connect with Allah, reflect, and set aside the stresses of everyday life. Pilgrims can focus on worship and draw closer to their faith.</p><p>For many, the journey brings meaningful spiritual benefits. Well-planned, affordable packages can make this important experience accessible to more travelers.</p></div>
             </section>
             <section class="umrah-faq"><h2>Frequently Asked Questions</h2>
@@ -79,7 +79,7 @@
             </section>
         </article>
 
-        <section class="hajj-reviews umrah-reviews"><div class="content-width"><h2>What our clients say</h2><div class="review-strip"><div class="review-brand"><strong>AL-ARAFAT</strong><span>TOURS AND TRAVELS</span><b>★★★★★</b><small>33 Google reviews</small></div><article><strong>Hashim Khan</strong><small>1 year ago</small><b>★★★★★</b><p>This user only left a rating.</p></article><article><strong>Ayaz Qureshi</strong><small>1 year ago</small><b>★★★★★</b><p>This user only left a rating.</p></article><article><strong>Ashraf Khan</strong><small>1 year ago</small><b>★★★★★</b><p>This user only left a rating.</p></article></div></div></section>
+        <!-- <section class="hajj-reviews umrah-reviews"><div class="content-width"><h2>What our clients say</h2><div class="review-strip"><div class="review-brand"><strong>AL-ARAFAT</strong><span>TOURS AND TRAVELS</span><b>★★★★★</b><small>33 Google reviews</small></div><article><strong>Hashim Khan</strong><small>1 year ago</small><b>★★★★★</b><p>This user only left a rating.</p></article><article><strong>Ayaz Qureshi</strong><small>1 year ago</small><b>★★★★★</b><p>This user only left a rating.</p></article><article><strong>Ashraf Khan</strong><small>1 year ago</small><b>★★★★★</b><p>This user only left a rating.</p></article></div></div></section> -->
     </main>
 
     @include('partials.site-footer')

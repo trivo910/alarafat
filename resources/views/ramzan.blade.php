@@ -58,7 +58,7 @@
             </div>
         </article>
 
-        <section class="hajj-reviews umrah-reviews">
+        <!-- <section class="hajj-reviews umrah-reviews">
             <div class="content-width">
                 <h2>What our clients say</h2>
                 <div class="review-strip">
@@ -87,7 +87,7 @@
                     </article>
                 </div>
             </div>
-        </section>
+        </section> -->
     </main>
 
     @include('partials.site-footer')

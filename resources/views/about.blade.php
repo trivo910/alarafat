@@ -18,7 +18,7 @@
     @include('partials.site-header', ['activePage' => 'about'])
 
     <main class="about-page">
-        <div class="about-banner content-width"><img src="https://alarafat.com/wp-content/uploads/2025/11/About-Us-banner-2-1.jpg" alt="About Al Arafat Tours and Travels"></div>
+        <div class="about-banner content-width"><img src="{{ asset('images/aboutpage/About-Us-banner-2-1.jpg') }}" alt="About Al Arafat Tours and Travels"></div>
         <section class="about-introduction content-width">
             <h1>About Al Arafat</h1>
             <div class="about-copy">
@@ -29,7 +29,7 @@
         </section>
 
         <section class="about-promise content-width">
-            <img class="about-collage" src="https://alarafat.com/wp-content/uploads/2025/07/WhatsApp-Image-2025-07-04-at-15.34.51_8335353c.jpg" alt="Sacred places visited by Al Arafat pilgrims" loading="lazy">
+            <img class="about-collage" src="{{ asset('images/aboutpage/WhatsApp-Image-2025-07-04-at-15.34.51_8335353c.jpg') }}" alt="Sacred places visited by Al Arafat pilgrims" loading="lazy">
             <div class="promise-copy">
                 <h2>A Sacred Journey, A Promise Fulfilled</h2>
                 <p>Hajj and Umrah are not merely trips — they are divine invitations from the House of Allah, answered by souls yearning for mercy, transformation, and nearness to their Creator. At <strong>Al Arafat Tours and Travels</strong>, we recognize the deep spiritual weight this journey carries — for some, it is a once-in-a-lifetime fulfillment; for others, a dream nurtured for years.</p>
@@ -50,14 +50,13 @@
 
         <!-- <section class="hajj-reviews about-reviews"><div class="content-width"><h2>What our clients say</h2><div class="review-strip"><div class="review-brand"><strong>AL-ARAFAT</strong><span>TOURS AND TRAVELS</span><b>★★★★★</b><small>33 Google reviews</small></div><article><strong>Hashim Khan</strong><small>1 year ago</small><b>★★★★★</b><p>This user only left a rating.</p></article></div></div></section> -->
 
-        <section class="hajj-reviews about-reviews">
+        <!-- <section class="hajj-reviews about-reviews">
     <div class="content-width">
 
         <h2>What our clients say</h2>
 
         <div class="review-strip">
 
-            <!-- Business -->
             <div class="review-brand">
                 <strong>Al-Arafat Tours And Travels</strong>
                 <span></span>
@@ -65,7 +64,6 @@
                 <small>33 Google reviews</small>
             </div>
 
-            <!-- Review 1 -->
             <article>
                 <strong>Shaikh Munaam</strong>
                 <small>1 year ago</small>
@@ -73,7 +71,6 @@
                 <p>This user only left a rating.</p>
             </article>
 
-            <!-- Review 2 -->
             <article>
                 <strong>Hashim Khan</strong>
                 <small>1 year ago</small>
@@ -81,7 +78,6 @@
                 <p>This user only left a rating.</p>
             </article>
 
-            <!-- Review 3 -->
             <article>
                 <strong>Ayaz Qureshi</strong>
                 <small>1 year ago</small>
@@ -92,7 +88,7 @@
         </div>
 
     </div>
-</section>
+</section> -->
 
     </main>
 

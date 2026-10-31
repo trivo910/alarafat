@@ -56,7 +56,7 @@
                 <p>After completing these rituals, pilgrims partake in the Eid al-Adha, a feast that marks the end of Hajj. You can look out various sites where you can find <strong>cheap hajj packages in 2023</strong>, Because Hajj is a powerful spiritual experience that brings Muslims from all over the world together in a common quest for spiritual fulfillment. It is a time of reflection, devotion, and renewal, and is an important part of the Muslim faith.</p>
             </div>
             <section class="article-feature article-feature-image-first">
-                <img src="https://alarafat.com/wp-content/uploads/2022/12/pexels-taha-elahi-7984586-1024x1024.jpg" alt="Pilgrims gathered around the Kaaba" loading="lazy">
+                <img src="{{ asset('images/hajjpage/pexels-taha-elahi-7984586-1024x1024.jpg') }}" alt="Pilgrims gathered around the Kaaba" loading="lazy">
                 <div>
                     <h2 class="article-subheading">The Spiritual Significance of Hajj</h2>
                 <p>Hajj is a deeply spiritual experience for muslim pilgrimage, as it is a chance to reaffirm their faith in Allah and to be closer to Him. Performing the rituals associated with Hajj is seen as an act of worship, and it is believed that these acts will be rewarded in the afterlife.</p>
@@ -72,10 +72,10 @@
                 <p>Hajj is also a time to learn about the Islamic faith. Many pilgrims take this opportunity to learn more about the teachings of the Prophet Muhammad and to gain a deeper understanding of the Islamic faith.</p>
                 <p>This can be a very enriching experience, as pilgrims are exposed to different perspectives and learn more about the history and culture of the Islamic faith.</p>
             </div>
-                <img src="https://alarafat.com/wp-content/uploads/2022/12/71-768x512.jpg" alt="Pilgrims at Al-Masjid an-Nabawi in Madinah" loading="lazy">
+                <img src="{{ asset('images/hajjpage/71-768x512.jpg') }}" alt="Pilgrims at Al-Masjid an-Nabawi in Madinah" loading="lazy">
             </section>
             <section class="article-feature article-feature-image-first">
-                <img src="https://alarafat.com/wp-content/uploads/2022/12/ryan-pradipta-putra-MWJ7JpFBlGk-unsplash-1024x1024.jpg" alt="The Prophet's Mosque in Madinah" loading="lazy">
+                <img src="{{ asset('images/hajjpage/ryan-pradipta-putra-MWJ7JpFBlGk-unsplash-1024x1024.jpg') }}" alt="The Prophet's Mosque in Madinah" loading="lazy">
                 <div><h2 class="article-subheading">Benefits of Using Hajj Packages</h2>
                 <p>Cheap Hajj packages in 2023 are an excellent way for pilgrims to make the most of their pilgrimage. These packages provide pilgrims with all the necessary resources and amenities for a successful Hajj.</p>
                 <p>We offer a range of options, from basic packages to more luxurious options. This allows pilgrims to choose a package that best suits their needs and budget. Additionally, these packages often include accommodations, transportation, and other services that make the pilgrimage more convenient and enjoyable.</p>
@@ -87,13 +87,13 @@
                 <p>Cheap Hajj packages in 2023 are an excellent way to make the most of the pilgrimage, as they provide pilgrims with all the necessary amenities and services for a successful Hajj. To find the best Hajj packages 2023, make sure to do your research and speak to other pilgrims who have used the same package.</p>
                 <p>Hajj is an incredibly powerful experience, and it can have a lasting impact on those who take part in it. Whether it’s for spiritual or cultural reasons, Hajj is an experience that should not be missed. So, if you’re planning on taking part in the pilgrimage this year, make sure to take advantage of cheap Hajj packages in 2023 to make the most of your journey.</p>
             </div>
-                <img src="https://alarafat.com/wp-content/uploads/2022/12/ekrem-osmanoglu-R_t4oOh-Lvg-unsplash-1536x1536.jpg" alt="The Kaaba surrounded by Hajj pilgrims" loading="lazy">
+                <img src="{{ asset('images/hajjpage/ekrem-osmanoglu-R_t4oOh-Lvg-unsplash-1536x1536.jpg') }}" alt="The Kaaba surrounded by Hajj pilgrims" loading="lazy">
             </section>
         </article>
 
-        <section class="hajj-reviews">
+        <!-- <section class="hajj-reviews">
             <div class="content-width"><h2>What our clients say</h2><div class="review-strip"><div class="review-brand"><strong>AL-ARAFAT</strong><span>TOURS AND TRAVELS</span><b>★★★★★</b><small>33 Google reviews</small></div><article><strong>Junaid Khan</strong><small>1 year ago</small><b>★★★★★</b><p>This user only left a rating.</p></article><article><strong>Shaikh Muneer</strong><small>1 year ago</small><b>★★★★★</b><p>This user only left a rating.</p></article><article><strong>Hashim Khan</strong><small>1 year ago</small><b>★★★★★</b><p>This user only left a rating.</p></article></div></div>
-        </section>
+        </section> -->
     </main>
 
     @include('partials.site-footer')

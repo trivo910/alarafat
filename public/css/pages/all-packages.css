@@ -1,4 +1,4 @@
-.all-packages-search-band { min-height: 116px; padding: 24px; display: grid; place-items: center; background-color: #fbfaf6; background-image: repeating-linear-gradient(30deg, #d3ad6317 0 2px, transparent 2px 16px), repeating-linear-gradient(150deg, #d3ad6317 0 2px, transparent 2px 16px); }
+.all-packages-search-band { min-height: 146px; padding: 24px; display: grid; place-items: center; background-color: #fbfaf6; background-image: repeating-linear-gradient(30deg, #d3ad6317 0 2px, transparent 2px 16px), repeating-linear-gradient(150deg, #d3ad6317 0 2px, transparent 2px 16px); }
 .all-packages-search { width: min(570px, 100%); min-height: 58px; padding: 7px 8px 7px 18px; display: flex; align-items: center; gap: 12px; border: 1px solid #e2e4e6; border-radius: 36px; background: #fff; box-shadow: 0 2px 9px #0000000c; }
 .all-packages-search > span { color: #77818a; font-size: 23px; }
 .all-packages-search input { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; font: inherit; }

@@ -51,20 +51,20 @@
                 <p>Ziyarat also has a social and cultural dimension. Families and travelers from different backgrounds come together to visit these places, share the experience, and deepen their understanding of the Islamic tradition.</p>
             </div>
             <section class="article-feature article-feature-image-first">
-                <img src="https://alarafat.com/wp-content/uploads/2022/12/pexels-mutahir-jamil-11667462-1536x1536.jpg" alt="Pilgrims on a Ziyarat visit to a sacred mosque" loading="lazy">
+                <img src="{{ asset('images/ziyaratpage/pexels-mutahir-jamil-11667462-1536x1536.jpg') }}" alt="Pilgrims on a Ziyarat visit to a sacred mosque" loading="lazy">
                 <div><h3>History and cultural significance of Ziyarat</h3><p>Ziyarat can include visits to sites connected with key figures and events in Islamic history. In Madinah, pilgrims visit the Prophet's Mosque and other places of deep religious importance.</p><p>These visits offer an opportunity to learn about the history of each place, reflect on its meaning, and remember the people whose lives shaped the Muslim community.</p><p>Traveling together can make the experience especially meaningful for families and fellow pilgrims.</p></div>
             </section>
             <section class="article-feature article-feature-image-last">
                 <div><h3>Importance of exploring its history and cultural significance</h3><p>Learning about the sites before visiting can deepen the experience. Understanding their histories and traditions helps travelers approach each stop with care and appreciation.</p><p>A guided itinerary can connect individual visits into a richer picture of Islamic history. Local context also helps travelers better understand the customs and stories associated with each destination.</p><p>Thoughtful planning leaves more time to focus on the spiritual side of the journey.</p></div>
-                <img src="https://alarafat.com/wp-content/uploads/2022/12/haidan-zY26j3pA65Y-unsplash-1024x1024.jpg" alt="Minarets and courtyard at a sacred mosque" loading="lazy">
+                <img src="{{ asset('images/ziyaratpage/haidan-zY26j3pA65Y-unsplash-1024x1024.jpg') }}" alt="Minarets and courtyard at a sacred mosque" loading="lazy">
             </section>
             <section class="article-feature article-feature-image-first ziyarat-last-feature">
-                <img src="https://alarafat.com/wp-content/uploads/2022/12/pexels-mustafa-fathy-5620451-1-1536x1536.jpg" alt="Travelers visiting an illuminated mosque" loading="lazy">
+                <img src="{{ asset('images/ziyaratpage/pexels-mustafa-fathy-5620451-1-1536x1536.jpg') }}" alt="Travelers visiting an illuminated mosque" loading="lazy">
                 <div><h3>Choose Ziyarat Tour Packages as per your Preference</h3><p>Ziyarat tour packages make it easier to plan visits to important religious sites. Depending on the itinerary, they can include transport, accommodation, and guidance from experienced tour leaders.</p><p>Al Arafat Tours &amp; Travels helps travelers choose an itinerary that fits their time and preferences. Contact our team to ask about available tours and travel arrangements.</p><p>Join a Ziyarat tour and experience the history, beauty, and spiritual significance of these sacred places.</p></div>
             </section>
         </article>
 
-        <section class="hajj-reviews ziyarat-reviews"><div class="content-width"><h2>What our clients say</h2><div class="review-strip"><div class="review-brand"><strong>AL-ARAFAT</strong><span>TOURS AND TRAVELS</span><b>★★★★★</b><small>33 Google reviews</small></div><article><strong>Shaikh Shifa</strong><small>1 year ago</small><b>★★★★★</b><p>Best umrah travel agency in Mumbai.</p></article><article><strong>Azim Khan</strong><small>1 year ago</small><b>★★★★★</b><p>Best service.</p></article><article><strong>Junaid Khan</strong><small>1 year ago</small><b>★★★★★</b><p>This user only left a rating.</p></article></div></div></section>
+        <!-- <section class="hajj-reviews ziyarat-reviews"><div class="content-width"><h2>What our clients say</h2><div class="review-strip"><div class="review-brand"><strong>AL-ARAFAT</strong><span>TOURS AND TRAVELS</span><b>★★★★★</b><small>33 Google reviews</small></div><article><strong>Shaikh Shifa</strong><small>1 year ago</small><b>★★★★★</b><p>Best umrah travel agency in Mumbai.</p></article><article><strong>Azim Khan</strong><small>1 year ago</small><b>★★★★★</b><p>Best service.</p></article><article><strong>Junaid Khan</strong><small>1 year ago</small><b>★★★★★</b><p>This user only left a rating.</p></article></div></div></section> -->
     </main>
 
     @include('partials.site-footer')

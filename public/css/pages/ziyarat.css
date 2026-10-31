@@ -1,6 +1,6 @@
 /* Ziyarat page overrides. Loaded after the shared site stylesheet. */
-.ziyarat-hero { position: relative; height: 130px; background: #fff url('https://alarafat.com/wp-content/uploads/2022/08/bars.svg') center / 250px repeat; }
-.ziyarat-booking { position: absolute; top: 48px; left: 50%; width: min(650px, calc(100% - 36px)); transform: translateX(-50%); }
+.ziyarat-hero { position: relative; height: 260px; background: #fff url('/images/umrahpage/Al-Arafat-Website-Work.png') center / cover no-repeat; }
+.ziyarat-booking { position: absolute; top: 100px; left: 50%; width: min(650px, calc(100% - 36px)); transform: translateX(-50%); }
 .ziyarat-packages { padding-top: 11px; padding-bottom: 34px; }
 .ziyarat-packages .section-heading { margin-bottom: 24px; }
 .ziyarat-packages .section-heading h1 { margin: 0; color: var(--gold); font-size: 28px; line-height: 1.3; }

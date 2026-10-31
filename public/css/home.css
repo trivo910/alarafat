@@ -183,8 +183,7 @@ img { display: block; max-width: 100%; }
 .commitment p { margin: 0; font-size: 16px; line-height: 1.6; }
 
 .newsletter { min-height: 250px; margin-bottom: 65px; display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
-.newsletter-art { min-height: 350px; background: #fff url('https://alarafat.com/wp-content/uploads/2022/08/02-Apr-10-Apr-2-1-1.png') center / cover no-repeat; }
-.newsletter-panel { min-width: 0; padding: 34px clamp(24px, 5vw, 70px); display: flex; flex-direction: column; justify-content: center; border: 1px solid #e3e5e7; border-radius: 0 10px 10px 0; text-align: center; }
+.newsletter-art { min-height: 350px; background: #fff url('/images/homepage/02-Apr-10-Apr-2-1-1.png') center / cover no-repeat;  }.newsletter-panel { min-width: 0; padding: 34px clamp(24px, 5vw, 70px); display: flex; flex-direction: column; justify-content: center; border: 1px solid #e3e5e7; border-radius: 0 10px 10px 0; text-align: center; }
 .newsletter-panel h2 { margin: 0 0 8px; font-size: 24px; line-height: 1.35; }
 .newsletter-panel > p { margin: 0 auto 14px; color: #68717a; font-size: 12px; }
 .newsletter-input { display: flex; width: min(360px, 100%); margin-inline: auto; border: 1px solid #dfe2e4; border-radius: 4px; }

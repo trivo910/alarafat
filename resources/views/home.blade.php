@@ -20,9 +20,9 @@
     <main id="top">
         <section class="hero" aria-label="Featured pilgrimage packages">
             <div class="hero-track">
-                <a class="hero-slide is-active" href="#packages" aria-label="Explore Umrah packages"><img src="https://alarafat.com/wp-content/uploads/2025/08/1600-X-474-1.jpg" alt="Hajj and Umrah journey from Al Arafat"></a>
-                <a class="hero-slide" href="#packages" aria-label="Explore our travel packages"><img src="https://alarafat.com/wp-content/uploads/2022/08/web-banner-1.jpg" alt="Al Arafat pilgrimage travel banner" loading="lazy"></a>
-                <a class="hero-slide" href="#packages" aria-label="Book your next journey"><img src="https://alarafat.com/wp-content/uploads/2025/10/web-banner-2.jpg" alt="Al Arafat Hajj and Umrah offers" loading="lazy"></a>
+                <a class="hero-slide is-active" href="#packages" aria-label="Explore Umrah packages"><img src="{{ asset('images/homepage/1600-X-474-1.jpg') }}" alt="Hajj and Umrah journey from Al Arafat"></a>
+                <a class="hero-slide" href="#packages" aria-label="Explore our travel packages"><img src="{{ asset('images/homepage/web-banner-1.jpg') }}" alt="Al Arafat pilgrimage travel banner" loading="lazy"></a>
+                <a class="hero-slide" href="#packages" aria-label="Book your next journey"><img src="{{ asset('images/homepage/web-banner-2.jpg') }}" alt="Al Arafat Hajj and Umrah offers" loading="lazy"></a>
             </div>
             <button class="hero-arrow hero-previous" type="button" aria-label="Previous slide">‹</button>
             <button class="hero-arrow hero-next" type="button" aria-label="Next slide">›</button>
@@ -41,8 +41,8 @@
 
         <section class="intro content-width" id="about">
             <div class="intro-gallery">
-                <img class="intro-image intro-image-tall" src="https://alarafat.com/wp-content/uploads/2025/07/28.png" alt="Makkah clock tower" loading="lazy">
-                <img class="intro-image intro-image-short" src="https://alarafat.com/wp-content/uploads/2025/07/29.png" alt="A minaret in Makkah" loading="lazy">
+                <img class="intro-image intro-image-tall" src="{{ asset('images/homepage/28.png') }}" alt="Makkah clock tower" loading="lazy">
+                <img class="intro-image intro-image-short" src="{{ asset('images/homepage/29.png') }}" alt="A minaret in Makkah" loading="lazy">
             </div>
             <div class="intro-copy">
                 <!-- <p class="eyebrow">A journey guided by care</p> -->
@@ -120,11 +120,11 @@
         </section>
 
         <section class="partners" aria-label="Travel and pilgrimage partners"><div class="partner-track">
-            <img src="https://alarafat.com/wp-content/uploads/2022/09/Final-Ministry-of-Hajj.jpg" alt="Ministry of Hajj" loading="lazy">
-            <img src="https://alarafat.com/wp-content/uploads/2022/09/Final-Ministry-of-Minority.jpg" alt="Ministry of Minority Affairs" loading="lazy">
-            <img src="https://alarafat.com/wp-content/uploads/2022/09/Maqam-Final-1.jpg" alt="Maqam" loading="lazy">
-            <img src="https://alarafat.com/wp-content/uploads/2022/09/Vision-2030.jpg" alt="Saudi Vision 2030" loading="lazy">
-            <img src="https://alarafat.com/wp-content/uploads/2022/09/AIHUTOA.jpg" alt="AIHUTOA" loading="lazy">
+            <img src="{{ asset('images/homepage/Final-Ministry-of-Hajj.jpg') }}" alt="Ministry of Hajj" loading="lazy">
+            <img src="{{ asset('images/homepage/Final-Ministry-of-Minority.jpg') }}" alt="Ministry of Minority Affairs" loading="lazy">
+            <img src="{{ asset('images/homepage/Maqam-Final-1.jpg') }}" alt="Maqam" loading="lazy">
+            <img src="{{ asset('images/homepage/Vision-2030.jpg') }}" alt="Saudi Vision 2030" loading="lazy">
+            <img src="{{ asset('images/homepage/AIHUTOA.jpg') }}" alt="AIHUTOA" loading="lazy">
         </div></section>
     </main>
 

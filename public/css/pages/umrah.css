@@ -1,5 +1,5 @@
 /* Umrah page overrides. Loaded after the shared site stylesheet. */
-.umrah-hero { position: relative; height: 180px; background: #f9f8f4 url('https://alarafat.com/wp-content/uploads/2025/09/Al-Arafat-Website-Work.png') center / cover no-repeat; }
+.umrah-hero { position: relative; height: 180px; background: #f9f8f4 url('/images/umrahpage/Al-Arafat-Website-Work.png') center / cover no-repeat; }
 .umrah-booking { position: absolute; top: 48px; left: 50%; width: min(650px, calc(100% - 36px)); transform: translateX(-50%); }
 .umrah-packages { padding-top: 14px; padding-bottom: 42px; }
 .umrah-packages .section-heading { margin-bottom: 25px; }
