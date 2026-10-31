@@ -313,11 +313,11 @@ img { display: block; max-width: 100%; }
     .field-copy input[type=date] { max-width: 112px; }
     .date-arrow { display: none; }
     .search-button { min-height: 32px; flex: 1 1 100%; margin-top: 3px; border-radius: 5px; font-size: 11px; }
-    /* .intro { padding-top: 18px; padding-bottom: 34px; grid-template-columns: 2fr; gap: 19px; }
+    .intro { padding-top: 18px; padding-bottom: 34px; grid-template-columns: 2fr; gap: 19px; }
     .intro-gallery { width: min(100%, 310px); min-height: 0; grid-template-columns: 2fr; gap: 14px; }
     .intro-image { width: 90%; border-radius: 90px 90px 3px 3px; border-bottom-width: 6px; }
     .intro-image-tall { height: 235px; }
-    .intro-image-short { width: 90%; height: 190px; margin-left: 5%; } */
+    .intro-image-short { width: 90%; height: 190px; margin-left: 5%; }
 
     .intro {
     /* margin-bottom: 30px; */
