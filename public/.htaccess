@@ -32,6 +32,9 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
+    RewriteRule ^images/(.*)$ public/images/$1 [L]
+
 </IfModule>
 
 <IfModule mod_headers.c>
