@@ -3,11 +3,16 @@
         Options -MultiViews
     </IfModule>
 
-    RewriteEngine On
+    <IfModule mod_rewrite.c>
+        RewriteEngine On
+        RewriteRule ^(.*)$ public/$1 [L]
+    </IfModule>
 
     <IfModule mod_autoindex.c>
         Options -Indexes
     </IfModule>
+
+    RewriteEngine On
 
     # Prevent access to hidden files while allowing ACME challenge files.
     RewriteRule (^|/)\.(?!well-known(?:/|$)) - [F,L]
@@ -28,10 +33,13 @@
     RewriteCond %{REQUEST_URI} (.+)/$
     RewriteRule ^ %1 [L,R=301]
 
-    # Send requests to the Laravel front controller.
+    # Send Requests To Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
+    
+
 </IfModule>
 
 <IfModule mod_headers.c>
