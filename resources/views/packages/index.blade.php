@@ -7,6 +7,7 @@
     <meta name="theme-color" content="#090909">
     <meta name="description" content="Explore all published Umrah, Hajj, Ramzan, and Ziyarat packages from Al Arafat Tours & Travels.">
     <title>All Packages | Al Arafat Tours &amp; Travels</title>
+    @include('partials.seo-meta')
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">

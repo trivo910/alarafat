@@ -7,6 +7,7 @@
     <meta name="theme-color" content="#090909">
     <meta name="description" content="Find answers to common questions about Al Arafat Umrah packages, travel services, visas, and pilgrimage support.">
     <title>Frequently Asked Questions - Al Arafat</title>
+    @include('partials.seo-meta')
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">

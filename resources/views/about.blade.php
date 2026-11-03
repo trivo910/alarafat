@@ -7,6 +7,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}?v=20261007">
     <meta name="description" content="About Al Arafat - Al Arafat is one of the first travel agencies to offer hajj and umrah tours with the main focus of creating affordable packages,">
     <title>About Al Arafat</title>
+    @include('partials.seo-meta')
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">

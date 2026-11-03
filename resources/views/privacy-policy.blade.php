@@ -7,6 +7,7 @@
     <meta name="theme-color" content="#090909">
     <meta name="description" content="Read the Al Arafat Tours & Travels privacy policy and learn how information may be collected and used when you visit our website or contact us.">
     <title>Privacy Policy - Al Arafat</title>
+    @include('partials.seo-meta')
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">

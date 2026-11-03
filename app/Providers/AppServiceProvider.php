@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,6 +23,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $canonicalRoot = rtrim((string) config('app.url', 'http://localhost'), '/');
+        if ($canonicalRoot !== '') {
+            URL::forceRootUrl($canonicalRoot);
+            if (str_starts_with($canonicalRoot, 'https://')) {
+                URL::forceScheme('https');
+            }
+        }
+
         if (! Schema::hasTable('settings')) {
             return;
         }

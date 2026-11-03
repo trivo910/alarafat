@@ -49,6 +49,25 @@ Route::post('/st-tour/{slug}/enquiry', [PackageEnquiryController::class, 'store'
 
 Route::get('/blog', [BlogController::class, 'publicIndex']);
 
+Route::get('/{assetGroup}/{path}', function (string $assetGroup, string $path) {
+    $allowedGroups = ['css', 'js', 'images', 'build', 'storage'];
+
+    if (! in_array($assetGroup, $allowedGroups, true)) {
+        abort(404);
+    }
+
+    $basePath = public_path($assetGroup);
+    $fullPath = $basePath.'/'.$path;
+    $resolvedBase = realpath($basePath);
+    $resolvedFile = realpath($fullPath);
+
+    if ($resolvedBase === false || $resolvedFile === false || ! str_starts_with($resolvedFile, $resolvedBase)) {
+        abort(404);
+    }
+
+    return response()->file($resolvedFile);
+})->where(['assetGroup' => 'css|js|images|build|storage', 'path' => '.*']);
+
 Route::get('/blog/{slug}', function (string $slug) {
     return redirect()->route('blog.show', ['slug' => $slug], 301);
 });
