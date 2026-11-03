@@ -1,7 +1,13 @@
 @php
     $packageCategories = $package->categories ?: [$package->category];
     $galleryImages = collect($package->gallery_images ?? [])
-        ->map(fn (string $image): string => Str::startsWith($image, ['http://', 'https://', '/']) ? $image : asset('storage/' . $image))
+        ->map(function (string $image): string {
+            if (Str::startsWith($image, ['http://', 'https://', '/'])) {
+                return $image;
+            }
+
+            return Storage::disk('public')->exists($image) ? Storage::url($image) : asset('storage/' . $image);
+        })
         ->prepend($package->featured_image_url)
         ->filter()
         ->take(5)

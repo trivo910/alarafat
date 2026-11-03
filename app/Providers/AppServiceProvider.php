@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Storage;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $this->ensurePublicStorageLink();
+
         $canonicalRoot = rtrim((string) config('app.url', 'http://localhost'), '/');
         if ($canonicalRoot !== '') {
             URL::forceRootUrl($canonicalRoot);
@@ -61,5 +64,28 @@ class AppServiceProvider extends ServiceProvider
         if ($settings->has('smtp_password')) {
             config(['mail.mailers.smtp.password' => Crypt::decryptString($settings->get('smtp_password'))]);
         }
+    }
+
+    private function ensurePublicStorageLink(): void
+    {
+        $link = public_path('storage');
+        $target = storage_path('app/public');
+
+        if (! is_dir($target) || file_exists($link) && is_dir($link) && realpath($link) === $target) {
+            return;
+        }
+
+        if (file_exists($link) || is_link($link)) {
+            return;
+        }
+
+        if (DIRECTORY_SEPARATOR === '\\') {
+            @mkdir(dirname($link), 0777, true);
+            @symlink($target, $link);
+
+            return;
+        }
+
+        @symlink($target, $link);
     }
 }

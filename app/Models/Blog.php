@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class Blog extends Model
@@ -33,6 +34,10 @@ class Blog extends Model
 
         if (Str::startsWith($image, ['http://', 'https://', '//', '/'])) {
             return $image;
+        }
+
+        if (Storage::disk('public')->exists($image)) {
+            return Storage::url($image);
         }
 
         return asset('storage/' . $image);

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Support\GoogleMapsEmbed;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class Package extends Model
@@ -52,6 +53,10 @@ class Package extends Model
 
         if (Str::startsWith($image, ['http://', 'https://', '//', '/'])) {
             return $image;
+        }
+
+        if (Storage::disk('public')->exists($image)) {
+            return Storage::url($image);
         }
 
         return asset('storage/'.$image);

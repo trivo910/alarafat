@@ -10,6 +10,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Tests\TestCase;
 
 class AdminBlogTest extends TestCase
@@ -376,5 +377,32 @@ class AdminBlogTest extends TestCase
 
         $this->assertSame($blog->featured_image, $blog->fresh()->featured_image);
         Storage::disk('public')->assertExists($blog->featured_image);
+    }
+
+    public function test_package_image_urls_use_public_storage_links_for_uploaded_assets(): void
+    {
+        Storage::fake('public');
+
+        $thumbnail = 'packages/thumbnail.jpg';
+        $gallery = 'packages/gallery/gallery-one.jpg';
+        Storage::disk('public')->put($thumbnail, 'test-thumbnail');
+        Storage::disk('public')->put($gallery, 'test-gallery');
+
+        $package = Package::make([
+            'title' => 'Storage Package',
+            'slug' => 'storage-package',
+            'category' => 'Umrah',
+            'featured_image' => $thumbnail,
+            'gallery_images' => [$gallery],
+            'status' => 'published',
+        ]);
+
+        $this->assertSame(Storage::url($thumbnail), $package->featured_image_url);
+
+        $galleryUrl = collect($package->gallery_images)
+            ->map(fn (string $image): string => Str::startsWith($image, ['http://', 'https://', '/']) ? $image : (Storage::disk('public')->exists($image) ? Storage::url($image) : asset('storage/' . $image)))
+            ->first();
+
+        $this->assertSame(Storage::url($gallery), $galleryUrl);
     }
 }
