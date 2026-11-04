@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'google' => [
+        'tag_id' => env('GOOGLE_TAG_ID', 'G-KYVL6BJH6D'),
+        'site_verification' => env('GOOGLE_SITE_VERIFICATION'),
+    ],
+
 ];

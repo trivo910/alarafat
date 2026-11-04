@@ -9,4 +9,6 @@
         ? $canonicalScheme . '://' . $canonicalHost . $canonicalPath
         : url($canonicalPath);
 @endphp
+
+@include('partials.site-analytics', ['title' => $title ?? config('app.name'), 'description' => $description ?? 'Book trusted Hajj and Umrah packages from Mumbai with Al Arafat Tours & Travels.'])
 <link rel="canonical" href="{{ $canonicalUrl }}">
